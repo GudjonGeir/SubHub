@@ -171,7 +171,6 @@
     <Compile Include="Models\SubtitleLine.cs" />
     <Compile Include="Models\SubtitleRating.cs" />
     <Compile Include="Models\CommentRepository.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RequestRepository.cs" />
     <Compile Include="Models\SubtitleRepository.cs" />
     <Compile Include="Models\UserRepository.cs" />

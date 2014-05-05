@@ -23,10 +23,11 @@ namespace SubHub.Models
 
         public IQueryable<Subtitle> GetSubtitles()
         {
-            var result = from c in m_subtitles
-                         orderby dateSubmitted ascending
-                         select c;
-            return result;
+            //var result = from c in m_subtitles
+            //             orderby dateSubmitted ascending
+            //             select c;
+            //return result;
+            return null;
         }
 
         public void AddSubtitle(Subtitle s)

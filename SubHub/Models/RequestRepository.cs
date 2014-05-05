@@ -18,27 +18,27 @@ namespace SubHub.Models
                 return _instance;
             }
         }
-        private List<Request> m_requests = null;
+        //private List<Request> m_requests = null;
 
-        public IQueryable<Request> GetRequests()
-        {
-            var result = from c in m_users
-                         orderby c.DateSubmitted ascending
-                         select c;
-            return result;
-        }
+        //public IQueryable<Request> GetRequests()
+        //{
+        //    //var result = from c in m_users
+        //    //             orderby c.DateSubmitted ascending
+        //    //             select c;
+        //    return result;
+        //}
 
-        public void AddRequest(Request c)
-        {
-            int newId = 1;
-            if (m_requests.Count() > 0)
-            {
-                newId = m_requests.Max(x => x.ID) + 1;
-            }
-            c.Id = newId;
-            c.DateSubmitted = DateTime.Now;
-            m_requests.Add(c);
-        }
+        //public void AddRequest(Request c)
+        //{
+        //    int newId = 1;
+        //    if (m_requests.Count() > 0)
+        //    {
+        //        newId = m_requests.Max(x => x.ID) + 1;
+        //    }
+        //    c.Id = newId;
+        //    c.DateSubmitted = DateTime.Now;
+        //    m_requests.Add(c);
+        //}
 
         public void RemoveRequest(int? id)
         {
