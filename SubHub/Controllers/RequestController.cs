@@ -24,7 +24,7 @@ namespace SubHub.Controllers
         {
             return View();
         }
-        public ActionResult ViewReuest(Request r)
+        public ActionResult ViewRequest(Request r)
         {
             return View();
         }
