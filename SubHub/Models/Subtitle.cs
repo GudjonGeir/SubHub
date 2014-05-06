@@ -17,7 +17,7 @@ namespace SubHub.Models
         public          DateTime                    DateAired       { get; set; }
         public          string                      PosterUrl       { get; set; }
         // public virtual  ICollection<User>           Users           { get; set; }   // Users who have edited the file
-        public virtual  ICollection<SubtitleLine>   SubtitleLines   { get; set; }   // Subtitle lines in the file
-        public virtual  SubtitleRating              SubtitleRating  { get; set; }   // Corresponding rating for the file
+        //public virtual  ICollection<SubtitleLine>   SubtitleLines   { get; set; }   // Subtitle lines in the file
+        //public virtual  SubtitleRating              SubtitleRating  { get; set; }   // Corresponding rating for the file
     }
 }

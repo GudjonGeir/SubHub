@@ -11,6 +11,5 @@ namespace SubHub.Models
         public          string      CommentText     { get; set; }
         public          DateTime    DateSubmitted   { get; set; }
         public          int         UserId          { get; set; }
-        public virtual  User        User            { get; set; }   // User who made comment     
     }
 }

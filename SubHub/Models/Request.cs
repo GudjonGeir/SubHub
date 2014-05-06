@@ -14,6 +14,5 @@ namespace SubHub.Models
         public         bool             Completed       { get; set; }
         public         int              UserId          { get; set; }
         public virtual RequestRating    RequestRating   { get; set; }   // Corresponding rating for the request
-        public virtual User             User            { get; set; }   // User who made request
     }
 }

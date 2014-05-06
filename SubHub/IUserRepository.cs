@@ -9,6 +9,6 @@ namespace SubHub
 {
     public interface IUserRepository
     {
-        IQueryable<User> GetUsers();
+        //IQueryable<User> GetUsers();
     }
 }

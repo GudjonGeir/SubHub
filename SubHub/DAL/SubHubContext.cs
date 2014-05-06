@@ -25,13 +25,7 @@ namespace SubHub.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Entity<RequestRating>()
-                .HasRequired(rr => rr.Request)
-                .WithOptional(r => r.RequestRating);
 
-            //modelBuilder.Entity<Subtitle>()
-            //    .HasOptional( s => s.)
-            //    .wi
         }
     }
 }

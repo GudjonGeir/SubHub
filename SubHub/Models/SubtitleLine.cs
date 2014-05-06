@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +9,7 @@ namespace SubHub.Models
 {
     public class SubtitleLine
     {
+        [Key, ForeignKey("Subtitle")]
         public         int      SubtitleId  { get; set; }
         public         int      LineNumber  { get; set; }
         public         string   Time        { get; set; }
