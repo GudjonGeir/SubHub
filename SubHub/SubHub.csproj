@@ -171,6 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ICommentRepository.cs" />
+    <Compile Include="IRequestRepository.cs" />
+    <Compile Include="ISubtitleRepository.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

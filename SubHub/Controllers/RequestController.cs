@@ -9,6 +9,13 @@ namespace SubHub.Controllers
 {
     public class RequestController : Controller
     {
+       private readonly IRequestRepository _repo;
+
+        public RequestController(IRequestRepository repo)
+        {
+            _repo = repo;
+        }
+
         public ActionResult View()
         {
             return View();

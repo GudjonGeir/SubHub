@@ -14,5 +14,6 @@ namespace SubHub.Models
         public         int               count      { get; set; } 
         public virtual Request           Request    { get; set; }    // Corresponding request for the rating
         public virtual ICollection<User> Users      { get; set; }    // Users who have rated corresponding request
+
     }
 }

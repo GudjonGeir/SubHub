@@ -5,19 +5,19 @@ using System.Web;
 
 namespace SubHub.Models
 {
-    public class RequestRepository
+    public class RequestRepository : ISubtitleRepository
     {
-        private static RequestRepository _instance;
+        //private static RequestRepository _instance;
 
-        private static RequestRepository Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new RequestRepository();
-                return _instance;
-            }
-        }
+        //private static RequestRepository Instance
+        //{
+        //    get
+        //    {
+        //        if (_instance == null)
+        //            _instance = new RequestRepository();
+        //        return _instance;
+        //    }
+        //}
         //private List<Request> m_requests = null;
 
         //public IQueryable<Request> GetRequests()
@@ -40,6 +40,9 @@ namespace SubHub.Models
         //    m_requests.Add(c);
         //}
 
+
+        //private AppDataContext _context;
+
         public void RemoveRequest(int? id)
         {
 
@@ -58,6 +61,12 @@ namespace SubHub.Models
         public void Downvote(int id)
         {
 
+        }
+
+        public IQueryable<Subtitle> GetSubtitles()
+        {
+            //return _context;
+            return null;
         }
     }
 }
