@@ -9,7 +9,7 @@ namespace SubHub.Models
 {
     public class SubtitleLine
     {
-        [Key, ForeignKey("Subtitle")]
+        public int Id { get; set; }
         public         int      SubtitleId  { get; set; }
         public         int      LineNumber  { get; set; }
         public         string   Time        { get; set; }

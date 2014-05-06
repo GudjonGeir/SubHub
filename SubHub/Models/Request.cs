@@ -12,7 +12,7 @@ namespace SubHub.Models
         public         string           Name            { get; set; }
         public         DateTime         DateSubmitted   { get; set; }
         public         bool             Completed       { get; set; }
-        public         int              UserId          { get; set; }
-        public virtual RequestRating    RequestRating   { get; set; }   // Corresponding rating for the request
+        // public         int              UserId          { get; set; }
+        public virtual RequestRating RequestRating { get; set; }   // Corresponding rating for the request
     }
 }

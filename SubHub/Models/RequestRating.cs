@@ -9,6 +9,7 @@ namespace SubHub.Models
 {
     public class RequestRating
     {
+        [Key, ForeignKey("Request")]
         public         int              RequestId   { get; set; }
         //public         int               Id         { get; set; }
         public         int               count      { get; set; } 

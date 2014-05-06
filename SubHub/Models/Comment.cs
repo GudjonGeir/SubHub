@@ -10,6 +10,5 @@ namespace SubHub.Models
         public          int         Id              { get; set; }
         public          string      CommentText     { get; set; }
         public          DateTime    DateSubmitted   { get; set; }
-        public          int         UserId          { get; set; }
     }
 }
