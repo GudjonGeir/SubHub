@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SubHub.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SubHub.Models
+namespace SubHub.Repositories
 {
     public class RequestRepository : ISubtitleRepository
     {

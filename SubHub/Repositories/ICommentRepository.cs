@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SubHub.Models;
+using SubHub.Repositories;
 
-namespace SubHub
+namespace SubHub.Repositories
 {
     public interface ICommentRepository
     {

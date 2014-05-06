@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SubHub.Models;
+using SubHub.Repositories;
 
 namespace SubHub.Tests.Mocks
 {
@@ -17,7 +17,7 @@ namespace SubHub.Tests.Mocks
         }
 
 
-        public IQueryable<Models.Request> GetRequests()
+        public IQueryable<Repositories.Request> GetRequests()
         {
             return _requests.AsQueryable();
         }

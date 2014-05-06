@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SubHub.Models
+namespace SubHub.Repositories
 {
     public class ExternalLoginConfirmationViewModel
     {
