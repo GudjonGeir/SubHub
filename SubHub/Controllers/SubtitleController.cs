@@ -9,6 +9,14 @@ namespace SubHub.Controllers
 {
     public class SubtitleController : Controller
     {
+        private readonly ISubtitleRepository _repo;
+
+        public SubtitleController(ISubtitleRepository repo)
+        {
+            _repo = repo;
+        }
+
+
         public ActionResult ViewSubtitle(int? id)
         {
 

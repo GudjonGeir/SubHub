@@ -9,6 +9,6 @@ namespace SubHub.Models
     {
         public int Id { get; set; }
         public List<int> UserId { get; set; }
-            public int count {get; set; }
+        public int count {get; set; }
     }
 }
