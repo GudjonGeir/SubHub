@@ -25,8 +25,21 @@ namespace SubHub.Controllers
 
         public ActionResult ViewSubtitle(int? id)
         {
-
-            return View();
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                              where s.Id == id
+                              select s).SingleOrDefault();
+                if (model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
         }
 
         [HttpPost]

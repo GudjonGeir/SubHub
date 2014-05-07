@@ -239,11 +239,11 @@
     <Content Include="Views\Browse\Details.cshtml" />
     <Content Include="Views\Browse\Edit.cshtml" />
     <Content Include="Views\Browse\Index.cshtml" />
+    <Content Include="Views\Subtitle\ViewSubtitle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Request\" />
-    <Folder Include="Views\Subtitle\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

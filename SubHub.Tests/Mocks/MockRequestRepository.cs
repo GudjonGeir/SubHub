@@ -10,17 +10,17 @@ namespace SubHub.Tests.Mocks
 {
     class MockRequestRepository : IRequestRepository
     {
-        private readonly List<Request> _requests;
+        private readonly List<Request> m_requests;
 
         public MockRequestRepository(List<Request> requests)
         {
-            _requests = requests;
+            m_requests = requests;
         }
 
 
         public IQueryable<Request> GetRequests()
         {
-            return _requests.AsQueryable();
+            return m_requests.AsQueryable();
         }
     }
 }
