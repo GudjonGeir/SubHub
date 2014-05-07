@@ -1,4 +1,5 @@
 ﻿using SubHub.Models;
+using SubHub.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,36 @@ namespace SubHub.Controllers
 {
     public class SubtitleController : Controller
     {
+        private readonly ISubtitleRepository m_repo;
+
+        public SubtitleController(ISubtitleRepository repo)
+        {
+            m_repo = repo;
+        }
+
+        public SubtitleController()
+        {
+            m_repo = new SubtitleRepository();
+        }
+
+
         public ActionResult ViewSubtitle(int? id)
         {
-
-            return View();
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                              where s.Id == id.Value
+                              select s).SingleOrDefault();
+                if (model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
         }
 
         [HttpPost]
@@ -23,12 +50,28 @@ namespace SubHub.Controllers
 
         public ActionResult EditSubtitle(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if(model == null)
+                {
+                    return View("Error");
+                }
+                else 
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
         }
 
         [HttpPost]
-        public ActionResult EditSubtitle(Subtitle s)
+        public ActionResult EditSubtitle(int? id, Subtitle s)
         {
+
+
             return View();
         }
 

@@ -1,29 +1,52 @@
-﻿using SubHub.Models;
+﻿using SubHub.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SubHub.Models;
 
 namespace SubHub.Controllers
 {
     public class RequestController : Controller
     {
-        public ActionResult View()
+       private readonly IRequestRepository m_repo;
+
+        public RequestController(IRequestRepository repo)
+        {
+            m_repo = repo;
+        }
+
+        public RequestController()
+        {
+            m_repo = new RequestRepository();
+        }
+
+        public ActionResult GetRequests()
         {
             return View();
         }
-        public ActionResult View(int? id)
-        {
-            return View();
-        }
-        public ActionResult ViewReuest(Request r)
+        public ActionResult ViewRequest(Request r)
         {
             return View();
         }
         public ActionResult Upvote(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var requestRating = (from r in m_repo.GetRequestRating()
+                                     where r.RequestId == id.Value
+                                     select r).SingleOrDefault();
+                if (requestRating == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    m_repo.Upvote(id.Value);
+                }
+            }
+            return View("Error");
         }
         public ActionResult Delete(int? id)
         {
