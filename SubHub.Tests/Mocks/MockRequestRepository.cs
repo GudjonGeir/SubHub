@@ -22,5 +22,26 @@ namespace SubHub.Tests.Mocks
         {
             return m_requests.AsQueryable();
         }
+
+
+        public IQueryable<RequestRating> GetRequestRating()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveRequest(int? id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCompleted(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Upvote(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
