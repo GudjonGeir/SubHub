@@ -9,11 +9,16 @@ namespace SubHub.Controllers
 {
     public class SubtitleController : Controller
     {
-        private readonly ISubtitleRepository _repo;
+        private readonly ISubtitleRepository m_repo;
 
         public SubtitleController(ISubtitleRepository repo)
         {
-            _repo = repo;
+            m_repo = repo;
+        }
+
+        public SubtitleController()
+        {
+            m_repo = new SubtitleRepository();
         }
 
 

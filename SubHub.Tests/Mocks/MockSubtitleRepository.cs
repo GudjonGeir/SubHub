@@ -9,17 +9,17 @@ namespace SubHub.Tests.Mocks
 {
     public class MockSubtitleRepository : ISubtitleRepository
     {
-        private readonly List<Subtitle> _subtitles;
+        private readonly List<Subtitle> m_subtitles;
 
         public MockSubtitleRepository(List<Subtitle> subtitles)
         {
-            _subtitles = subtitles;
+            m_subtitles = subtitles;
         }
 
 
-        public IQueryable<Repositories.Subtitle> GetSubtitles()
+        public IQueryable<Subtitle> GetSubtitles()
         {
-            return _subtitles.AsQueryable();
+            return m_subtitles.AsQueryable();
         }
     }
 }
