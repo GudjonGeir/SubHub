@@ -40,3 +40,100 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+#sidebar
+{
+    margin-left: 25px;
+    float: left;
+    width: 145px;
+}
+
+#sidebar_2
+{
+    margin-left: 25px;
+    float: left;
+    width: 145px;
+}
+
+#banner-text
+{
+    margin-left: 2em;
+}
+
+#right-sidebar
+{
+    width: 225px;
+    height: 450px;
+    float: right;
+    //background-color: lightgray;
+    //border: 1px solid red;
+}
+
+.most-popular-sidebar
+{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    //border: 1px solid red;
+    background-color: lightgray;
+}
+
+.right-side-list
+{
+    list-style-type: none;
+}
+
+#main-content
+{
+    margin-left: auto;
+    margin-right: auto;
+    //width: 300px;
+    //border: 1px solid red;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+.dropdown-menu
+{
+    margin-top: 0px;
+}
+
+#menu1
+{
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+#menu2
+{
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+li:hover #menu1
+{
+    visibility: visible;
+}
+
+li:hover #menu2
+{
+    visibility: visible;
+}
+
+#master-control
+{
+    width: 500px;
+}
+
+.container
+{
+    width: 400px;
+}

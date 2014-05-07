@@ -9,32 +9,80 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    
+    <div class="jumbotron">
+        <h1 id="banner-text">SUBHUB</h1>
+        @Html.Partial("_LoginPartial")
+    </div>
+
+        <div id="sidebar_2" class="navbar-inverse">
+            <ul class="nav navbar-inverse nav-stacked">
+                <li>@Html.ActionLink("Heim", "Index", "Home")</li>
+                <li class="dropdown">
+                    @Html.ActionLink("Kvikmyndir", "Index", "Home")
+                    <ul class="dropdown-menu" id="menu1">
+                        <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    @Html.ActionLink("Þættir", "Index", "Home")
+                    <ul class="dropdown-menu" id="menu2">
+                        <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Senda inn texta", "Index", "Home")</li>
+                <li>@Html.ActionLink("Senda inn beiðni", "Index", "Home")</li>
+                <li>@Html.ActionLink("Um notkun", "About", "Home")</li>
+            </ul>
+        </div>
+    
+    <!--
+    <div id="sidebar" class="navbar-inverse">
+        <ul class="nav nav-pills nav-stacked">
+            <li>@Html.ActionLink("Heim", "Index", "Home")</li>
+            <li>@Html.ActionLink("Kvikmyndir", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Þættir", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Senda inn texta", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Senda inn beiðni", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Um notkun", "Contact", "Home")</li>
+        </ul>
+    </div>
+    -->
+    <div id="right-sidebar">
+        <h3>Vinsælast</h3>
+        <div class="most-popular-sidebar">
+            <h4>Bíómyndir</h4>
+            <ul class="right-side-list">
+                <li><img src="http://api.ning.com/files/7U-JG7rftqR9gcZ-F03Cj1Z0ONK0T9f1H2JAMYdXDgXP9NY7JRTpKKKNgOYlHOqmYgXGbdh-rkmmvj26SoLRBnRzaZIOrGPh/hobbit.jpg?size=&crop=1%3A1&width=64&height=64&format=jpg" />The Hobbit</li>
+                <li>Frozen</li>
+                <li>Wolf of Wallstreet</li>
+                <li>The Secret Life of Walter Mitty</li>
+            </ul>
+            <h4>Þættir</h4>
+            <ul class="right-side-list">
+                <li>New Girl - S03E05</li>
+                <li>Greys Anatomy - S11E09</li>
+                <li>The Following - S03E10</li>
+                <li>Glee - S05E18</li>
+            </ul>
         </div>
     </div>
+
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <hr /><!--
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+            <p>&copy; @DateTime.Now.Year - SubHub</p>
+        </footer>-->
     </div>
 
     @Scripts.Render("~/bundles/jquery")

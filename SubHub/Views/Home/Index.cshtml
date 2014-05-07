@@ -2,30 +2,96 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<!--
+<div id="sidebar" class="navbar-inverse" >
+    <ul class="nav nav-pills nav-stacked">
+        <li>@Html.ActionLink("Heim", "Index", "Home")</li>
+        <li>@Html.ActionLink("Kvikmyndir", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Þættir", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Senda inn texta", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Senda inn beiðni", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Um notkun", "Contact", "Home")</li>
+    </ul>
+</div>
+-->
+
+<div id="main-content">
+    <img src="" alt="Movie Poster" />
+    
+    
+        <div class="row">
+            <div class="col-sm-6 col-md-3"><!--col-md-3-->
+                <a href="#" class="thumbnail">
+                    <img src="http://1.bp.blogspot.com/-LmRw95kKBJM/UNtjGw3F5mI/AAAAAAAAC1c/hkIZCYNkvcM/s1600/The-Hobbit-1024x1024.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="http://img2.wikia.nocookie.net/__cb20131103205459/disney/images/6/66/Frozen_castposter.jpg" alt="...">
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="http://fedrev.net/wp-content/uploads/2014/01/TheWolfofWallStreet_iTunesPre-sale_1400x2100.jpg" alt="...">
+                </a>
+            </div>
+
+        </div>
+    
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<!--
+
+<div id="sidebar_2" class="navbar-inverse">
+    <ul class="nav navbar-inverse nav-stacked">
+        <li>@Html.ActionLink("Heim", "Index", "Home")</li>
+        <li class="dropdown">
+            @Html.ActionLink("Kvikmyndir", "Index", "Home")
+            <ul class="dropdown-menu" id="menu1">
+                <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            @Html.ActionLink("Þættir", "Index", "Home")
+            <ul class="dropdown-menu" id="menu2">
+                <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+            </ul>
+        </li>
+        <li>@Html.ActionLink("Senda inn texta", "Index", "Home")</li>
+        <li>@Html.ActionLink("Senda inn beiðni", "Index", "Home")</li>
+        <li>@Html.ActionLink("Um notkun", "About", "Home")</li>
+    </ul>
 </div>
+
+-->
+
+    <!--
+    <div id="right-sidebar">
+        <h3>Vinsælast</h3>
+        <div class="most-popular-sidebar">
+            <h4>Bíómyndir</h4>
+            <ul class="right-side-list">
+                <li><img src="http://api.ning.com/files/7U-JG7rftqR9gcZ-F03Cj1Z0ONK0T9f1H2JAMYdXDgXP9NY7JRTpKKKNgOYlHOqmYgXGbdh-rkmmvj26SoLRBnRzaZIOrGPh/hobbit.jpg?size=&crop=1%3A1&width=64&height=64&format=jpg" />The Hobbit</li>
+                <li>Frozen</li>
+                <li>Wolf of Wallstreet</li>
+                <li>The Secret Life of Walter Mitty</li>
+            </ul>
+            <h4>Þættir</h4>
+            <ul class="right-side-list">
+                <li>New Girl - S03E05</li>
+                <li>Greys Anatomy - S11E09</li>
+                <li>The Following - S03E10</li>
+                <li>Glee - S05E18</li>
+            </ul>
+        </div>
+    </div>
+    -->
