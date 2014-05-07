@@ -1,4 +1,5 @@
-﻿using SubHub.Models;
+﻿using SubHub.DAL;
+using SubHub.Models;
 using SubHub.Repositories;
 using System;
 using System.Collections.Generic;
@@ -7,68 +8,40 @@ using System.Web;
 
 namespace SubHub.Repositories
 {
-    public class RequestRepository : ISubtitleRepository
+    public class RequestRepository : IRequestRepository
     {
-        //private static RequestRepository _instance;
+        SubHubContext m_db = new SubHubContext();
 
-        //private static RequestRepository Instance
-        //{
-        //    get
-        //    {
-        //        if (_instance == null)
-        //            _instance = new RequestRepository();
-        //        return _instance;
-        //    }
-        //}
-        //private List<Request> m_requests = null;
-
-        //public IQueryable<Request> GetRequests()
-        //{
-        //    //var result = from c in m_users
-        //    //             orderby c.DateSubmitted ascending
-        //    //             select c;
-        //    return result;
-        //}
-
-        //public void AddRequest(Request c)
-        //{
-        //    int newId = 1;
-        //    if (m_requests.Count() > 0)
-        //    {
-        //        newId = m_requests.Max(x => x.ID) + 1;
-        //    }
-        //    c.Id = newId;
-        //    c.DateSubmitted = DateTime.Now;
-        //    m_requests.Add(c);
-        //}
-
-
-        //private AppDataContext _context;
+        public IQueryable<Request> GetRequests()
+        {
+            throw new NotImplementedException();
+        }
 
         public void RemoveRequest(int? id)
         {
-
+            throw new NotImplementedException();
         }
 
         public void SetCompleted(int id)
         {
-
+            throw new NotImplementedException();
         }
 
         public void Upvote(int id)
         {
-
+            var s = (from l in m_db.RequestRatings
+                    where l.RequestId == id
+                    select l).SingleOrDefault();
+            if (s != null)
+            {
+                s.count += 1;
+                m_db.SaveChanges();
+            }
         }
 
-        public void Downvote(int id)
+        public IQueryable<RequestRating> GetRequestRating()
         {
-
-        }
-
-        public IQueryable<Subtitle> GetSubtitles()
-        {
-            //return _context;
-            return null;
+            return m_db.RequestRatings;
         }
     }
 }

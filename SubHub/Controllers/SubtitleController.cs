@@ -28,7 +28,7 @@ namespace SubHub.Controllers
             if (id.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
-                              where s.Id == id
+                              where s.Id == id.Value
                               select s).SingleOrDefault();
                 if (model == null)
                 {

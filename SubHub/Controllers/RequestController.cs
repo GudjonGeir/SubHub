@@ -10,18 +10,19 @@ namespace SubHub.Controllers
 {
     public class RequestController : Controller
     {
-       private readonly IRequestRepository _repo;
+       private readonly IRequestRepository m_repo;
 
         public RequestController(IRequestRepository repo)
         {
-            _repo = repo;
+            m_repo = repo;
         }
 
-        public ActionResult View()
+        public RequestController()
         {
-            return View();
+            m_repo = new RequestRepository();
         }
-        public ActionResult View(int? id)
+
+        public ActionResult GetRequests()
         {
             return View();
         }
@@ -31,7 +32,21 @@ namespace SubHub.Controllers
         }
         public ActionResult Upvote(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var requestRating = (from r in m_repo.GetRequestRating()
+                                     where r.RequestId == id.Value
+                                     select r).SingleOrDefault();
+                if (requestRating == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    m_repo.Upvote(id.Value);
+                }
+            }
+            return View("Error");
         }
         public ActionResult Delete(int? id)
         {

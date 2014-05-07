@@ -11,5 +11,9 @@ namespace SubHub.Repositories
     public interface IRequestRepository
     {
         IQueryable<Request> GetRequests();
+        IQueryable<RequestRating> GetRequestRating();
+        void RemoveRequest(int? id);
+        void SetCompleted(int id);
+        void Upvote(int id);
     }
 }
