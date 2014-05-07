@@ -42,6 +42,16 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        //Fall ViewSubtitleByGenre
+        [HttpGet]
+        public ActionResult ViewSubtitleByGenre(string genre)
+        {
+            var result = from s in m_repo.GetSubtitles()
+                         where s.Genre == genre
+                         select s;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult NewSubtitle(Subtitle s)
         {

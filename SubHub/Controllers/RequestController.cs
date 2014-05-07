@@ -30,11 +30,13 @@ namespace SubHub.Controllers
         {
             return View();
         }
+
+        [Authorize]
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
             {
-                var requestRating = (from r in m_repo.GetRequestRating()
+                var requestRating = (from r in m_repo.GetRequestRatings()
                                      where r.RequestId == id.Value
                                      select r).SingleOrDefault();
                 if (requestRating == null)
@@ -44,6 +46,7 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.Upvote(id.Value);
+                    return View();
                 }
             }
             return View("Error");
@@ -54,7 +57,22 @@ namespace SubHub.Controllers
         }
         public ActionResult Complete(int? id)
         {
-            return View();
+            if(id.HasValue)
+            {
+                var request = (from r in m_repo.GetRequests()
+                               where r.Id == id
+                               select r).SingleOrDefault();
+                if(request == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    m_repo.SetCompleted(id.Value);
+                    return View();
+                }
+            }
+            return View("Error");
         }
 	}
 }
