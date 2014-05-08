@@ -11,5 +11,6 @@ namespace SubHub.Repositories
     public interface ISubtitleRepository
     {
         IQueryable<Subtitle>GetSubtitles();
+        void UpVote(int? id, ApplicationUser user);
     }
 }
