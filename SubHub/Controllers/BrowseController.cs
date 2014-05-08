@@ -14,17 +14,35 @@ namespace SubHub.Controllers
 {
     public class BrowseController : Controller
     {
+         private readonly ISubtitleRepository m_repo;
+
+        public BrowseController(ISubtitleRepository repo)
+        {
+            m_repo = repo;
+        }
+        public BrowseController()
+        {
+            m_repo = new SubtitleRepository();
+        }
+
         public ActionResult Movies()
         {
-            return View();
+            var result = from m in m_repo.GetSubtitles()
+                         where m.Type == "Movie"
+                         select m;
+            return View(result);
         }
+
         public ActionResult Movies(string genre)
         {
             return View();
         }
         public ActionResult TvShows()
         {
-            return View();
+            var result = from t in m_repo.GetSubtitles()
+                         where t.Type == "TvShow"
+                         select t;
+            return View(result);
         }
         public ActionResult TvShows(string genre)
         {
