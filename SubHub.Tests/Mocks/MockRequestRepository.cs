@@ -24,9 +24,14 @@ namespace SubHub.Tests.Mocks
         }
 
 
-        public IQueryable<RequestRating> GetRequestRating()
+        public IQueryable<RequestRating> GetRequestRatings()
         {
-            throw new NotImplementedException();
+            List<RequestRating> requestRatings = new List<RequestRating>();
+            foreach (Request r in m_requests)
+            {
+                requestRatings.Add(r.RequestRating);
+            }
+            return requestRatings.AsQueryable();
         }
 
         public void RemoveRequest(int? id)
@@ -36,12 +41,24 @@ namespace SubHub.Tests.Mocks
 
         public void SetCompleted(int id)
         {
-            throw new NotImplementedException();
+            var s = (from l in m_requests
+                     where l.Id == id
+                     select l).SingleOrDefault();
+            if(s != null)
+            {
+                s.Completed = true;
+            }
         }
 
         public void Upvote(int id)
         {
-            throw new NotImplementedException();
+            var s = (from l in m_requests
+                     where l.RequestRating.RequestId == id
+                     select l).SingleOrDefault();
+            if (s != null)
+            {
+                s.RequestRating.count += 1;
+            }
         }
     }
 }

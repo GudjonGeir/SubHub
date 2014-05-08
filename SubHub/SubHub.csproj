@@ -240,6 +240,8 @@
     <Content Include="Views\Browse\Edit.cshtml" />
     <Content Include="Views\Browse\Index.cshtml" />
     <Content Include="Views\Subtitle\ViewSubtitle.cshtml" />
+    <Content Include="Views\Subtitle\EditSubtitle.cshtml" />
+    <Content Include="Views\Subtitle\EditSubtitleForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

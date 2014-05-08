@@ -14,7 +14,7 @@ namespace SubHub.Repositories
 
         public IQueryable<Request> GetRequests()
         {
-            throw new NotImplementedException();
+            return m_db.Requests;
         }
 
         public void RemoveRequest(int? id)
@@ -24,7 +24,14 @@ namespace SubHub.Repositories
 
         public void SetCompleted(int id)
         {
-            throw new NotImplementedException();
+            var s = (from l in m_db.Requests
+                     where l.Id == id
+                     select l).SingleOrDefault();
+            if(s != null)
+            {
+                s.Completed = true;
+                m_db.SaveChanges();
+            }
         }
 
         public void Upvote(int id)
@@ -39,7 +46,7 @@ namespace SubHub.Repositories
             }
         }
 
-        public IQueryable<RequestRating> GetRequestRating()
+        public IQueryable<RequestRating> GetRequestRatings()
         {
             return m_db.RequestRatings;
         }

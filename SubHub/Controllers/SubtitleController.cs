@@ -42,6 +42,16 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        //Fall ViewSubtitleByGenre
+        [HttpGet]
+        public ActionResult ViewSubtitleByGenre(string genre)
+        {
+            var result = from s in m_repo.GetSubtitles()
+                         where s.Genre == genre
+                         select s;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult NewSubtitle(Subtitle s)
         {
@@ -50,12 +60,28 @@ namespace SubHub.Controllers
 
         public ActionResult EditSubtitle(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if(model == null)
+                {
+                    return View("Error");
+                }
+                else 
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
         }
 
         [HttpPost]
-        public ActionResult EditSubtitle(Subtitle s)
+        public ActionResult EditSubtitle(int? id, Subtitle s)
         {
+
+
             return View();
         }
 
