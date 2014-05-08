@@ -12,7 +12,8 @@ namespace SubHub.DAL
 {
     public class SubHubContext : DbContext
     {
-        public SubHubContext() : base("SubHubContext")
+        public SubHubContext()
+            : base("SubHubContext")
         {
         }
 

@@ -30,10 +30,28 @@ namespace SubHub.Controllers
             return View(requests);
 
         }
-        public ActionResult ViewRequest(Request r)
+        public ActionResult ViewRequest(int? id)
         {
+<<<<<<< HEAD
             
             return View();
+=======
+            if (id.HasValue)
+            {
+                var model = (from k in m_repo.GetRequests()
+                             where k.Id == id.Value
+                             select k).SingleOrDefault();
+                if(model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
+>>>>>>> 444cb1905dd1ed3c2e954f750de954dc8034b597
         }
 
         [Authorize]
