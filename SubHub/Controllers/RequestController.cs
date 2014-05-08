@@ -24,7 +24,11 @@ namespace SubHub.Controllers
 
         public ActionResult GetRequests()
         {
-            return View();
+            var requests = from r in m_repo.GetRequests()
+                           select r;
+            //TODO!! return some kind of Json string
+            return View(requests);
+
         }
         public ActionResult ViewRequest(Request r)
         {
