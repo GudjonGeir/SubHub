@@ -33,5 +33,7 @@ namespace SubHub.DAL
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
         }
+
+        //public System.Data.Entity.DbSet<SubHub.Models.SubtitleViewModel> SubtitleViewModels { get; set; }
     }
 }

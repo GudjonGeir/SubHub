@@ -7,9 +7,13 @@ using System.Linq;
 using SubHub.Tests.Mocks;
 using SubHub.Controllers;
 using System.Web.Mvc;
+
+using System.Security.Claims;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Moq;
+
 
 
 namespace SubHub.Tests.Controllers

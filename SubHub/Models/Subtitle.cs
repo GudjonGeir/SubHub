@@ -20,5 +20,15 @@ namespace SubHub.Models
         public virtual  ICollection<SubtitleLine>    SubtitleLines   { get; set; }   // Subtitle lines in the file
         public virtual  ICollection<Comment>         Comments        { get; set; }
         public virtual  SubtitleRating               SubtitleRating  { get; set; }   // Corresponding rating for the file
+
+
+        public Subtitle()
+        {
+            DateSubmitted = DateTime.Now;
+            //Users = new List<ApplicationUser>();
+            //SubtitleLines = new List<SubtitleLine>();
+            //Comments = new List<Comment>();
+            //SubtitleRating = new SubtitleRating();
+        }
     }
 }

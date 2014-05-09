@@ -14,5 +14,12 @@ namespace SubHub.Models
         public          int                          Count       { get; set; }    
         public virtual  Subtitle                     Subtitle    { get; set; }   // Corresponding subtitle for the rating
         public virtual  ICollection<ApplicationUser> Users       { get; set; }
+
+
+    //    public SubtitleRating()
+    //    {
+    //        Count = 0;
+    //        Users = new List<ApplicationUser>();
+    //    }
     }
 }

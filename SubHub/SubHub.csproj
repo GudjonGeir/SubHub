@@ -174,7 +174,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\MediaLanguage.cs" />
+    <Compile Include="Models\MediaType.cs" />
+    <Compile Include="Models\SubtitleViewModel.cs" />
     <Compile Include="Repositories\IRequestRepository.cs" />
     <Compile Include="Repositories\ISubtitleRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -244,6 +247,8 @@
     <Content Include="Views\Subtitle\ViewSubtitle.cshtml" />
     <Content Include="Views\Subtitle\EditSubtitle.cshtml" />
     <Content Include="Views\Subtitle\EditSubtitleForm.cshtml" />
+    <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,6 +22,18 @@ namespace SubHub.Tests.Mocks
             return m_subtitles.AsQueryable();
         }
 
+
+        public int AddSubtitle(Subtitle s)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void AddSubtitleLine(SubtitleLine sl)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpVote(int? id, ApplicationUser user)
         {
             var model = (from m in m_subtitles

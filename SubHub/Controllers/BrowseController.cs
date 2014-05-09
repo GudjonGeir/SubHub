@@ -61,7 +61,7 @@ namespace SubHub.Controllers
         // GET: /Browse/
         public ActionResult Index()
         {
-            return View(db.Subtitles.ToList());
+            return View(db.Subtitles);
         }
 
         // GET: /Browse/Details/5
