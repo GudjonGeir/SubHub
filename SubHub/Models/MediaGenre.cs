@@ -5,10 +5,10 @@ using System.Web;
 
 namespace SubHub.Models
 {
-    public class MediaType
+    public class MediaGenre
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public string Genre { get; set; }
         public virtual ICollection<Media> Medias { get; set; }
     }
 }

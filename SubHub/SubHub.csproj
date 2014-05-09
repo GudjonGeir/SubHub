@@ -175,7 +175,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Media.cs" />
-    <Compile Include="Models\MediaLanguage.cs" />
+    <Compile Include="Models\MediaGenre.cs" />
+    <Compile Include="Models\MediaViewModel.cs" />
+    <Compile Include="Models\SubtitleLanguage.cs" />
     <Compile Include="Models\MediaType.cs" />
     <Compile Include="Models\SubtitleViewModel.cs" />
     <Compile Include="Repositories\ICommentRepository.cs" />
@@ -251,6 +253,8 @@
     <Content Include="Views\Subtitle\EditSubtitleForm.cshtml" />
     <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
+    <Content Include="Views\Subtitle\NewMedia.cshtml" />
+    <Content Include="Views\Subtitle\Media.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -43,5 +43,17 @@ namespace SubHub.Tests.Mocks
             //model.Users.Add(user);
 
         }
+
+
+        public void AddMedia(Media m)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<MediaType> GetMediaTypes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

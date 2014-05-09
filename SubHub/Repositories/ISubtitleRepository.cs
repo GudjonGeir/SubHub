@@ -16,6 +16,9 @@ namespace SubHub.Repositories
         void AddSubtitleLine(SubtitleLine sl);
 
         void UpVote(int? id, ApplicationUser user);
-
+        void AddMedia(Media m);
+        IQueryable<MediaType> GetMediaTypes();
+        IQueryable<Media> GetMedias();
+        IQueryable<MediaGenre> GetMediaGenres();
     }
 }

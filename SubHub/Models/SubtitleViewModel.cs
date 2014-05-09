@@ -17,6 +17,8 @@ namespace SubHub.Models
         public string PosterUrl { get; set; }
         public DateTime DateAired { get; set; }
 
+
+
         public HttpPostedFileBase SrtUpload { get; set; }
 
         public SubtitleViewModel()

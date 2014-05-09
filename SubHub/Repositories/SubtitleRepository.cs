@@ -16,6 +16,31 @@ namespace SubHub.Repositories
             return m_db.Subtitles;
         }
 
+        public void AddMedia(Media m)
+        {
+            m_db.Medias.Add(m);
+            m_db.SaveChanges();
+        }
+
+        public IQueryable<Media> GetMedias()
+        {
+            return m_db.Medias;
+        }
+
+        public IQueryable<MediaType> GetMediaTypes()
+        {
+            return m_db.MediaTypes;
+        }
+
+        public IQueryable<MediaGenre> GetMediaGenres()
+        {
+            return m_db.MediaGenres;
+        }
+
+        public IQueryable<SubtitleLanguage> SubtitleLanguages()
+        {
+            return m_db.MediaLanguages;
+        }
 
         public int AddSubtitle(Subtitle s)
         {

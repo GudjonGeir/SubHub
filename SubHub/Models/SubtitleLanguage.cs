@@ -5,9 +5,10 @@ using System.Web;
 
 namespace SubHub.Models
 {
-    public class MediaLanguage
+    public class SubtitleLanguage
     {
         public int Id { get; set; }
         public string Language { get; set; }
+        public virtual ICollection<Subtitle> Subtitles { get; set; }
     }
 }
