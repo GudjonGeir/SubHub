@@ -16,6 +16,7 @@ namespace SubHub.Repositories
             return m_db.Subtitles;
         }
 
+
         public int AddSubtitle(Subtitle s)
         {
             int newID = m_db.Subtitles.Max(x => x.Id) + 1;
@@ -29,6 +30,16 @@ namespace SubHub.Repositories
         public void AddSubtitleLine(SubtitleLine sl)
         {
             m_db.SubtitleLines.Add(sl);
+            m_db.SaveChanges();
+        }
+
+        public void UpVote(int? id, ApplicationUser user)
+        {
+            var model = (from m in m_db.SubtitleRatings
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count += 1;
+            model.Users.Add(user);
             m_db.SaveChanges();
         }
     }

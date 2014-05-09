@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using SubHub.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SubHub.Models
 {
@@ -13,7 +14,6 @@ namespace SubHub.Models
         public virtual ICollection<RequestRating> RequestRatings { get; set; }
         public virtual ICollection<Request> Requests { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

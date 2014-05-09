@@ -36,6 +36,25 @@ namespace SubHub.Tests.Controllers
             Assert.IsTrue(rating.count == 3);
         }
 
+        public void TestViewRequest()
+        {
+            //Arrange:
+            Request request1 = new Request { Id = 1, Completed = false, DateSubmitted = DateTime.Now, Name = "Matrix" };
+            RequestRating requestRating1 = new RequestRating { count = 3 , RequestId = 1, Request = request1 };
+            var requests = new List<Request>() { request1 };
+
+            var mockRepo = new MockRequestRepository(requests);
+            var controller = new RequestController(mockRepo); 
+            //Act:
+            var result = controller.ViewRequest(1);
+            //Assert:
+            var viewRequest = (ViewResult)result;
+
+            Request model = viewRequest.Model as Request;
+            Assert.IsTrue(model.Id == 1);
+            Assert.IsTrue(model.Name == "Matrix");
+        }
+
         [TestMethod]
         public void TestComplete()
         {

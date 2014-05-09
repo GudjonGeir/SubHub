@@ -43,6 +43,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+
         //Fall ViewSubtitleByGenre
         [HttpGet]
         public ActionResult ViewSubtitleByGenre(string genre)
@@ -57,6 +58,7 @@ namespace SubHub.Controllers
         {
             return View(new SubtitleViewModel());
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -174,9 +176,33 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Upvote(int? id)
         {
-            return View();
+            if(id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if(model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    IdentityManager manager = new IdentityManager();
+                    string userName = User.Identity.Name;
+                    ApplicationUser user = manager.GetUser(userName);
+                    if(model.SubtitleRating.Users.Contains(user))
+                    {
+                        // TODO: you have already upvoted
+                        return View("Error");
+                    }
+                    m_repo.UpVote(id, user);
+                    //TODO: implement json string
+                }
+            }
+            return View("Error");
         }
 
         [HttpPost]
