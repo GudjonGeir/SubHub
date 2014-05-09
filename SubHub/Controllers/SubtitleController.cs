@@ -112,92 +112,100 @@ namespace SubHub.Controllers
             return View(model);
         }
 
-        public ActionResult NewSubtitle()
+        public ActionResult NewSubtitle(int? id)
         {
-            return View(new SubtitleViewModel());
+            if (id.HasValue)
+            {
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value };
+                var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
+
+                model.SubtitleLanguages = new List<SelectListItem>();
+                foreach (var m in subtitleLanguages)
+                {
+                    model.SubtitleLanguages.Add(new SelectListItem { Value = m.Id.ToString(), Text = m.Language });
+                }
+                return View(model);
+            }
+            
+            return View("Error");
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult NewSubtitle(SubtitleViewModel model)
-        //{
-        //    var validSubtitleType = new string[]
-        //    {
-        //        "text/plain",
-        //        "application/octet-stream"
-        //    };
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewSubtitle(SubtitleViewModel model)
+        {
+            var validSubtitleType = new string[]
+            {
+                "text/plain",
+                "application/octet-stream"
+            };
 
-        //    if (model.SrtUpload == null || model.SrtUpload.ContentLength == 0)
-        //    {
-        //        ModelState.AddModelError("SrtUpload", "This field is required");
-        //    }
-        //    else if (!validSubtitleType.Contains(model.SrtUpload.ContentType))
-        //    {
-        //        ModelState.AddModelError("SrtUpload", "Please choose a valid .srt file");
-        //    }
+            if (model.SrtUpload == null || model.SrtUpload.ContentLength == 0)
+            {
+                ModelState.AddModelError("SrtUpload", "This field is required");
+            }
+            else if (!validSubtitleType.Contains(model.SrtUpload.ContentType))
+            {
+                ModelState.AddModelError("SrtUpload", "Please choose a valid .srt file");
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var subtitle = new Subtitle
-        //        {
-        //            Name = model.Name,
-        //            Type = model.Type,
-        //            PosterUrl = model.PosterUrl,
-        //            Genre = model.Genre,
-        //            DateAired = model.DateAired,
-        //            ImdbUrl = model.ImdbUrl,
-        //            Language = model.Language,
-        //        };
-        //        int subtId = m_repo.AddSubtitle(subtitle);
-        //        if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
-        //        {
-        //            StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
-        //            while (!reader.EndOfStream)
-        //            {
-        //                SubtitleLine sl = new SubtitleLine();
+            if (ModelState.IsValid)
+            {
+                var subtitle = new Subtitle
+                {
+                    LanguageId = model.LanguageId, 
+                    MediaId = model.MediaId
+                };
+                int subtId = m_repo.AddSubtitle(subtitle);
+                if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
+                {
+                    StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
+                    while (!reader.EndOfStream)
+                    {
+                        SubtitleLine sl = new SubtitleLine();
 
-        //                string tmpString = reader.ReadLine();
-        //                if (String.IsNullOrEmpty(tmpString))
-        //                {
-        //                    continue;
-        //                }
-        //                //LineNumber:
-        //                int tmpInt;
-        //                int.TryParse(tmpString, out tmpInt);
-        //                sl.LineNumber = tmpInt;
+                        string tmpString = reader.ReadLine();
+                        if (String.IsNullOrEmpty(tmpString))
+                        {
+                            continue;
+                        }
+                        //LineNumber:
+                        int tmpInt;
+                        int.TryParse(tmpString, out tmpInt);
+                        sl.LineNumber = tmpInt;
 
-        //                //Time:
-        //                tmpString = reader.ReadLine();
-        //                sl.Time = tmpString;
-        //                //LineOne:
+                        //Time:
+                        tmpString = reader.ReadLine();
+                        sl.Time = tmpString;
+                        //LineOne:
 
-        //                tmpString = reader.ReadLine();
-        //                sl.LineOne = tmpString;
+                        tmpString = reader.ReadLine();
+                        sl.LineOne = tmpString;
 
-        //                //LineTwo:
-        //                tmpString = reader.ReadLine();
-        //                sl.LineTwo = tmpString;
-                        
-        //                sl.SubtitleId = subtId;
-        //                m_repo.AddSubtitleLine(sl);
+                        //LineTwo:
+                        tmpString = reader.ReadLine();
+                        sl.LineTwo = tmpString;
 
-        //                if (String.IsNullOrEmpty(tmpString))
-        //                {
-        //                    continue;
-        //                }
+                        sl.SubtitleId = subtId;
+                        m_repo.AddSubtitleLine(sl);
 
-        //                reader.ReadLine();
+                        if (String.IsNullOrEmpty(tmpString))
+                        {
+                            continue;
+                        }
 
-                        
-        //            }
-        //        }
-                
-        //        return RedirectToRoute(
-        //            "Default",
-        //            new { controller = "Home", action = "Index" });
-        //    }
-        //    return View(model);
-        //}
+                        reader.ReadLine();
+
+
+                    }
+                }
+
+                return RedirectToRoute(
+                    "Default",
+                    new { controller = "Home", action = "Index" });
+            }
+            return View(model);
+        }
 
         public ActionResult EditSubtitle(int? id)
         {

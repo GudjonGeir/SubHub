@@ -20,5 +20,6 @@ namespace SubHub.Repositories
         IQueryable<MediaType> GetMediaTypes();
         IQueryable<Media> GetMedias();
         IQueryable<MediaGenre> GetMediaGenres();
+        IQueryable<SubtitleLanguage> GetSubtitleLanguages();
     }
 }

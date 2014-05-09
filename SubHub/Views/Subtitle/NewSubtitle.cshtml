@@ -1,5 +1,4 @@
 ﻿@model SubHub.Models.SubtitleViewModel
-
 @{
     ViewBag.Title = "NewSubtitle";
 }
@@ -13,61 +12,12 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true)
-
+        @Html.HiddenFor(model => model.MediaId)
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LanguageId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Language, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Language)
-                @Html.ValidationMessageFor(model => model.Language)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Type)
-                @Html.ValidationMessageFor(model => model.Type)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Genre, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Genre)
-                @Html.ValidationMessageFor(model => model.Genre)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImdbUrl, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImdbUrl)
-                @Html.ValidationMessageFor(model => model.ImdbUrl)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PosterUrl, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PosterUrl)
-                @Html.ValidationMessageFor(model => model.PosterUrl)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateAired, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateAired)
-                @Html.ValidationMessageFor(model => model.DateAired)
+                @Html.DropDownListFor(model => model.LanguageId, Model.SubtitleLanguages)
+                @Html.ValidationMessageFor(model => model.LanguageId)
             </div>
         </div>
 
@@ -87,10 +37,10 @@
     </div>
 </form>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

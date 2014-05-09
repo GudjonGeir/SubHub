@@ -37,7 +37,7 @@ namespace SubHub.Repositories
             return m_db.MediaGenres;
         }
 
-        public IQueryable<SubtitleLanguage> SubtitleLanguages()
+        public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
         {
             return m_db.MediaLanguages;
         }
