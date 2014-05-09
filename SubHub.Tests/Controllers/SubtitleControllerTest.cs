@@ -6,6 +6,7 @@ using System.Linq;
 using SubHub.Tests.Mocks;
 using SubHub.Controllers;
 using System.Web.Mvc;
+using System.Security.Claims;
 
 namespace SubHub.Tests.Controllers
 {

@@ -22,5 +22,17 @@ namespace SubHub.Tests.Mocks
         {
             return m_subtitles.AsQueryable();
         }
+
+
+        public int AddSubtitle(Subtitle s)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void AddSubtitleLine(SubtitleLine sl)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

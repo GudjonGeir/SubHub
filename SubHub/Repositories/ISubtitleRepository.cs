@@ -11,5 +11,7 @@ namespace SubHub.Repositories
     public interface ISubtitleRepository
     {
         IQueryable<Subtitle>GetSubtitles();
+        int AddSubtitle(Subtitle s);
+        void AddSubtitleLine(SubtitleLine sl);
     }
 }

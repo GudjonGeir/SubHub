@@ -15,5 +15,21 @@ namespace SubHub.Repositories
         {
             return m_db.Subtitles;
         }
+
+        public int AddSubtitle(Subtitle s)
+        {
+            int newID = m_db.Subtitles.Max(x => x.Id) + 1;
+            s.Id = newID;
+            m_db.Subtitles.Add(s);
+            m_db.SaveChanges();
+            return s.Id;
+        }
+
+
+        public void AddSubtitleLine(SubtitleLine sl)
+        {
+            m_db.SubtitleLines.Add(sl);
+            m_db.SaveChanges();
+        }
     }
 }
