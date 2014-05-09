@@ -55,5 +55,16 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+
+        public IQueryable<Media> GetMedias()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<MediaGenre> GetMediaGenres()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

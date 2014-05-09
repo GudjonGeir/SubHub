@@ -25,25 +25,31 @@ namespace SubHub.Controllers
             m_repo = new SubtitleRepository();
         }
 
-        //public ActionResult Movies()
-        //{
-        //    var result = from m in m_repo.GetSubtitles()
-        //                 where m.Type == "Movie"
-        //                 select m;
-        //    return View(result);
-        //}
+        public ActionResult Movies()
+        {
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
+                         select m;
+            return View(result);
+        }
 
         public ActionResult Movies(string genre)
         {
             return View();
         }
-        //public ActionResult TvShows()
-        //{
-        //    var result = from t in m_repo.GetSubtitles()
-        //                 where t.Type == "TvShow"
-        //                 select t;
-        //    return View(result);
-        //}
+        public ActionResult TvShows()
+        {
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "TvShow"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m;
+            return View(result);
+        }
         public ActionResult TvShows(string genre)
         {
             return View();

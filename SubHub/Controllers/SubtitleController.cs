@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace SubHub.Controllers
 {
@@ -46,13 +47,16 @@ namespace SubHub.Controllers
 
         //Fall ViewSubtitleByGenre
         [HttpGet]
-        public ActionResult ViewSubtitleByGenre(string genre)
+        public ActionResult MediaByGenre(string genre)
         {
-            
-            //var result = from s in m_repo.GetSubtitles()
-            //             where s.Genre == genre
-            //             select s;
-            return View();
+            int genreId = (from m in m_repo.GetMediaGenres()
+                          where m.Genre == genre
+                          select m.Id).SingleOrDefault();
+
+            var result = (from m in m_repo.GetMedias()
+                          where m.GenreId == genreId
+                          select m).SingleOrDefault();
+            return View(result);
         }
         public ActionResult Media(int? id)
         {
@@ -228,35 +232,37 @@ namespace SubHub.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[Authorize]
-        //public ActionResult Upvote(int? id)
-        //{
-        //    if(id.HasValue)
-        //    {
-        //        var model = (from s in m_repo.GetSubtitles()
-        //                     where s.Id == id
-        //                     select s).SingleOrDefault();
-        //        if(model == null)
-        //        {
-        //            return View("Error");
-        //        }
-        //        else
-        //        {
-        //            IdentityManager manager = new IdentityManager();
-        //            string userName = User.Identity.Name;
-        //            ApplicationUser user = manager.GetUser(userName);
-        //            if(model.SubtitleRating.Users.Contains(user))
-        //            {
-        //                // TODO: you have already upvoted
-        //                return View("Error");
-        //            }
-        //            m_repo.UpVote(id, user);
-        //            //TODO: implement json string
-        //        }
-        //    }
-        //    return View("Error");
-        //}
+        [HttpPost]
+        [Authorize]
+        public ActionResult Upvote(int? id)
+        {
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if (model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+
+                    string userId = User.Identity.GetUserId();
+                    IdentityManager manager = new IdentityManager();
+                    
+                    ApplicationUser user = manager.GetUserById(userId);
+                    if (model.SubtitleRating.Users.Contains(user))
+                    {
+                        // TODO: you have already upvoted
+                        return View("Error");
+                    }
+                    m_repo.UpVote(id, user);
+                    //TODO: implement json string
+                }
+            }
+            return View("Error");
+        }
 
         [HttpPost]
         public ActionResult Downvote(int? id)

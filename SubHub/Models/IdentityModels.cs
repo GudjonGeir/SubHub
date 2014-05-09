@@ -56,6 +56,13 @@ namespace SubHub.Models
             return um.FindByName(name);
         }
 
+        public ApplicationUser GetUserById(string id)
+        {
+            var um = new UserManager<ApplicationUser>(
+                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            return um.FindById(id);
+        }
+
         public bool CreateUser(ApplicationUser user, string password)
         {
             var um = new UserManager<ApplicationUser>(
