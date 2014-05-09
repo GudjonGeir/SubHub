@@ -220,25 +220,37 @@ namespace SubHub.Tests.Controllers
             Assert.AreEqual("Error", viewResult.ViewName);
         }
 
-        //[TestMethod]
-        //void TestUpvote()
-        //{
-            
-        //    ApplicationUser user1 = new ApplicationUser { UserName = "user1", Id = "user1ID" };
-        //    ApplicationUser user2 = new ApplicationUser { UserName = "user2" };
-        //    ApplicationUser user3 = new ApplicationUser { UserName = "user3" };
-        //    var users = new List<ApplicationUser>();
-        //    users.Add(user1);
-        //    users.Add(user2);
-        //    users.Add(user3);
-            
-        //    Subtitle subtitle1 = new Subtitle { Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), DateSubmitted = DateTime.Now.AddDays(-3), Genre = "Biography", ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user1 } };
-        //    Subtitle subtitle2 = new Subtitle { Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), DateSubmitted = DateTime.Now.AddDays(-10), Genre = "Romace", ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user2 } };
-        //    Subtitle subtitle3 = new Subtitle { Name = "The Matrix", DateAired = new DateTime(1999, 3, 21), DateSubmitted = DateTime.Now.AddDays(-13), Genre = "Sci-Fi", ImdbUrl = "http://www.imdb.com/title/tt0133093/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user3 } };
-        //    var subtitles = new List<Subtitle>() { subtitle1, subtitle2, subtitle3 };
-        //    var mockRepo = new MockSubtitleRepository(subtitles);
-        //    var controller = new SubtitleController(mockRepo);
-        //}
+        [TestMethod]
+        void TestUpvoteSubtitle()
+        {
+            //Arrange:
+            ApplicationUser user1 = new ApplicationUser { UserName = "user1", Id = "user1ID" };
+            ApplicationUser user2 = new ApplicationUser { UserName = "user2", Id = "user2ID" };
+            ApplicationUser user3 = new ApplicationUser { UserName = "user3", Id = "user3ID" };
+            var users = new List<ApplicationUser>();
+            users.Add(user1);
+            users.Add(user2);
+            users.Add(user3);
+            Subtitle subtitle1 = new Subtitle { Id = 1, Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), DateSubmitted = DateTime.Now.AddDays(-3), Genre = "Biography", ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user1 } };
+            Subtitle subtitle2 = new Subtitle { Id = 2, Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), DateSubmitted = DateTime.Now.AddDays(-10), Genre = "Romace", ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user2 } };
+            Subtitle subtitle3 = new Subtitle { Id = 3, Name = "The Matrix", DateAired = new DateTime(1999, 3, 21), DateSubmitted = DateTime.Now.AddDays(-13), Genre = "Sci-Fi", ImdbUrl = "http://www.imdb.com/title/tt0133093/?ref_=nv_sr_1", Language = "English", PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX640_SY720_.jpg", Type = "Movie", Users = new List<ApplicationUser> { user3 } };
+            var subtitles = new List<Subtitle>() { subtitle1, subtitle2, subtitle3 };
+            var mockRepo = new MockSubtitleRepository(subtitles);
+            var controller = new SubtitleController(mockRepo);
+
+            //Act:
+            controller.Upvote(1, user2);
+            Console.WriteLine(mockRepo);
+        }
+
+        [TestMethod]
+        void TestMyUpvote()
+        {
+            ApplicationUser user1 = new ApplicationUser { UserName = "user1", Id = "user1ID" };
+            ApplicationUser user2 = new ApplicationUser { UserName = "user2", Id = "user2ID" };
+            ApplicationUser user3 = new ApplicationUser { UserName = "user3", Id = "user3ID" };
+
+        }
     }
 }
 

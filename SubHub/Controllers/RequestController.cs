@@ -32,10 +32,6 @@ namespace SubHub.Controllers
         }
         public ActionResult ViewRequest(int? id)
         {
-<<<<<<< HEAD
-            
-            return View();
-=======
             if (id.HasValue)
             {
                 var model = (from k in m_repo.GetRequests()
@@ -51,7 +47,6 @@ namespace SubHub.Controllers
                 }
             }
             return View("Error");
->>>>>>> 444cb1905dd1ed3c2e954f750de954dc8034b597
         }
 
         [Authorize]

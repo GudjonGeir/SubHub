@@ -16,6 +16,7 @@ namespace SubHub.Repositories
             return m_db.Subtitles;
         }
 
+
         public void UpVote(int? id, ApplicationUser user)
         {
             var model = (from m in m_db.SubtitleRatings
@@ -25,5 +26,21 @@ namespace SubHub.Repositories
             model.Users.Add(user);
             m_db.SaveChanges();
         }
+
+        public IQueryable<Comment> GetAllComments()
+        {
+            return m_db.Comments;
+        }
+
+        public void AddComment(Comment comment)
+        {
+            m_db.Comments.Add(comment);
+        }
+
+        //public void RemoveComment(int? id)
+        //{
+
+        //}
+
     }
 }

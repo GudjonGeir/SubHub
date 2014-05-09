@@ -89,7 +89,7 @@ namespace SubHub.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Upvote(int? id)
+        public ActionResult Upvote(int? id, ApplicationUser theUser)
         {
             if(id.HasValue)
             {
@@ -102,19 +102,23 @@ namespace SubHub.Controllers
                 }
                 else
                 {
-                    IdentityManager manager = new IdentityManager();
-                    string userName = User.Identity.Name;
-                    ApplicationUser user = manager.GetUser(userName);
-                    if(model.SubtitleRating.Users.Contains(user))
+                    if(theUser == null)
                     {
-                        // TODO: you have already upvoted
-                        return View("Error");
+                        IdentityManager manager = new IdentityManager();
+                        string userName = User.Identity.Name;
+                        ApplicationUser user = manager.GetUser(userName);
+                        if (model.SubtitleRating.Users.Contains(user))
+                        {
+                            // TODO: you have already upvoted
+                            return View("Error");
+                        }
                     }
-                    m_repo.UpVote(id, user);
+
+                    m_repo.UpVote(id, theUser);
                     //TODO: implement json string
                 }
             }
-            return View("Error");
+            return View();
         }
 
         [HttpPost]
@@ -128,5 +132,56 @@ namespace SubHub.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult GetComments(int? id)
+        {
+            var result = (from s in m_repo.GetAllComments()
+                          where s.SubtitleId == id
+                          select s);
+            if(result != null)
+            {
+                //return somekind of json string
+                return View(result);
+            }
+
+            return View("Error");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult AddComment(string comment, int? subtitleid)
+        {
+            if(subtitleid.HasValue && !String.IsNullOrEmpty(comment))
+            {
+                IdentityManager manager = new IdentityManager();
+                string userName = User.Identity.Name;
+                ApplicationUser user = manager.GetUser(userName);
+                string userId = user.Id;
+                DateTime timi = DateTime.Now;
+                Comment newComment = new Comment { UserId = userId, SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi, User = user };
+                //m_repo.AddComment(newComment);
+                return View(newComment);
+                //return Json string here
+            }
+            else if(!subtitleid.HasValue)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ModelState.AddModelError("comment", "Commenttext cannot be empty!");
+                return View("Error");
+                //return some Json string
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteComment(int? id)
+        {
+            return View();
+        }
+
+
 	}
 }

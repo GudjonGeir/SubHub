@@ -12,5 +12,7 @@ namespace SubHub.Repositories
     {
         IQueryable<Subtitle>GetSubtitles();
         void UpVote(int? id, ApplicationUser user);
+        IQueryable<Comment> GetAllComments();
+        void AddComment(Comment comment);
     }
 }
