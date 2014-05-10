@@ -19,37 +19,11 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Type)
-                @Html.ValidationMessageFor(model => model.Type)
-            </div>
-        </div>
+       
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Genre, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Genre)
-                @Html.ValidationMessageFor(model => model.Genre)
-            </div>
-        </div>
+        
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImdbUrl, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImdbUrl)
-                @Html.ValidationMessageFor(model => model.ImdbUrl)
-            </div>
-        </div>
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.DateSubmitted, new { @class = "control-label col-md-2" })
@@ -59,21 +33,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateAired, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateAired)
-                @Html.ValidationMessageFor(model => model.DateAired)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PosterUrl, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PosterUrl)
-                @Html.ValidationMessageFor(model => model.PosterUrl)
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
