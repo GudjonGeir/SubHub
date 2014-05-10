@@ -235,8 +235,11 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteSubtitle(int? id)
         {
+
+
             return View();
         }
 
