@@ -182,7 +182,6 @@
     <Compile Include="Models\SubtitleLanguage.cs" />
     <Compile Include="Models\MediaType.cs" />
     <Compile Include="Models\SubtitleViewModel.cs" />
-    <Compile Include="Repositories\ICommentRepository.cs" />
     <Compile Include="Repositories\IRequestRepository.cs" />
     <Compile Include="Repositories\ISubtitleRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -193,7 +192,6 @@
     <Compile Include="Models\Subtitle.cs" />
     <Compile Include="Models\SubtitleLine.cs" />
     <Compile Include="Models\SubtitleRating.cs" />
-    <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\RequestRepository.cs" />
     <Compile Include="Repositories\SubtitleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
