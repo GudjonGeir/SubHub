@@ -27,8 +27,11 @@ namespace SubHub.Controllers
 
         public ActionResult Movies()
         {
-            var result = from m in m_repo.GetSubtitles()
-                         where m.Type == "Movie"
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
                          select m;
             return View(result);
         }
@@ -39,9 +42,12 @@ namespace SubHub.Controllers
         }
         public ActionResult TvShows()
         {
-            var result = from t in m_repo.GetSubtitles()
-                         where t.Type == "TvShow"
-                         select t;
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "TvShow"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m;
             return View(result);
         }
         public ActionResult TvShows(string genre)
@@ -49,12 +55,30 @@ namespace SubHub.Controllers
             return View();
         }
 
+        public ActionResult Search(string query)
+        {
+            var media = (from m in m_repo.GetMedias()
+                        select m);
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                media = media.Where(m => m.Name.Contains(query));
+                if (!media.Any())
+                {
+                    return View("Error"); // TODO: Specific error page, no results found
+                }
+                return View(media);
+            }
+            return View();
+        }
+
         private SubHubContext db = new SubHubContext();
+
 
         // GET: /Browse/
         public ActionResult Index()
         {
-            return View(db.Subtitles.ToList());
+            return View(db.Subtitles);
         }
 
         // GET: /Browse/Details/5
@@ -151,6 +175,8 @@ namespace SubHub.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {
