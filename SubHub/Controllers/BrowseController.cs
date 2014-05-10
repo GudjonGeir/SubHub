@@ -160,5 +160,26 @@ namespace SubHub.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // Til að gera prew og next page
+        /*
+         * Síða: http://stackoverflow.com/questions/9321710/how-to-do-prev-next-page
+         public PaginatedList<T>(IQueryable<T> source, int pageIndex, int? pageSize)
+         {
+             PageIndex = pageIndex; //global variable
+             PageSize = pageSize ?? source.Count(); //global variable
+             TotalCount = source.Count(); //global variable
+             TotalPages = (int)Math.Ceiling(TotalCount /(double)PageSize); //global variable
+             this.AddRange(source.Skip(PageIndex*PageSize).Take(PageSize));
+          }
+          public bool HasPreviousPage
+          {  
+              get {   return(PageIndex >0); //same global variable  }
+           }
+          public bool HasNextPage
+          {  
+              get {   return(PageIndex <0); //same global variable   }
+           }
+         */
     }
 }
