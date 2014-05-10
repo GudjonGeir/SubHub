@@ -255,6 +255,7 @@
     <Content Include="Views\Subtitle\NewMedia.cshtml" />
     <Content Include="Views\Subtitle\Media.cshtml" />
     <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
+    <Content Include="Views\Browse\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

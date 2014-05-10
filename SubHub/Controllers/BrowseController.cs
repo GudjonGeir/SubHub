@@ -55,14 +55,25 @@ namespace SubHub.Controllers
             return View();
         }
 
-        private SubHubContext db = new SubHubContext();
-
-
-        //TODO: implement search function with linq with tolower
-        public ActionResult Search(string str)
+        public ActionResult Search(string query)
         {
+            var media = (from m in m_repo.GetMedias()
+                        select m);
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                media = media.Where(m => m.Name.Contains(query));
+                if (!media.Any())
+                {
+                    return View("Error"); // TODO: Specific error page, no results found
+                }
+                return View(media);
+            }
             return View();
         }
+
+        private SubHubContext db = new SubHubContext();
+
 
         // GET: /Browse/
         public ActionResult Index()
