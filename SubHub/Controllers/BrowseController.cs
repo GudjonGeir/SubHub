@@ -36,9 +36,21 @@ namespace SubHub.Controllers
             return View(result);
         }
 
-        public ActionResult Movies(string genre)
+        public ActionResult MoviesByGenre(string genre)
         {
-            return View();
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var movies = from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
+                         select m;
+            var genreId = (from g in m_repo.GetMediaGenres()
+                           where g.Genre == genre
+                           select g.Id).SingleOrDefault();
+            var result = from n in movies
+                         where n.GenreId == genreId
+                         select n;
+            return View(result);
         }
         public ActionResult TvShows()
         {
@@ -50,8 +62,20 @@ namespace SubHub.Controllers
                          select m;
             return View(result);
         }
-        public ActionResult TvShows(string genre)
+        public ActionResult TvShowsByGenre(string genre)
         {
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                            where m.Type == "TvShow"
+                            select m.Id).SingleOrDefault();
+            var tvShows = from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m;
+            var genreId = (from g in m_repo.GetMediaGenres()
+                           where g.Genre == genre
+                           select g.Id).SingleOrDefault();
+            var result = from n in tvShows
+                         where n.GenreId == genreId
+                         select n;
             return View();
         }
 

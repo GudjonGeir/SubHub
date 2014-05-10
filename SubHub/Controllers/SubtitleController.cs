@@ -70,6 +70,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        [Authorize]
         public ActionResult NewMedia()
         {
             var model = new MediaViewModel();
@@ -89,12 +90,13 @@ namespace SubHub.Controllers
             }
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult NewMedia(MediaViewModel model)
         {
             if (ModelState.IsValid)
             {
+                
                 var newMedia = new Media()
                 {
                     Name = model.Name,
@@ -103,6 +105,7 @@ namespace SubHub.Controllers
                     ImdbUrl = model.ImdbUrl,
                     PosterUrl = model.PosterUrl,
                     TypeId = model.TypeId
+               
                 };
                 m_repo.AddMedia(newMedia);
                 return RedirectToRoute(
@@ -112,6 +115,7 @@ namespace SubHub.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult NewSubtitle(int? id)
         {
             if (id.HasValue)
@@ -130,6 +134,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult NewSubtitle(SubtitleViewModel model)
@@ -151,10 +156,14 @@ namespace SubHub.Controllers
 
             if (ModelState.IsValid)
             {
+                string userId = User.Identity.GetUserId();
+                IdentityManager im = new IdentityManager();
+                List<ApplicationUser> user = new List<ApplicationUser> { im.GetUserById(userId) };
                 var subtitle = new Subtitle
                 {
                     LanguageId = model.LanguageId, 
-                    MediaId = model.MediaId
+                    MediaId = model.MediaId,
+                    Users = user
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
