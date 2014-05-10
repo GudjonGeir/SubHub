@@ -46,13 +46,13 @@ input[type="checkbox"].input-validation-error {
 {
     margin-left: 10px;
     float: left;
-    //width: 145px;
+    /*//width: 145px;*/
     font-size: small;
     font-weight: bold;
-    //text-transform: uppercase;
+    /*//text-transform: uppercase;*/
     color: rgb(118,170,218);
-    //height: 15px;
-    //border: 1px solid red;
+    /*//height: 15px;
+    //border: 1px solid red;*/
 }
 
 
@@ -68,8 +68,8 @@ input[type="checkbox"].input-validation-error {
     width: 225px;
     height: 450px;
     float: right;
-    //background-color: lightgray;
-    //border: 1px solid red;
+    /*//background-color: lightgray;
+    //border: 1px solid red;*/
 }
 
 .most-popular-sidebar
@@ -77,7 +77,7 @@ input[type="checkbox"].input-validation-error {
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-    //border: 1px solid red;
+    /*//border: 1px solid red;*/
     background-color: lightgray;
 }
 
@@ -90,8 +90,8 @@ input[type="checkbox"].input-validation-error {
 {
     margin-left: auto;
     margin-right: auto;
-    //width: 300px;
-    //border: 1px solid red;
+    /*//width: 300px;
+    //border: 1px solid red;*/
 }
 
 ul.nav li.dropdown:hover > ul.dropdown-menu {
@@ -140,7 +140,7 @@ li:hover #menu2
 
 .container
 {
-    //width: 400px;
+    /*//width: 400px;*/
 }
 
 .thumbnail
@@ -173,12 +173,12 @@ h1
 
 #tfheader
 {
-	//background-color:#c3dfef;
-    //border: 1px solid red;
+	/*//background-color:#c3dfef;
+    //border: 1px solid red;*/
 }
 #tfnewsearch
 {
-	//float: inherit;
+	/*//float: inherit;*/
     display: inline;
 	padding:20px;
     vertical-align: middle;
@@ -233,14 +233,14 @@ h1
 
 #banner-master
 {
-    //background-color: #E3E3E3;
+    /*//background-color: #E3E3E3;*/
     background-color: rgb(81, 81, 81);
-    // -------------------------
+    /*// -------------------------
         //
     // background-color: #E8E8E8;
     // -------------------------
     //border: 1px solid red;
-    //display: inline-block;
+    //display: inline-block;*/
     
     padding: 10px 30px 30px 30px;
     margin: 0px;
@@ -267,18 +267,18 @@ body
     height: 30px;
     padding-top: 0;
     color: rgb(231,240,250);
-    //text-shadow: black 0.1em 0.1em 0.2em;
-    //text-shadow:black 1px 1px rgba(0, 0, 0, 0.5);
+    /*//text-shadow: black 0.1em 0.1em 0.2em;
+    //text-shadow:black 1px 1px rgba(0, 0, 0, 0.5);*/
 }
 
-#login-div
+/*#login-div
 {
     //border: 1px solid red;
-}
+}*/
 
 #banner-middler
 {
-    //border: 1px solid green;
+    /*//border: 1px solid green;*/
     width: 850px;
 
     margin-left:auto;
@@ -307,8 +307,8 @@ body
 #front-area
 {
     
-    //background-color: #EBEBFA;
-    //background-color: #F5F5F5;
+    /*//background-color: #EBEBFA;
+    //background-color: #F5F5F5;*/
     width: 850px;
     height: 800px;
     margin-top: 15px;
@@ -320,10 +320,10 @@ body
 }
 
 .divider-vertical {
-//height: 10px;
-//border: -25px 0px 0px 0px;
+/*//height: 10px;
+//border: -25px 0px 0px 0px;*/
 border-right: 1px solid gray;
-//border-left: 1px solid rgb(128, 128, 128);
+/*//border-left: 1px solid rgb(128, 128, 128);*/
 }
 
 .slider-picture-size
@@ -335,7 +335,7 @@ border-right: 1px solid gray;
 
 .front-5-group
 {
-    //border: 1px solid red;
+    /*//border: 1px solid red;*/
     width: 643px;
     margin-left: auto;
     margin-right: auto;
@@ -343,7 +343,7 @@ border-right: 1px solid gray;
 
 #popular-master
 {
-    //border: 1px solid red;
+    /*//border: 1px solid red;*/
     width: 725px;
     margin-left: auto;
     margin-right: auto;
@@ -362,7 +362,7 @@ body
 
 .thumbnail img
 { 
-    //min-height:50px; 
+    /*min-height:50px;*/ 
     height:170px; 
 
 }
@@ -381,4 +381,10 @@ body
 	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
 	background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     color:  rgb(255, 255, 255);
+}
+
+.searchform
+{
+    display: inline;
+    margin-left: 2em;
 }
