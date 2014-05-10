@@ -71,19 +71,5 @@ namespace SubHub.Models
             var idResult = um.AddToRole(userId, roleName);
             return idResult.Succeeded;
         }
-
-
-        public void ClearUserRoles(string userId)
-        {
-            var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var user = um.FindById(userId);
-            var currentRoles = new List<IdentityUserRole>();
-            currentRoles.AddRange(user.Roles);
-            foreach (var role in currentRoles)
-            {
-                um.RemoveFromRole(userId, role.Role.Name);
-            }
-        }
     }
 }

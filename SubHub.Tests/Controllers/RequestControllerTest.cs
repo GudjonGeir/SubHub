@@ -12,6 +12,7 @@ namespace SubHub.Tests.Controllers
     [TestClass]
     public class RequestControllerTest
     {
+
         [TestMethod]
         public void TestUpvote()
         {
