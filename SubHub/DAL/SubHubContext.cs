@@ -23,6 +23,10 @@ namespace SubHub.DAL
         public DbSet<Subtitle> Subtitles { get; set; }
         public DbSet<SubtitleLine> SubtitleLines { get; set; }
         public DbSet<SubtitleRating> SubtitleRatings { get; set; }
+        public DbSet<Media> Medias { get; set; }
+        public DbSet<MediaType> MediaTypes { get; set; }
+        public DbSet<SubtitleLanguage> MediaLanguages { get; set; }
+        public DbSet<MediaGenre> MediaGenres { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +38,6 @@ namespace SubHub.DAL
 
         }
 
-        //public System.Data.Entity.DbSet<SubHub.Models.SubtitleViewModel> SubtitleViewModels { get; set; }
+
     }
 }

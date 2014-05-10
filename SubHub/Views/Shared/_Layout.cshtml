@@ -9,35 +9,73 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+
+    <div id="banner-master">
+        <!--<h1 id="banner-text">SUBHUB</h1>-->
+        <div id="banner-middler">
+            <div id="tfheader">
+                <img id="banner-logo" src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABWAAD/4QOuaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcFJpZ2h0cz0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3JpZ2h0cy8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBSaWdodHM6TWFya2VkPSJGYWxzZSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSIzRjc2NUZBQjYyOEQ0RUMxNkYxODM1QzM3RUFCMDA5RSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBRDExNzI4MEQ3NzAxMUUzQkQxN0U0QTZGRDI2ODc2MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBRDExNzI3RkQ3NzAxMUUzQkQxN0U0QTZGRDI2ODc2MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU4RTI0QTg3QkRENkUzMTE4Q0U1Qzk5MzU1RUNDOTA5IiBzdFJlZjpkb2N1bWVudElEPSIzRjc2NUZB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" />
+                <h1>SubHub</h1>
+                @*<form id="tfnewsearch" method="get" action="http://www.imdb.com/find?q=hobbit&s=all">
+                    <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Find Subtitle" class="tfbutton">
+                </form>*@
+                @using (Html.BeginForm("Search", "Browse", FormMethod.Get, new { @class =  "searchform" }))
+                {
+                    @Html.TextBox("query", "", new Dictionary<string, object>() { { "class", "tftextinput" }, {"size", "21" }})
+                    <input type="submit" value="Finna texta" class="tfbutton" />
+                }
+                <div class="tfclear"></div>
             </div>
-            <div class="navbar-collapse collapse">
+
+            <div id="sidebar">
+                <!--class="navbar"-->
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="divider-vertical">
+                        @Html.ActionLink("Heim", "Index", "Home")
+                    </li>
+                    <li class="dropdown divider-vertical">
+
+                        @Html.ActionLink("Kvikmyndir ▼", "Index", "Home")
+
+                        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown divider-vertical">
+                        @Html.ActionLink("Þættir ▼", "Index", "Home")
+                        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Hasar", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Grín", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Drama", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Ævintýri", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Barna", "Index", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical">@Html.ActionLink("Senda inn texta", "Index", "Home")</li>
+                    <li class="divider-vertical">@Html.ActionLink("Beiðnir", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Um notkun", "About", "Home")</li>
                 </ul>
+            </div>
+            <div id="login-div">
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="panel panel-default" id="front-area">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <div class="panel-body">
+            
+        </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/jquery") 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

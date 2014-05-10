@@ -8,14 +8,12 @@ namespace SubHub.Models
     public class Subtitle
     {
         public          int                          Id              { get; set; }
-        public          string                       Language        { get; set; }
-        public          string                       Type            { get; set; }
-        public          string                       Genre           { get; set; }
-        public          string                       Name            { get; set; }
-        public          string                       ImdbUrl         { get; set; }
         public          DateTime                     DateSubmitted   { get; set; }
-        public          DateTime                     DateAired       { get; set; }
-        public          string                       PosterUrl       { get; set; }
+        public          int                          LanguageId      { get; set; }
+        public          int                          MediaId         { get; set; }
+        
+        public virtual  SubtitleLanguage             Language        { get; set; }
+        public virtual  Media                        Media           { get; set; }
         public virtual  ICollection<ApplicationUser>  Users          { get; set; }   // Users who have edited the file
         public virtual  ICollection<SubtitleLine>    SubtitleLines   { get; set; }   // Subtitle lines in the file
         public virtual  ICollection<Comment>         Comments        { get; set; }

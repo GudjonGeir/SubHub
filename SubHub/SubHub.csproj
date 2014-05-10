@@ -177,7 +177,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Media.cs" />
-    <Compile Include="Models\MediaLanguage.cs" />
+    <Compile Include="Models\MediaGenre.cs" />
+    <Compile Include="Models\MediaViewModel.cs" />
+    <Compile Include="Models\SubtitleLanguage.cs" />
     <Compile Include="Models\MediaType.cs" />
     <Compile Include="Models\SubtitleViewModel.cs" />
     <Compile Include="Repositories\IRequestRepository.cs" />
@@ -205,6 +207,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -241,6 +244,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Tilraun.cshtml" />
     <Content Include="Views\Browse\Create.cshtml" />
     <Content Include="Views\Browse\Delete.cshtml" />
     <Content Include="Views\Browse\Details.cshtml" />
@@ -249,8 +253,11 @@
     <Content Include="Views\Subtitle\ViewSubtitle.cshtml" />
     <Content Include="Views\Subtitle\EditSubtitle.cshtml" />
     <Content Include="Views\Subtitle\EditSubtitleForm.cshtml" />
-    <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
+    <Content Include="Views\Subtitle\NewMedia.cshtml" />
+    <Content Include="Views\Subtitle\Media.cshtml" />
+    <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
+    <Content Include="Views\Browse\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

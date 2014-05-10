@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SubHub.Controllers
 {
@@ -46,19 +48,88 @@ namespace SubHub.Controllers
 
         //Fall ViewSubtitleByGenre
         [HttpGet]
-        public ActionResult ViewSubtitleByGenre(string genre)
+        public ActionResult MediaByGenre(string genre)
         {
-            var result = from s in m_repo.GetSubtitles()
-                         where s.Genre == genre
-                         select s;
-            return View();
+            int genreId = (from m in m_repo.GetMediaGenres()
+                          where m.Genre == genre
+                          select m.Id).SingleOrDefault();
+
+            var result = (from m in m_repo.GetMedias()
+                          where m.GenreId == genreId
+                          select m).SingleOrDefault();
+            return View(result);
+        }
+        public ActionResult Media(int? id)
+        {
+            if (id.HasValue)
+            {
+                var model = (from m in m_repo.GetMedias()
+                             where m.Id == id.Value
+                             select m).SingleOrDefault();
+                return View(model);
+            }
+            return View("Error");
         }
 
-        public ActionResult NewSubtitle()
+        public ActionResult NewMedia()
         {
-            return View(new SubtitleViewModel());
+            var model = new MediaViewModel();
+            var mediaTypes = m_repo.GetMediaTypes().ToList();
+            var mediaGenres = m_repo.GetMediaGenres().ToList();
+
+            model.MediaTypes = new List<SelectListItem>();
+            foreach (var m in mediaTypes)
+            {
+                model.MediaTypes.Add(new SelectListItem { Value = m.Id.ToString(), Text = m.Type });
+            }
+
+            model.MediaGenres = new List<SelectListItem>();
+            foreach (var m in mediaGenres)
+            {
+                model.MediaGenres.Add(new SelectListItem { Value = m.Id.ToString(), Text = m.Genre });
+            }
+            return View(model);
         }
 
+        [HttpPost]
+        public ActionResult NewMedia(MediaViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var newMedia = new Media()
+                {
+                    Name = model.Name,
+                    DateAired = model.DateAired,
+                    GenreId = model.GenreId,
+                    ImdbUrl = model.ImdbUrl,
+                    PosterUrl = model.PosterUrl,
+                    TypeId = model.TypeId
+                };
+                m_repo.AddMedia(newMedia);
+                return RedirectToRoute(
+                    "Default",
+                    new { controller = "Home", action = "Index" });
+            }
+            return View(model);
+        }
+
+        public ActionResult NewSubtitle(int? id)
+        {
+            if (id.HasValue)
+            {
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value };
+                var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
+
+                model.SubtitleLanguages = new List<SelectListItem>();
+                foreach (var m in subtitleLanguages)
+                {
+                    model.SubtitleLanguages.Add(new SelectListItem { Value = m.Id.ToString(), Text = m.Language });
+                }
+                return View(model);
+            }
+            
+            return View("Error");
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,13 +154,8 @@ namespace SubHub.Controllers
             {
                 var subtitle = new Subtitle
                 {
-                    Name = model.Name,
-                    Type = model.Type,
-                    PosterUrl = model.PosterUrl,
-                    Genre = model.Genre,
-                    DateAired = model.DateAired,
-                    ImdbUrl = model.ImdbUrl,
-                    Language = model.Language,
+                    LanguageId = model.LanguageId, 
+                    MediaId = model.MediaId
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
@@ -120,7 +186,7 @@ namespace SubHub.Controllers
                         //LineTwo:
                         tmpString = reader.ReadLine();
                         sl.LineTwo = tmpString;
-                        
+
                         sl.SubtitleId = subtId;
                         m_repo.AddSubtitleLine(sl);
 
@@ -131,10 +197,10 @@ namespace SubHub.Controllers
 
                         reader.ReadLine();
 
-                        
+
                     }
                 }
-                
+
                 return RedirectToRoute(
                     "Default",
                     new { controller = "Home", action = "Index" });
@@ -170,40 +236,41 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteSubtitle(int? id)
         {
+
+
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Upvote(int? id, ApplicationUser theUser)
+        public ActionResult Upvote(int? id)
         {
-            if(id.HasValue)
+            if (id.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
                              where s.Id == id
                              select s).SingleOrDefault();
-                if(model == null)
+                if (model == null)
                 {
                     return View("Error");
                 }
                 else
                 {
-                    if(theUser == null)
-                    {
                         IdentityManager manager = new IdentityManager();
+                        string userId = User.Identity.GetUserId();
+                        ApplicationUser theUser = manager.GetUserById(userId);
                         string userName = User.Identity.Name;
-                        ApplicationUser user = manager.GetUser(userName);
-                        if (model.SubtitleRating.Users.Contains(user))
+                        if (model.SubtitleRating.Users.Contains(theUser))
                         {
                             // TODO: you have already upvoted
                             return View("Error");
                         }
-                    }
-
-                    m_repo.UpVote(id, theUser);
-                    //TODO: implement json string
+                        m_repo.UpVote(id, theUser);
+                        //TODO: implement json string
+        
                 }
             }
             return View();

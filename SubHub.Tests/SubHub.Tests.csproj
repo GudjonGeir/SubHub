@@ -130,10 +130,12 @@
   <ItemGroup>
     <Compile Include="Controllers\RequestControllerTest.cs" />
     <Compile Include="Controllers\SubtitleControllerTest.cs" />
+    <Compile Include="Controllers\BrowseControllerTest.cs" />
     <Compile Include="Mocks\MockRequestRepository.cs" />
     <Compile Include="Mocks\MockSubtitleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

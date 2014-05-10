@@ -27,8 +27,11 @@ namespace SubHub.Controllers
 
         public ActionResult Movies()
         {
-            var result = from m in m_repo.GetSubtitles()
-                         where m.Type == "Movie"
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
                          select m;
             return View(result);
         }
@@ -39,9 +42,12 @@ namespace SubHub.Controllers
         }
         public ActionResult TvShows()
         {
-            var result = from t in m_repo.GetSubtitles()
-                         where t.Type == "TvShow"
-                         select t;
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "TvShow"
+                           select m.Id).SingleOrDefault();
+            var result = from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m;
             return View(result);
         }
         public ActionResult TvShows(string genre)
@@ -49,14 +55,25 @@ namespace SubHub.Controllers
             return View();
         }
 
-        private SubHubContext db = new SubHubContext();
-
-
-        //TODO: implement search function with linq with tolower
-        public ActionResult Search(string str)
+        public ActionResult Search(string query)
         {
+            var media = (from m in m_repo.GetMedias()
+                        select m);
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                media = media.Where(m => m.Name.Contains(query));
+                if (!media.Any())
+                {
+                    return View("Error"); // TODO: Specific error page, no results found
+                }
+                return View(media);
+            }
             return View();
         }
+
+        private SubHubContext db = new SubHubContext();
+
 
         // GET: /Browse/
         public ActionResult Index()
@@ -169,5 +186,26 @@ namespace SubHub.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // Til að gera prew og next page
+        /*
+         * Síða: http://stackoverflow.com/questions/9321710/how-to-do-prev-next-page
+         public PaginatedList<T>(IQueryable<T> source, int pageIndex, int? pageSize)
+         {
+             PageIndex = pageIndex; //global variable
+             PageSize = pageSize ?? source.Count(); //global variable
+             TotalCount = source.Count(); //global variable
+             TotalPages = (int)Math.Ceiling(TotalCount /(double)PageSize); //global variable
+             this.AddRange(source.Skip(PageIndex*PageSize).Take(PageSize));
+          }
+          public bool HasPreviousPage
+          {  
+              get {   return(PageIndex >0); //same global variable  }
+           }
+          public bool HasNextPage
+          {  
+              get {   return(PageIndex <0); //same global variable   }
+           }
+         */
     }
 }
