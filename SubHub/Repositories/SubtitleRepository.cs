@@ -15,5 +15,57 @@ namespace SubHub.Repositories
         {
             return m_db.Subtitles;
         }
+
+        public void AddMedia(Media m)
+        {
+            m_db.Medias.Add(m);
+            m_db.SaveChanges();
+        }
+
+        public IQueryable<Media> GetMedias()
+        {
+            return m_db.Medias;
+        }
+
+        public IQueryable<MediaType> GetMediaTypes()
+        {
+            return m_db.MediaTypes;
+        }
+
+        public IQueryable<MediaGenre> GetMediaGenres()
+        {
+            return m_db.MediaGenres;
+        }
+
+        public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
+        {
+            return m_db.MediaLanguages;
+        }
+
+        public int AddSubtitle(Subtitle s)
+        {
+            int newID = m_db.Subtitles.Max(x => x.Id) + 1;
+            s.Id = newID;
+            m_db.Subtitles.Add(s);
+            m_db.SaveChanges();
+            return s.Id;
+        }
+
+
+        public void AddSubtitleLine(SubtitleLine sl)
+        {
+            m_db.SubtitleLines.Add(sl);
+            m_db.SaveChanges();
+        }
+
+        public void UpVote(int? id, ApplicationUser user)
+        {
+            var model = (from m in m_db.SubtitleRatings
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count += 1;
+            model.Users.Add(user);
+            m_db.SaveChanges();
+        }
     }
 }

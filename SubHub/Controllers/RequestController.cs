@@ -24,17 +24,37 @@ namespace SubHub.Controllers
 
         public ActionResult GetRequests()
         {
-            return View();
+            var requests = from r in m_repo.GetRequests()
+                           select r;
+            //TODO!! return some kind of Json string
+            return View(requests);
+
         }
-        public ActionResult ViewRequest(Request r)
+        public ActionResult ViewRequest(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                var model = (from k in m_repo.GetRequests()
+                             where k.Id == id.Value
+                             select k).SingleOrDefault();
+                if(model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
         }
+
+        [Authorize]
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
             {
-                var requestRating = (from r in m_repo.GetRequestRating()
+                var requestRating = (from r in m_repo.GetRequestRatings()
                                      where r.RequestId == id.Value
                                      select r).SingleOrDefault();
                 if (requestRating == null)
@@ -44,6 +64,7 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.Upvote(id.Value);
+                    return View();
                 }
             }
             return View("Error");
@@ -54,7 +75,22 @@ namespace SubHub.Controllers
         }
         public ActionResult Complete(int? id)
         {
-            return View();
+            if(id.HasValue)
+            {
+                var request = (from r in m_repo.GetRequests()
+                               where r.Id == id
+                               select r).SingleOrDefault();
+                if(request == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    m_repo.SetCompleted(id.Value);
+                    return View();
+                }
+            }
+            return View("Error");
         }
 	}
 }

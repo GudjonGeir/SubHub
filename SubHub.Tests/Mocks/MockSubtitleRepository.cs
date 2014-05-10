@@ -8,7 +8,7 @@ using SubHub.Models;
 
 namespace SubHub.Tests.Mocks
 {
-    public class MockSubtitleRepository : ISubtitleRepository
+    class MockSubtitleRepository : ISubtitleRepository
     {
         private readonly List<Subtitle> m_subtitles;
 
@@ -17,10 +17,54 @@ namespace SubHub.Tests.Mocks
             m_subtitles = subtitles;
         }
 
-
         public IQueryable<Subtitle> GetSubtitles()
         {
             return m_subtitles.AsQueryable();
+        }
+
+
+        public int AddSubtitle(Subtitle s)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void AddSubtitleLine(SubtitleLine sl)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpVote(int? id, ApplicationUser user)
+        {
+            //var model = (from m in m_db.SubtitleRatings
+            //             where m.SubtitleId == id
+            //             select m).SingleOrDefault();
+            //model.Count += 1;
+            //model.Users.Add(user);
+
+        }
+
+
+        public void AddMedia(Media m)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<MediaType> GetMediaTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<Media> GetMedias()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<MediaGenre> GetMediaGenres()
+        {
+            throw new NotImplementedException();
         }
     }
 }

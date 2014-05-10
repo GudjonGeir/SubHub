@@ -11,5 +11,15 @@ namespace SubHub.Repositories
     public interface ISubtitleRepository
     {
         IQueryable<Subtitle>GetSubtitles();
+
+        int AddSubtitle(Subtitle s);
+        void AddSubtitleLine(SubtitleLine sl);
+
+        void UpVote(int? id, ApplicationUser user);
+        void AddMedia(Media m);
+        IQueryable<MediaType> GetMediaTypes();
+        IQueryable<Media> GetMedias();
+        IQueryable<MediaGenre> GetMediaGenres();
+        IQueryable<SubtitleLanguage> GetSubtitleLanguages();
     }
 }

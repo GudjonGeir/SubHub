@@ -6,12 +6,14 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using SubHub.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SubHub.DAL
 {
     public class SubHubContext : DbContext
     {
-        public SubHubContext() : base("SubHubContext")
+        public SubHubContext()
+            : base("SubHubContext")
         {
         }
 
@@ -21,11 +23,21 @@ namespace SubHub.DAL
         public DbSet<Subtitle> Subtitles { get; set; }
         public DbSet<SubtitleLine> SubtitleLines { get; set; }
         public DbSet<SubtitleRating> SubtitleRatings { get; set; }
+        public DbSet<Media> Medias { get; set; }
+        public DbSet<MediaType> MediaTypes { get; set; }
+        public DbSet<SubtitleLanguage> MediaLanguages { get; set; }
+        public DbSet<MediaGenre> MediaGenres { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+
         }
+
+
     }
 }
