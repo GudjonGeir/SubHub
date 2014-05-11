@@ -12,6 +12,7 @@ namespace SubHub.Tests.Controllers
     [TestClass]
     public class RequestControllerTest
     {
+
         [TestMethod]
         public void TestUpvote()
         {
@@ -90,7 +91,7 @@ namespace SubHub.Tests.Controllers
             var controller = new RequestController(mockRepo);
 
             //Act:
-            var result = controller.GetRequests();
+            var result = controller.Requests();
 
             //Assert:
             var viewResult = (ViewResult)result;

@@ -22,7 +22,7 @@ namespace SubHub.Controllers
             m_repo = new RequestRepository();
         }
 
-        public ActionResult GetRequests()
+        public ActionResult Requests()
         {
             var requests = from r in m_repo.GetRequests()
                            select r;
@@ -30,7 +30,7 @@ namespace SubHub.Controllers
             return View(requests);
 
         }
-        public ActionResult ViewRequest(int? id)
+        public ActionResult Request(int? id)
         {
             if (id.HasValue)
             {
