@@ -68,6 +68,16 @@ namespace SubHub.Repositories
             m_db.SaveChanges();
         }
 
+        public void DownVote(int? id, ApplicationUser user)
+        {
+            var model = (from m in m_db.SubtitleRatings
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count -= 1;
+            model.Users.Add(user);
+            m_db.SaveChanges();
+        }
+
         public IQueryable<Comment> GetAllComments()
         {
             return m_db.Comments;

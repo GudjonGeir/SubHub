@@ -279,6 +279,31 @@ namespace SubHub.Controllers
         [HttpPost]
         public ActionResult Downvote(int? id)
         {
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if (model == null)
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    IdentityManager manager = new IdentityManager();
+                    string userId = User.Identity.GetUserId();
+                    ApplicationUser theUser = manager.GetUserById(userId);
+                    string userName = User.Identity.Name;
+                    if (model.SubtitleRating.Users.Contains(theUser))
+                    {
+                        // TODO: you have already upvoted
+                        return View("Error");
+                    }
+                    m_repo.UpVote(id, theUser);
+                    //TODO: implement json string
+
+                }
+            }
             return View();
         }
 
