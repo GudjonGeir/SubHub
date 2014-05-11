@@ -51,6 +51,10 @@ namespace SubHub.Repositories
             return s.Id;
         }
 
+        public IQueryable<SubtitleLine> GetSubtitleLines()
+        {
+            return m_db.SubtitleLines;
+        }
 
         public void AddSubtitleLine(SubtitleLine sl)
         {
