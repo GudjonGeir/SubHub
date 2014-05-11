@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Text;
 
 namespace SubHub.Controllers
 {
@@ -266,6 +267,37 @@ namespace SubHub.Controllers
 
 
             return View();
+        }
+
+        public ActionResult DownloadSubtitle(int? id)
+        {
+            if (id.HasValue)
+            {
+                StringBuilder fileString = new StringBuilder();
+                var subtitleLines = from s in m_repo.GetSubtitleLines()
+                                    where s.SubtitleId == id.Value
+                                    orderby s.LineNumber
+                                    select s;
+                var subtitleName = (from s in m_repo.GetSubtitles()
+                               join m in m_repo.GetMedias() on s.MediaId equals m.Id
+                               where s.Id == id.Value
+                               select m.Name).SingleOrDefault();
+                               
+
+                foreach(var line in subtitleLines)
+                {
+                    fileString.Append(line.LineNumber).Append(Environment.NewLine);
+                    fileString.Append(line.Time).Append(Environment.NewLine);
+                    fileString.Append(line.LineOne).Append(Environment.NewLine);
+                    if (!String.IsNullOrEmpty(line.LineTwo))
+                    {
+                        fileString.Append(line.LineTwo).Append(Environment.NewLine);
+                    }
+                    fileString.Append(Environment.NewLine);
+                }
+                return File(Encoding.UTF8.GetBytes(fileString.ToString()), "application/octet-stream", string.Format("{0}.srt", subtitleName));
+            }
+            return View("Error");
         }
 
         [HttpPost]

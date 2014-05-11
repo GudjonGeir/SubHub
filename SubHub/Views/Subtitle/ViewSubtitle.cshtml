@@ -28,7 +28,10 @@
             @Html.DisplayFor(model => model.DateSubmitted)
         </dd>
 
-
+        @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
+        {
+            <input type="submit" value="Hala niður" />
+        }
 
     </dl>
 </div>
