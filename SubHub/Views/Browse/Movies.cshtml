@@ -17,19 +17,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Type.Type)
         </th>*@
-        <th>
+        <th class="date-aired-th">
             @Html.DisplayNameFor(model => model.DateAired)
         </th>
-        <th>
+         @*<th>
             @Html.DisplayNameFor(model => model.PosterUrl)
-        </th>
-        <th>
+        </th>*@
+        <th class="name-th">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        <th class="imdb-url-column">
             @Html.DisplayNameFor(model => model.ImdbUrl)
         </th>
-        <th></th>
+        <th>Operations</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,17 +40,18 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.Type.Type)
         </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.DateAired)
+        <td class="date-aired-td">
+            @Html.DisplayFor(modelItem => item.DateAired.Year)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.PosterUrl)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImdbUrl)
+            <a href="@item.ImdbUrl" target="_blank">Imdb Link</a>
+            @*@Html.DisplayFor(modelItem => item.ImdbUrl)*@
         </td>
         <td>
             

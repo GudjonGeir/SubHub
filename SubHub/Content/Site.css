@@ -388,3 +388,24 @@ body
     display: inline;
     margin-left: 2em;
 }
+
+.date-aired-th
+{
+    width: 7em;
+}
+
+.date-aired-td
+{
+    /*text-align: right;*/
+    /*padding: 20px;*/
+}
+
+.name-th
+{
+    width: 25em;
+}
+
+.imdb-url-column
+{
+    width: 6em;
+}
