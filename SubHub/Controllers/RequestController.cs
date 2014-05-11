@@ -22,7 +22,7 @@ namespace SubHub.Controllers
             m_repo = new RequestRepository();
         }
 
-        public ActionResult GetRequests()
+        public ActionResult Requests()
         {
             var requests = from r in m_repo.GetRequests()
                            select r;

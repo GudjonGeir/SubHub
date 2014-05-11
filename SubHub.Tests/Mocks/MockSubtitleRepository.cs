@@ -42,12 +42,21 @@ namespace SubHub.Tests.Mocks
 
         public void UpVote(int? id, ApplicationUser user)
         {
-            //var model = (from m in m_db.SubtitleRatings
-            //             where m.SubtitleId == id
-            //             select m).SingleOrDefault();
-            //model.Count += 1;
-            //model.Users.Add(user);
+            var model = (from m in m_subtitles
+                         where m.Id == id
+                         select m).SingleOrDefault();
+            model.SubtitleRating.Count += 1;
+            model.SubtitleRating.Users.Add(user);
+        }
 
+        public void AddComment(Comment comment)
+        {
+
+        }
+
+        public IQueryable<Comment> GetAllComments()
+        {
+            return null;
         }
 
 

@@ -46,6 +46,7 @@ namespace SubHub.DAL
             mediaLanguages.ForEach(m => context.MediaLanguages.Add(m));
             context.SaveChanges();
 
+
             MediaGenre adventures = new MediaGenre { Genre = "Adventures" };   //1
             MediaGenre biography = new MediaGenre { Genre = "Biography" };    //2
             MediaGenre children = new MediaGenre { Genre = "Children" };     //3

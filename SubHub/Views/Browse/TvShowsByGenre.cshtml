@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SubHub.Models.Media>
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "TvShowsByGenre";
 }
 
-<h2>Search</h2>
+<h2>TvShowsByGenre</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,8 +13,8 @@
     <tr>
         @*<th>
             @Html.DisplayNameFor(model => model.Genre.Genre)
-        </th>*@
-        @*<th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Type.Type)
         </th>*@
         <th>
@@ -36,8 +36,8 @@
     <tr>
         @*<td>
             @Html.DisplayFor(modelItem => item.Genre.Genre)
-        </td>*@
-        @*<td>
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Type.Type)
         </td>*@
         <td>

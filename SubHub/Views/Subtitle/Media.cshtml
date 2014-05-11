@@ -1,4 +1,4 @@
-﻿@model SubHub.Models.Media
+﻿@model SubHub.Models.MediaViewModel
 
 @{
     ViewBag.Title = "Media";
@@ -56,6 +56,19 @@
 
         <dd>
             @Html.DisplayFor(model => model.ImdbUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubtitleLanguages)
+        </dt>
+
+        <dd>
+            @using (Html.BeginForm("ViewSubtitle", "Subtitle", FormMethod.Get))
+            {
+                @Html.Hidden("mediaId", Model.Id)
+                @Html.DropDownList("languageId", Model.SubtitleLanguages)
+                <input type="submit" value="Sækja texta" />
+            }
         </dd>
 
     </dl>
