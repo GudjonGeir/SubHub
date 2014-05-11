@@ -22,6 +22,9 @@ namespace SubHub.Models
         public virtual MediaType Type { get; set; }
         public List<SelectListItem> MediaTypes { get; set; }
         public List<SelectListItem> MediaGenres { get; set; }
+        public List<SelectListItem> SubtitleLanguages { get; set; }
+
+        public string SelectedLanguage { get; set; }
        
         public MediaViewModel()
         {

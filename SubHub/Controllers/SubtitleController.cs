@@ -26,16 +26,16 @@ namespace SubHub.Controllers
         }
 
 
-        public ActionResult ViewSubtitle(int? id)
+        public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
-            if (id.HasValue)
+            if (mediaId.HasValue && languageId.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
-                              where s.Id == id.Value
-                              select s).SingleOrDefault();
+                             where s.LanguageId == languageId && s.MediaId == mediaId
+                             select s).SingleOrDefault();
                 if (model == null)
                 {
-                    return View("Error");
+                    return View("Error"); // TODO: Offer to make new subtitle
                 }
                 else
                 {
@@ -63,9 +63,24 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                var model = (from m in m_repo.GetMedias()
+                var media = (from m in m_repo.GetMedias()
                              where m.Id == id.Value
                              select m).SingleOrDefault();
+                var languages = m_repo.GetSubtitleLanguages();
+                MediaViewModel model = new MediaViewModel { 
+                    DateAired = media.DateAired, 
+                    Id = media.Id,
+                    Genre = media.Genre, 
+                    ImdbUrl = media.ImdbUrl, 
+                    Name = media.Name, 
+                    PosterUrl = media.PosterUrl, 
+                    Type = media.Type,
+                    SelectedLanguage = "languageId",
+                    SubtitleLanguages = new List<SelectListItem>()};
+                foreach (var l in languages)
+                {
+                    model.SubtitleLanguages.Add(new SelectListItem { Value = l.Id.ToString(), Text = l.Language });
+                }
                 return View(model);
             }
             return View("Error");
