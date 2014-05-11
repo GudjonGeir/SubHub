@@ -47,16 +47,12 @@
             @Html.DisplayFor(modelItem => item.PosterUrl)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Media", "Subtitle", new { id = item.Id }, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ImdbUrl)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+
     </tr>
 }
 
