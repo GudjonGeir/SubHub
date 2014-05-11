@@ -33,12 +33,12 @@ namespace SubHub.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId).ToTable("AspNetUserLogins");
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id).ToTable("AspNetRoles");
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId }).ToTable("AspNetUserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
-            modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
+            //modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
+            //modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
         }
 
 
