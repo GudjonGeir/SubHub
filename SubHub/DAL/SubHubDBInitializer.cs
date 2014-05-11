@@ -56,7 +56,7 @@ namespace SubHub.DAL
             MediaGenre romance = new MediaGenre { Genre = "Romance "};   //7
             MediaGenre scifi = new MediaGenre { Genre = "Sci-Fi" };     //8
             MediaGenre thriller = new MediaGenre { Genre = "Thriller" }; //9
-            var genres = new List<MediaGenre>() { adventures, biography, children, comedy, drama, horror, romance, scifi };
+            var genres = new List<MediaGenre>() { adventures, biography, children, comedy, drama, horror, romance, scifi, thriller };
             genres.ForEach(g => context.MediaGenres.Add(g));
             context.SaveChanges();
 
