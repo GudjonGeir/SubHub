@@ -17,19 +17,21 @@
         <th>
             @Html.DisplayNameFor(model => model.Type.Type)
         </th>*@
-        <th class="date-aired-th">
-            @Html.DisplayNameFor(model => model.DateAired)
-        </th>
+        <th class="poster-th"></th>
+
          @*<th>
             @Html.DisplayNameFor(model => model.PosterUrl)
         </th>*@
         <th class="name-th">
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        @*<th class="date-aired-th">
+            @Html.DisplayNameFor(model => model.DateAired)
+        </th>*@
         <th class="imdb-url-column">
             @Html.DisplayNameFor(model => model.ImdbUrl)
         </th>
-        <th>Operations</th>
+        @*<th>Operations</th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -40,15 +42,22 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.Type.Type)
         </td>*@
-        <td class="date-aired-td">
-            @Html.DisplayFor(modelItem => item.DateAired.Year)
+        <td>
+            <img src="@item.PosterUrl" alt="@item.Name" class="list-poster"/>
         </td>
+
         @*<td>
             @Html.DisplayFor(modelItem => item.PosterUrl)
         </td>*@
         <td>
             @Html.ActionLink(item.Name, "Media", "Subtitle", new { id = item.Id }, null)
+            (
+            @Html.DisplayFor(modelItem => item.DateAired.Year)
+            )
         </td>
+        @*<td class="date-aired-td">
+            
+        </td>*@
         <td>
             <a href="@item.ImdbUrl" target="_blank">Imdb Link</a>
             @*@Html.DisplayFor(modelItem => item.ImdbUrl)*@
