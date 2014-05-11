@@ -30,7 +30,7 @@ namespace SubHub.Controllers
             return View(requests);
 
         }
-        public ActionResult Request(int? id)
+        public ActionResult ViewRequest(int? id)
         {
             if (id.HasValue)
             {

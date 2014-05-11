@@ -27,16 +27,18 @@ namespace SubHub.DAL
         public DbSet<MediaType> MediaTypes { get; set; }
         public DbSet<SubtitleLanguage> MediaLanguages { get; set; }
         public DbSet<MediaGenre> MediaGenres { get; set; }
-        //public System.Data.Entity.DbSet<SubHub.Models.ApplicationUser> AspNetUsers { get; set; }
+        public System.Data.Entity.DbSet<SubHub.Models.ApplicationUser> AspNetUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId).ToTable("AspNetUserLogins");
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id).ToTable("AspNetRoles");
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId }).ToTable("AspNetUserRoles");
 
+            modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
         }
 
 
