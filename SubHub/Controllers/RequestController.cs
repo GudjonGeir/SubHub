@@ -119,7 +119,8 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.SetCompleted(id.Value);
-                    return View();
+                    var model = m_repo.GetRequests();
+                    return View("Requests", model);
                 }
             }
             return View("Error");

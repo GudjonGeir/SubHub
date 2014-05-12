@@ -66,5 +66,11 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+
+        public void AddRequest(Request m)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
