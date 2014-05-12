@@ -487,3 +487,9 @@ body
     height: 400px; 
     border: groove rgb(81,81,81);  
 }
+
+#nextandprev
+{
+    position: relative;
+    width: 50%; left:50%;
+}

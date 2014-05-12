@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<SubHub.Models.Media>*@
+﻿@model IEnumerable<SubHub.Models.Media>
 
 @{
     ViewBag.Title = "Home Page";
@@ -21,71 +21,40 @@
     </ul>
 </div>
 
+<div id="nextandprev">
+    <a href="#" class="unslider-arrow prev"><span class="glyphicon glyphicon-arrow-left"> </span></a>
+    <a href="#" class="unslider-arrow next"><span class="glyphicon glyphicon-arrow-right"> </span></a>
+</div>
+
 <script src="~/Scripts/BannerSliderImages.js"></script>
         <div id="popular-master">
             <h2>Vinsælustu textarnir</h2>
             <div class="front-5-group">
                 <h3>Bíómyndir</h3>
-                @*@foreach (var item in Model)
+                @{var items = (from m in Model select m).ToList();}
+                @for (int i = 0; i < 5; i++ )
                 {
-                    <a href="#" class="thumbnail front-images">
-                        <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
-                        <h5>sækja texta</h5>
+                    <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images">
+                        @*<h5>@items[i].Name</h5>*@
+                        <img src="@items[i].PosterUrl.ToString()" alt="...">
+                        <h5>Sækja texta</h5>
                     </a>
-                }*@
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-                
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://www.rotoscopers.com/wp-content/uploads/2013/09/frozen-poster-cast-new.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
+                }
 
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://fedrev.net/wp-content/uploads/2014/01/TheWolfofWallStreet_iTunesPre-sale_1400x2100.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://khpbooks.com/cinemaknifefight/wp-content/uploads/2014/05/the_amazing_spider_man_2_poster.png" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://wac.450f.edgecastcdn.net/80450F/screencrush.com/files/2013/10/captain-america-2-poster-full.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
             </div>
 
             <div class="front-5-group">
                 <h3>Þættir</h3>
 
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://www.spoilersguide.com/wp-content/uploads/2011/08/new_girl_ver2_xlg.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
+                @{var items2 = (from m in Model select m).ToList();}
+                @for (int i = 5; i < 10; i++)
+                {
+                    <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images">
+                        <img src="@items2[i].PosterUrl.ToString()" alt="...">
+                        <h5>Sækja texta</h5>
+                    </a>
+                }
 
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://seat42f.com/images/stories/tvshows/Greys/Season7/Greys-Anatomy-Season-7-Poster.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://media.popcultcha.com.au/media/catalog/product/imported_older/4070%20Adventure%20Time%20IceKing%20lg_3.png" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://geek-news.mtv.com/wp-content/uploads/2011/03/got-jon-poster.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
-
-                <a href="#" class="thumbnail front-images">
-                    <img src="http://www.tribute.ca/tribute_objects/images/movies/Workaholics_Season_Two/workaholicsseasontwo.jpg" alt="...">
-                    <h5>sækja texta</h5>
-                </a>
             </div>
         </div>
 
