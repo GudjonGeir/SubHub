@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SubHub.Models.Media>
+
+<table class="table">
+    <tr>
+
+        <th class="poster-th"></th>
+
+        <th class="name-th">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th class="imdb-url-column">
+            @Html.DisplayNameFor(model => model.ImdbUrl)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                <img src="@item.PosterUrl" alt="@item.Name" class="list-poster" />
+            </td>
+
+            <td class="list-text">
+                @Html.ActionLink(item.Name, "Media", "Subtitle", new { id = item.Id }, null)
+                (
+                @Html.DisplayFor(modelItem => item.DateAired.Year)
+                )
+            </td>
+
+            <td>
+                <a href="@item.ImdbUrl" target="_blank">Imdb Link</a>
+            </td>
+
+        </tr>
+    }
+
+</table>

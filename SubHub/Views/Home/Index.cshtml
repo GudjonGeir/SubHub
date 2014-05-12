@@ -1,17 +1,38 @@
-﻿@{
+﻿@*@model IEnumerable<SubHub.Models.Media>*@
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://malsup.github.com/jquery.tcycle.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//unslider.com/unslider.min.js"></script>
 <!--
 <div class="panel panel-default" id="front-area">
     <div class="panel-body">-->
+
+<div class="banner-slider-images">
+    <ul>
+        <li><img id="slider-images" src="http://static5.businessinsider.com/image/52a9e05369bedd7f7f23605f/theres-a-free-screening-of-the-wolf-of-wall-street-near-goldman-sachs-tomorrow-night.jpg" /></li>
+        <li><img id="slider-images" src="http://movieboozer.com/wp-content/uploads/2014/03/Divergent-movie-poster-2.jpg" /></li>
+        <li><img id="slider-images" src="http://absoluteuncertainties.com/wp-content/uploads/2014/04/frozen_marshmallow_characters.jpg" /></li>
+        <li><img id="slider-images" src="http://www.screenrelish.com/wp-content/uploads/2014/03/Neighbors-Seth-Rogen.jpg" /></li>
+        <li><img id="slider-images" src="http://wac.450f.edgecastcdn.net/80450F/screencrush.com/files/2012/12/amazing_spider_man_2.jpg" /></li>
+        <li><img id="slider-images" src="http://www.ndsccenter.org/worpsite/wp-content/uploads/2014/04/CaptainAmerica.jpg" /></li>
+    </ul>
+</div>
+
+<script src="~/Scripts/BannerSliderImages.js"></script>
         <div id="popular-master">
             <h2>Vinsælustu textarnir</h2>
             <div class="front-5-group">
                 <h3>Bíómyndir</h3>
-                
+                @*@foreach (var item in Model)
+                {
+                    <a href="#" class="thumbnail front-images">
+                        <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
+                        <h5>sækja texta</h5>
+                    </a>
+                }*@
                 <a href="#" class="thumbnail front-images">
                     <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
                     <h5>sækja texta</h5>

@@ -54,11 +54,11 @@
                         @Html.ActionLink("Þættir ▼", "TvShows", "Browse")
                         <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Hasar", "TvShowsByByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Grín", "TvShowsByByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Drama", "TvShowsByByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Ævintýri", "TvShowsByByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Barna", "TvShowsByByGenre", "Browse", new { genre = "Action" }, null)</li>
+                            <li>@Html.ActionLink("Hasar", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
+                            <li>@Html.ActionLink("Grín", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
+                            <li>@Html.ActionLink("Drama", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
+                            <li>@Html.ActionLink("Ævintýri", "TvShowsByGenre", "Browse", new { genre = "Adventures" }, null)</li>
+                            <li>@Html.ActionLink("Barna", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
                         </ul>
                     </li>
                     <li class="divider-vertical">@Html.ActionLink("Senda inn texta", "NewMedia", "Subtitle")</li>
