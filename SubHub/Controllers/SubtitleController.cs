@@ -90,7 +90,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        //[Authorize]
+        [Authorize]
         public ActionResult NewMedia()
         {
             var model = new MediaViewModel();
@@ -177,15 +177,20 @@ namespace SubHub.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.Identity.GetUserId();
-                IdentityManager im = new IdentityManager();
-                List<ApplicationUser> user = new List<ApplicationUser> { im.GetUserById(userId) };
+                List<ApplicationUser> users = new List<ApplicationUser>();;
                 var subtitle = new Subtitle
                 {
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
-                    //Users = user
+                    Users = users
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
+
+                //IdentityManager im = new IdentityManager();
+                
+                //user.Subtitles.Add(subtitle);
+                m_repo.AddUserToSubtitle(subtId, userId);
+
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
                 {
                     StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
