@@ -10,10 +10,36 @@ namespace SubHub.Controllers
 {
     public class HomeController : Controller
     {
-        
+        private readonly ISubtitleRepository m_repo;
+
+        public HomeController(ISubtitleRepository repo)
+        {
+            m_repo = repo;
+        }
+        public HomeController()
+        {
+            m_repo = new SubtitleRepository();
+        }
         public ActionResult Index()
         {
-            return View();
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var result = (from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
+                         select m).Take(5).ToList();
+
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                            where m.Type == "TvShow"
+                            select m.Id).SingleOrDefault();
+            var result2 = (from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m).Take(5);
+            foreach (var item in result2)
+            {
+                result.Add(item);
+            }
+            return View(result);
         }
 
         public ActionResult About()

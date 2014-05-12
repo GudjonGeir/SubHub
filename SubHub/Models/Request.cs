@@ -12,10 +12,10 @@ namespace SubHub.Models
         public         string          Name            { get; set; }
         public         DateTime        DateSubmitted   { get; set; }
         public         bool            Completed       { get; set; }
-        public         string          UserId          { get; set; }
+        public string UserId { get; set; }
         public int LanguageId { get; set; }
         public virtual SubtitleLanguage Language { get; set; }
-        public virtual ApplicationUser User            { get; set; }   
+        public virtual ApplicationUser User { get; set; }   
         public virtual RequestRating   RequestRating   { get; set; }   // Corresponding rating for the request
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using SubHub.Repositories;
 using SubHub.Models;
+using SubHub.DAL;
 
 namespace SubHub.Controllers
 {
@@ -17,7 +18,7 @@ namespace SubHub.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new SubHubContext())))
         {
         }
 

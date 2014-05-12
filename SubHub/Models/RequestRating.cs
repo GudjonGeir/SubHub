@@ -13,6 +13,6 @@ namespace SubHub.Models
         public         int                          RequestId  { get; set; }
         public         int                          count      { get; set; } 
         public virtual Request                      Request    { get; set; }    // Corresponding request for the rating
-        public virtual ICollection<ApplicationUser> Users      { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }
