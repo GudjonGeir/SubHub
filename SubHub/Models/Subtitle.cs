@@ -14,7 +14,7 @@ namespace SubHub.Models
         
         public virtual  SubtitleLanguage             Language        { get; set; }
         public virtual  Media                        Media           { get; set; }
-        public virtual  ICollection<ApplicationUser>  Users          { get; set; }   // Users who have edited the file
+        public virtual ICollection<ApplicationUser> Users { get; set; }   // Users who have edited the file
         public virtual  ICollection<SubtitleLine>    SubtitleLines   { get; set; }   // Subtitle lines in the file
         public virtual  ICollection<Comment>         Comments        { get; set; }
         public virtual  SubtitleRating               SubtitleRating  { get; set; }   // Corresponding rating for the file

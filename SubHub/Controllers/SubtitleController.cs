@@ -183,7 +183,7 @@ namespace SubHub.Controllers
                 {
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
-                    Users = user
+                    //Users = user
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
@@ -224,6 +224,8 @@ namespace SubHub.Controllers
                         }
 
                         reader.ReadLine();
+
+
                     }
                 }
 
@@ -253,7 +255,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        [Authorize]
         [HttpPost]
         public ActionResult EditSubtitle(int? id, Subtitle s)
         {
@@ -263,23 +264,12 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
-        //TODO:Admin role can only delete
         [Authorize]
         public ActionResult DeleteSubtitle(int? id)
         {
-            if(id.HasValue)
-            {
-                var theSubtitle = (from s in m_repo.GetSubtitles()
-                             where s.Id == id
-                             select s).SingleOrDefault();
-                if (theSubtitle != null)
-                {
-                    m_repo.RemoveComment(id);
-                    //TODO: return some json string
-                }
-            }
-            return View("Error");
 
+
+            return View();
         }
 
         public ActionResult DownloadSubtitle(int? id)
@@ -332,11 +322,11 @@ namespace SubHub.Controllers
                         string userId = User.Identity.GetUserId();
                         ApplicationUser theUser = manager.GetUserById(userId);
                         string userName = User.Identity.Name;
-                        if (model.SubtitleRating.Users.Contains(theUser))
-                        {
-                            // TODO: you have already upvoted
-                            return View("Error");
-                        }
+                        //if (model.SubtitleRating.Users.Contains(theUser))
+                        //{
+                        //    // TODO: you have already upvoted
+                        //    return View("Error");
+                        //}
                         m_repo.UpVote(id, theUser);
                         //TODO: implement json string
         
@@ -346,41 +336,14 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult DownVote(int? id)
+        public ActionResult Downvote(int? id)
         {
-            if (id.HasValue)
-            {
-                var model = (from s in m_repo.GetSubtitles()
-                             where s.Id == id
-                             select s).SingleOrDefault();
-                if (model == null)
-                {
-                    return View("Error");
-                }
-                else
-                {
-                    IdentityManager manager = new IdentityManager();
-                    string userId = User.Identity.GetUserId();
-                    ApplicationUser theUser = manager.GetUserById(userId);
-                    string userName = User.Identity.Name;
-                    if (model.SubtitleRating.Users.Contains(theUser))
-                    {
-                        // TODO: you have already upvoted
-                        return View("Error");
-                    }
-                    m_repo.UpVote(id, theUser);
-                    //TODO: implement json string
-
-                }
-            }
             return View();
         }
 
         [HttpPost]
         public ActionResult Flag(int? id)
         {
-
-
             return View();
         }
 
@@ -410,7 +373,7 @@ namespace SubHub.Controllers
                 ApplicationUser user = manager.GetUser(userName);
                 string userId = user.Id;
                 DateTime timi = DateTime.Now;
-                Comment newComment = new Comment { UserId = userId, SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi, User = user };
+                Comment newComment = new Comment {/* UserId = userId,*/ SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi, /*User = user*/ };
                 //m_repo.AddComment(newComment);
                 return View(newComment);
                 //return Json string here
@@ -427,43 +390,12 @@ namespace SubHub.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
-        public ActionResult RemoveComment(int? id)
+        public ActionResult DeleteComment(int? id)
         {
-            if(id != null)
-            {
-                var theComment = (from c in m_repo.GetAllComments()
-                                  where c.Id == id
-                                  select c).SingleOrDefault();
-                IdentityManager manager = new IdentityManager();
-                string userId = User.Identity.GetUserId();
-                if(theComment != null && userId == theComment.UserId)
-                {
-                    m_repo.RemoveComment(id);
-                    //TODO: return some json string
-                }
-            }
-            return View("Error");
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult RemoveCommentTest(int? id, ApplicationUser theUser)
-        {
-            if (id != null)
-            {
-                var theComment = (from c in m_repo.GetAllComments()
-                                  where c.Id == id
-                                  select c).SingleOrDefault();
-                string userId = theUser.Id;
-                if (theComment != null && userId == theComment.UserId)
-                {
-                    m_repo.RemoveComment(id);
-                    //TODO: return some json string
-                }
-            }
-            return View("Error");
-        }
 
 	}
 }
