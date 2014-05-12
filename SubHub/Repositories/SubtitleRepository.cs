@@ -87,9 +87,13 @@ namespace SubHub.Repositories
             return m_db.Comments;
         }
 
-        public void AddComment(Comment comment)
+        public void AddComment(Comment comment, int? id)
         {
-            m_db.Comments.Add(comment);
+            var theSubtitle = (from c in m_db.Subtitles
+                              where c.Id == id
+                              select c).SingleOrDefault();
+            theSubtitle.Comments.Add(comment);
+            m_db.SaveChanges();
         }
 
         public void RemoveComment(int? id)

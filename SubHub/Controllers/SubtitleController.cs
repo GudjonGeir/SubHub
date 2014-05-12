@@ -465,5 +465,30 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        [Authorize]
+        public ActionResult TestAddComment(string comment, int? subtitleid)
+        {
+            if (subtitleid.HasValue && !String.IsNullOrEmpty(comment))
+            {
+                DateTime timi = DateTime.Now;
+                Comment newComment = new Comment {  SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi };
+                //m_repo.AddComment(newComment);
+                return View(newComment);
+                //return Json string here
+            }
+            else if (!subtitleid.HasValue)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ModelState.AddModelError("comment", "Commenttext cannot be empty!");
+                return View("Error");
+                //return some Json string
+            }
+        }
+
+
+
 	}
 }
