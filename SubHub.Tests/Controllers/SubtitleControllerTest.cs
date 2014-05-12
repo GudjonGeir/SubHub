@@ -15,44 +15,92 @@ namespace SubHub.Tests.Controllers
     [TestClass]
     public class SubtitleControllerTest
     {
-        //[TestMethod]
-        //public void TestViewSubtitleWithCorrectId()
-        //{
+        [TestMethod]
+        public void TestViewSubtitleWithCorrectId()
+        {
         //Arrange:
-        //    Random rnd = new Random();
-        //    List<Subtitle> subtitles = new List<Subtitle>();
-        //    for (int i = 1; i <= 10; i++)
-        //    {
-        //        subtitles.Add(new Subtitle
-        //            {
-        //                Name = "subtitle" + i.ToString(),
-        //                DateAired = DateTime.Now.AddDays(-rnd.Next(100)),
-        //                DateSubmitted = DateTime.Now.AddDays(-rnd.Next(100)),
-        //                Genre = "genre" + i.ToString(),
-        //                Id = i,
-        //                ImdbUrl = "url" + i.ToString(),
-        //                Language = "language" + i.ToString(),
-        //                PosterUrl = "poster" + i.ToString(),
-        //                Type = "type" + i.ToString()
-        //            });
-        //    }
-        //    List<Subtitle> shuffledSubtitles = (List<Subtitle>)subtitles.OrderBy(s => rnd.Next());
+            Random rnd = new Random();
+            List<Subtitle> subtitles = new List<Subtitle>();
+            for (int i = 1; i <= 10; i++)
+            {
+                subtitles.Add(new Subtitle
+                    {
+                        //Name = "subtitle" + i.ToString(),
+                        //DateAired = DateTime.Now.AddDays(-rnd.Next(100)),
+                        Id = i,
+                        Media = new Media{ Id = 1, Name = "subtitle" + i.ToString(), GenreId = i, TypeId = i},
+                        DateSubmitted = DateTime.Now.AddDays(-rnd.Next(100)),
+                        Language = new SubtitleLanguage { Id = i, Language = "language" + i.ToString() },
+                        //Genre = "genre" + i.ToString(),
+                        //Id = i,
+                        //ImdbUrl = "url" + i.ToString(),
+                        //Language = "language" + i.ToString(),
+                        //PosterUrl = "poster" + i.ToString(),
+                        //Type = "type" + i.ToString()
+                    });
+            }
 
-        //    var mockRepo = new MockSubtitleRepository(subtitles);
-        //    var controller = new SubtitleController(mockRepo);
+            var mockRepo = new MockSubtitleRepository(subtitles);
+            var controller = new SubtitleController(mockRepo);
 
         //Act:
-        //    var result1 = controller.ViewSubtitle(1);
+            var result1 = controller.ViewSubtitle(1, 1);
 
         //Assert:
 
-        //    var viewResult1 = (ViewResult)result1;
+            var viewResult1 = (ViewResult)result1;
 
-        //    Subtitle model1 = viewResult1.Model as Subtitle;
-        //    Assert.IsTrue(model1.Id == 1);
-        //    Assert.IsTrue(model1.Name == "subtitle1");
+            Subtitle model1 = viewResult1.Model as Subtitle;
+            Assert.IsTrue(model1.Id == 1);
+            Assert.IsTrue(model1.Media.Name == "subtitle1");
 
-        //}
+        }
+
+        [TestMethod]
+        public void TestRemoveComment()
+        {
+            //Arrange:
+            Random rnd = new Random();
+            List<Comment> comments = new List<Comment>();
+            ApplicationUser user1 = new ApplicationUser { UserName = "user1", Id = "user1ID" };
+            ApplicationUser user2 = new ApplicationUser { UserName = "user2", Id = "user2ID" };
+            Subtitle subtitle1 = new Subtitle { Id = 1, Media = new Media{ Id = 1, Name = "subtitle1", GenreId = 1, TypeId = 1}, DateSubmitted = DateTime.Now.AddDays(-rnd.Next(100)), Language = new SubtitleLanguage { Id = 1, Language = "language1" } };
+            
+            for (int i = 1; i <= 10; i++)
+            {
+                comments.Add(new Comment
+                    {
+                        Id = i,
+                        UserId = "user" + i.ToString() + "ID",
+                        CommentText = "Commentnr" + i.ToString(),
+                        DateSubmitted = DateTime.Now.AddDays(-rnd.Next(100)),
+                        Subtitle = subtitle1
+                    });
+                if(i <= 5)
+                {
+                    comments[i - 1].User = user1;
+                }
+                else
+                {
+                    comments[i - 1].User = user2;
+                }
+            }
+            subtitle1.Comments = comments;
+            List<Subtitle> subtitles = new List<Subtitle> { subtitle1 }; 
+            var mockRepo = new MockSubtitleRepository(subtitles);
+            var controller = new SubtitleController(mockRepo);
+
+            //Act:
+            controller.RemoveCommentTest(1, user1);
+            controller.RemoveCommentTest(6, user1);
+
+            //Assert:
+            var theComments = mockRepo.GetAllComments();
+            Assert.IsFalse(theComments.Any(item => item.Id == 1));
+            Assert.IsTrue(theComments.Any(item => item.Id == 6));
+
+
+        }
         //[TestMethod]
         //public void TestViewSubtitleWithIncorrectId()
         //{

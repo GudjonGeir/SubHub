@@ -72,6 +72,16 @@ namespace SubHub.Repositories
             m_db.SaveChanges();
         }
 
+        public void DownVote(int? id, ApplicationUser user)
+        {
+            var model = (from m in m_db.SubtitleRatings
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count -= 1;
+            model.Users.Add(user);
+            m_db.SaveChanges();
+        }
+
         public IQueryable<Comment> GetAllComments()
         {
             return m_db.Comments;
@@ -82,10 +92,14 @@ namespace SubHub.Repositories
             m_db.Comments.Add(comment);
         }
 
-        //public void RemoveComment(int? id)
-        //{
-
-        //}
+        public void RemoveComment(int? id)
+        {
+            var theComment = (from c in m_db.Comments
+                              where c.Id == id
+                              select c).SingleOrDefault<Comment>();
+            m_db.Comments.Remove(theComment);
+            m_db.SaveChanges();
+        }
 
     }
 }

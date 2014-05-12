@@ -50,6 +50,7 @@ namespace SubHub.Controllers
             var result = from n in movies
                          where n.GenreId == genreId
                          select n;
+            ViewBag.Title = genre;
             return View(result);
         }
         public ActionResult TvShows()
@@ -76,6 +77,7 @@ namespace SubHub.Controllers
             var result = from n in tvShows
                          where n.GenreId == genreId
                          select n;
+            ViewBag.Title = genre;
             return View(result);
         }
 
@@ -91,9 +93,10 @@ namespace SubHub.Controllers
                 {
                     return View("Error"); // TODO: Specific error page, no results found
                 }
+                ViewBag.Title = query;
                 return View(media);
             }
-            return View();
+            return View("Index");
         }
 
         private SubHubContext db = new SubHubContext();

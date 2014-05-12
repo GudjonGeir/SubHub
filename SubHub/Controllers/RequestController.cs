@@ -24,9 +24,7 @@ namespace SubHub.Controllers
 
         public ActionResult Requests()
         {
-            var requests = from r in m_repo.GetRequests()
-                           select r;
-            //TODO!! return some kind of Json string
+            var requests = m_repo.GetRequests();
             return View(requests);
 
         }
@@ -47,6 +45,40 @@ namespace SubHub.Controllers
                 }
             }
             return View("Error");
+        }
+
+        public ActionResult NewRequest()
+        {
+            var model = new RequestViewModel();
+            var languages = m_repo.GetSubtitleLanguages();
+            model.SubtitleLanguages = new List<SelectListItem>();
+            foreach (var l in languages)
+            {
+                model.SubtitleLanguages.Add(new SelectListItem { Value = l.Id.ToString(), Text = l.Language });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult NewRequest(RequestViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Request newRequest = new Request
+                {
+                    Completed = false,
+                    DateSubmitted = DateTime.Now,
+                    Name = model.Name,
+                    RequestRating = new RequestRating(),
+                    LanguageId = model.LanguageId
+                };
+                m_repo.AddRequest(newRequest);
+                return RedirectToAction("Requests");
+            }
+            return View();
+            
+
         }
 
         [Authorize]
@@ -87,7 +119,8 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.SetCompleted(id.Value);
-                    return View();
+                    var model = m_repo.GetRequests();
+                    return View("Requests", model);
                 }
             }
             return View("Error");

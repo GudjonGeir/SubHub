@@ -20,19 +20,8 @@ namespace SubHub.DAL
             userManager.Create(new ApplicationUser { UserName = "user3" }, "123456");
 
 
-            Request request1 = new Request { Completed = false, DateSubmitted = DateTime.Now.AddDays(-3), Name = "Avatar", User = userManager.FindByName("user1") };
-            Request request2 = new Request { Completed = true, DateSubmitted = DateTime.Now.AddDays(-4), Name = "Catch me if you can", User = userManager.FindByName("user3") };
-            Request request3 = new Request { Completed = false, DateSubmitted = DateTime.Now.AddDays(-5), Name = "Highlander", User = userManager.FindByName("user2") };
-            var requests = new List<Request>() { request1, request2, request3 };
-            requests.ForEach(r => context.Requests.Add(r));
-            context.SaveChanges();
+            
 
-            RequestRating requestRating1 = new RequestRating { count = 2, RequestId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user2"), userManager.FindByName("user3") } };
-            RequestRating requestRating2 = new RequestRating { count = 3, RequestId = 2, Users = new List<ApplicationUser> { userManager.FindByName("user1"), userManager.FindByName("user2"), userManager.FindByName("user3") } };
-            RequestRating requestRating3 = new RequestRating { count = 1, RequestId = 3, Users = new List<ApplicationUser> { userManager.FindByName("user3") } };
-            var requestRatings = new List<RequestRating>() { requestRating1, requestRating2, requestRating3 };
-            requestRatings.ForEach(r => context.RequestRatings.Add(r));
-            context.SaveChanges();
 
             MediaType movies = new MediaType { Type = "Movie" };
             MediaType tvShows = new MediaType { Type = "TvShow" };
@@ -59,6 +48,23 @@ namespace SubHub.DAL
             var genres = new List<MediaGenre>() { adventures, biography, children, comedy, drama, horror, romance, scifi, thriller };
             genres.ForEach(g => context.MediaGenres.Add(g));
             context.SaveChanges();
+
+
+            Request request1 = new Request { Completed = false, DateSubmitted = DateTime.Now.AddDays(-3), Name = "Avatar", User = userManager.FindByName("user1"), LanguageId = 1 };
+            Request request2 = new Request { Completed = true, DateSubmitted = DateTime.Now.AddDays(-4), Name = "Catch me if you can", User = userManager.FindByName("user3"), LanguageId = 2 };
+            Request request3 = new Request { Completed = false, DateSubmitted = DateTime.Now.AddDays(-5), Name = "Highlander", User = userManager.FindByName("user2") , LanguageId = 1};
+            var requests = new List<Request>() { request1, request2, request3 };
+            requests.ForEach(r => context.Requests.Add(r));
+            context.SaveChanges();
+
+
+            RequestRating requestRating1 = new RequestRating { count = 2, RequestId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user2"), userManager.FindByName("user3") } };
+            RequestRating requestRating2 = new RequestRating { count = 3, RequestId = 2, Users = new List<ApplicationUser> { userManager.FindByName("user1"), userManager.FindByName("user2"), userManager.FindByName("user3") } };
+            RequestRating requestRating3 = new RequestRating { count = 1, RequestId = 3, Users = new List<ApplicationUser> { userManager.FindByName("user3") } };
+            var requestRatings = new List<RequestRating>() { requestRating1, requestRating2, requestRating3 };
+            requestRatings.ForEach(r => context.RequestRatings.Add(r));
+            context.SaveChanges();
+
 
             Media media1 = new Media { Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", GenreId = 2 };
             Media media2 = new Media { Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", GenreId = 5 };

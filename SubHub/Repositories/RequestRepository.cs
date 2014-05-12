@@ -50,5 +50,16 @@ namespace SubHub.Repositories
         {
             return m_db.RequestRatings;
         }
+
+        public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
+        {
+            return m_db.MediaLanguages;
+        }
+
+        public void AddRequest(Request m)
+        {
+            m_db.Requests.Add(m);
+            m_db.SaveChanges();
+        }
     }
 }

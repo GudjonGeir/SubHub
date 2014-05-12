@@ -15,5 +15,7 @@ namespace SubHub.Repositories
         void RemoveRequest(int? id);
         void SetCompleted(int id);
         void Upvote(int id);
+        IQueryable<SubtitleLanguage> GetSubtitleLanguages();
+        void AddRequest(Request m);
     }
 }

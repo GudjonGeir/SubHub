@@ -49,14 +49,28 @@ namespace SubHub.Tests.Mocks
             model.SubtitleRating.Users.Add(user);
         }
 
+        public void DownVote(int? id, ApplicationUser user)
+        {
+
+        }
+
         public void AddComment(Comment comment)
         {
 
         }
 
+        public void RemoveComment(int? id)
+        {
+            Subtitle theSubtitle = m_subtitles[0];
+            var theComment = (from c in theSubtitle.Comments
+                              where c.Id == id
+                              select c).SingleOrDefault<Comment>();
+            theSubtitle.Comments.Remove(theComment);
+        }
+
         public IQueryable<Comment> GetAllComments()
         {
-            return null;
+            return m_subtitles[0].Comments.AsQueryable();
         }
 
 
@@ -84,6 +98,12 @@ namespace SubHub.Tests.Mocks
 
 
         public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<SubtitleLine> GetSubtitleLines()
         {
             throw new NotImplementedException();
         }

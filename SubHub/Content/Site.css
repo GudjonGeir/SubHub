@@ -390,6 +390,7 @@ body
     margin-left: 2em;
 }
 
+
 .date-aired-th
 {
     width: 7em;
@@ -465,7 +466,13 @@ body
     margin-left: 0px;
 }
 
-.list-text
+.list-text 
 {
     vertical-align: middle;
+}
+
+#h1-linkar-index
+{
+    text-decoration: none;
+
 }

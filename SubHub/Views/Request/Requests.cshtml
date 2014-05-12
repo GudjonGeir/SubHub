@@ -6,9 +6,10 @@
 
 <h2>Requests</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("NewRequest", "Request", FormMethod.Get))
+{ 
+    <input type="submit" value="Senda inn beiðni" />
+}
 <table class="table">
     <tr>
         @*<th>
@@ -43,14 +44,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateSubmitted)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Completed)
+        @if(item.Completed)
+        {
+            <td>
+                Beiðni uppfyllt
+            </td>
+        }
+        else
+        {
+            <td>
+            @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = item.Id }, null)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+        }
+        
     </tr>
 }
 

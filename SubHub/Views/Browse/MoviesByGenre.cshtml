@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SubHub.Models.Media>
 
-@{
+@*@{
     ViewBag.Title = "MoviesByGenre";
-}
+}*@
 
-<h2>MoviesByGenre</h2>
+<h2>@ViewBag.Title Movies</h2>
 
 @Html.Partial("~/Views/Shared/_MediaList.cshtml")
 
