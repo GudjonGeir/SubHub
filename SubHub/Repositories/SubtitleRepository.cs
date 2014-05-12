@@ -68,7 +68,11 @@ namespace SubHub.Repositories
             var user = (from u in m_db.Users
                         where u.Id == userId
                         select u).SingleOrDefault();
-            sub.Users.Add(user);
+            if (!sub.Users.Contains(user))
+            {
+                sub.Users.Add(user);
+            }
+            
             m_db.SaveChanges();
         }
 
