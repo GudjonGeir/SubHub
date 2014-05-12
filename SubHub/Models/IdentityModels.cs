@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SubHub.DAL;
 using SubHub.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,20 +17,14 @@ namespace SubHub.Models
         public virtual ICollection<Comment> Comments { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("SubHubContext")
-        {
-        }
-    }
+
 
     public class IdentityManager
     {
         public bool RoleExists(string name)
         {
             var rm = new RoleManager<IdentityRole>(
-                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                new RoleStore<IdentityRole>(new SubHubContext()));
             return rm.RoleExists(name);
         }
 
@@ -37,7 +32,7 @@ namespace SubHub.Models
         public bool CreateRole(string name)
         {
             var rm = new RoleManager<IdentityRole>(
-                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                new RoleStore<IdentityRole>(new SubHubContext()));
             var idResult = rm.Create(new IdentityRole(name));
             return idResult.Succeeded;
         }
@@ -45,28 +40,28 @@ namespace SubHub.Models
         public bool UserExists(string name)
         {
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SubHubContext()));
             return um.FindByName(name) != null;
         }
 
         public ApplicationUser GetUser(string name)
         {
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SubHubContext()));
             return um.FindByName(name);
         }
 
         public ApplicationUser GetUserById(string id)
         {
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SubHubContext()));
             return um.FindById(id);
         }
 
         public bool CreateUser(ApplicationUser user, string password)
         {
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SubHubContext()));
             var idResult = um.Create(user, password);
             return idResult.Succeeded;
         }
@@ -74,7 +69,7 @@ namespace SubHub.Models
         public bool AddUserToRole(string userId, string roleName)
         {
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SubHubContext()));
             var idResult = um.AddToRole(userId, roleName);
             return idResult.Succeeded;
         }

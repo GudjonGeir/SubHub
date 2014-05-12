@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SubHub.DAL
 {
-    public class SubHubContext : DbContext
+    public class SubHubContext : IdentityDbContext<ApplicationUser>
     {
         public SubHubContext()
             : base("SubHubContext")
