@@ -179,6 +179,7 @@
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\MediaGenre.cs" />
     <Compile Include="Models\MediaViewModel.cs" />
+    <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Models\SubtitleLanguage.cs" />
     <Compile Include="Models\MediaType.cs" />
     <Compile Include="Models\SubtitleViewModel.cs" />
@@ -263,6 +264,8 @@
     <Content Include="Views\Request\Requests.cshtml" />
     <Content Include="Views\Browse\MoviesByGenre.cshtml" />
     <Content Include="Views\Browse\TvShowsByGenre.cshtml" />
+    <Content Include="Views\Subtitle\NoSubtitleError.cshtml" />
+    <Content Include="Views\Request\NewRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

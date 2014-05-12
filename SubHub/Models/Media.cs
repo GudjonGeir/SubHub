@@ -21,6 +21,7 @@ namespace SubHub.Models
         public Media()
         {
             Subtitles = new List<Subtitle>();
+            
         }
     }
 }

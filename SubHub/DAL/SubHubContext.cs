@@ -27,7 +27,7 @@ namespace SubHub.DAL
         public DbSet<MediaType> MediaTypes { get; set; }
         public DbSet<SubtitleLanguage> MediaLanguages { get; set; }
         public DbSet<MediaGenre> MediaGenres { get; set; }
-        public System.Data.Entity.DbSet<SubHub.Models.ApplicationUser> AspNetUsers { get; set; }
+        //public System.Data.Entity.DbSet<SubHub.Models.ApplicationUser> AspNetUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
