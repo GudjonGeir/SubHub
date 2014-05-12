@@ -61,6 +61,11 @@ namespace SubHub.Tests.Mocks
             }
         }
 
+        public void AddRequest(Request m)
+        {
+            m_requests.Add(m);
+        }
+
 
         public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
         {
