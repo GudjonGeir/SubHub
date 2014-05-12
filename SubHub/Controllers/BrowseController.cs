@@ -76,7 +76,7 @@ namespace SubHub.Controllers
             var result = from n in tvShows
                          where n.GenreId == genreId
                          select n;
-            return View();
+            return View(result);
         }
 
         public ActionResult Search(string query)

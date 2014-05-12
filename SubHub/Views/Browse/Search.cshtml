@@ -6,23 +6,15 @@
 
 <h2>Search</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@Html.Partial("~/Views/Shared/_MediaList.cshtml")
+
+@*<table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Genre.Genre)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.Type.Type)
-        </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.DateAired)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.PosterUrl)
-        </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -34,27 +26,19 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Genre.Genre)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Type.Type)
-        </td>*@
+
         <td>
             @Html.DisplayFor(modelItem => item.DateAired.Year)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PosterUrl)
-        </td>*@
+
         <td>
             @Html.ActionLink(item.Name, "Media", "Subtitle", new { id = item.Id }, null)
         </td>
         <td>
             <a href="@item.ImdbUrl" target="_blank">Imdb Link</a>
-            @*@Html.DisplayFor(modelItem => item.ImdbUrl)*@
         </td>
 
     </tr>
 }
 
-</table>
+</table>*@

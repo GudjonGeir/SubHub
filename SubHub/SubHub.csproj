@@ -263,6 +263,7 @@
     <Content Include="Views\Request\Requests.cshtml" />
     <Content Include="Views\Browse\MoviesByGenre.cshtml" />
     <Content Include="Views\Browse\TvShowsByGenre.cshtml" />
+    <Content Include="Views\Shared\_MediaList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
