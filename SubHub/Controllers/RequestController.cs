@@ -81,7 +81,7 @@ namespace SubHub.Controllers
 
         }
 
-        [Authorize]
+        
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
@@ -96,7 +96,7 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.Upvote(id.Value);
-                    return View();
+                    return RedirectToAction("Requests");
                 }
             }
             return View("Error");

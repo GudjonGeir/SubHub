@@ -12,9 +12,10 @@
 }
 <table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.RequestRating.RequestId)
-        </th>*@
+        
+        <th>
+            Stigagjöf
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.User.UserName)
         </th>*@
@@ -29,15 +30,51 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.RequestRating.RequestId)
-        </td>*@
+@{var requests = (from m in Model select m).ToList();
+  foreach (var r in requests)
+	{
+		 var rating = r.RequestRating;
+      <tr>
+        <td>
+            <a href="@Url.Action("Upvote", new { id = r.Id })"><span class="glyphicon glyphicon-arrow-up"></span></a>
+            @Html.DisplayFor( modelItem => rating.count)
+        </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.User.UserName)
         </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => r.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => r.DateSubmitted)
+        </td>
+        @if(r.Completed)
+        {
+            <td>
+                Beiðni uppfyllt
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = r.Id }, null)
+                <span class="glyphicon glyphicon-check"></span>
+            </td>
+        }
+        
+    </tr>
+	}
+}
+@*@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{var requestRating = item.RequestRating;
+              var ratingCount = requestRating.count;}
+            @Html.DisplayFor(modelItem => item.RequestRating.count)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -53,11 +90,11 @@
         else
         {
             <td>
-            @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = item.Id }, null)
-        </td>
+                @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = item.Id }, null)
+            </td>
         }
         
-    </tr>
-}
+    </tr>*@
+
 
 </table>
