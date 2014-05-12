@@ -14,7 +14,7 @@ namespace SubHub.Controllers
 {
     public class BrowseController : Controller
     {
-         private readonly ISubtitleRepository m_repo;
+        private readonly ISubtitleRepository m_repo;
 
         public BrowseController(ISubtitleRepository repo)
         {
@@ -50,6 +50,7 @@ namespace SubHub.Controllers
             var result = from n in movies
                          where n.GenreId == genreId
                          select n;
+            ViewBag.Title = genre;
             return View(result);
         }
         public ActionResult TvShows()
@@ -76,7 +77,8 @@ namespace SubHub.Controllers
             var result = from n in tvShows
                          where n.GenreId == genreId
                          select n;
-            return View();
+            ViewBag.Title = genre;
+            return View(result);
         }
 
         public ActionResult Search(string query)
@@ -91,9 +93,10 @@ namespace SubHub.Controllers
                 {
                     return View("Error"); // TODO: Specific error page, no results found
                 }
+                ViewBag.Title = query;
                 return View(media);
             }
-            return View();
+            return View("Index");
         }
 
         private SubHubContext db = new SubHubContext();

@@ -79,7 +79,7 @@ namespace SubHub.Controllers
             return View();
         }
 
-        [Authorize]
+        
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
@@ -94,7 +94,7 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.Upvote(id.Value);
-                    return View();
+                    return RedirectToAction("Requests");
                 }
             }
             return View("Error");
@@ -117,7 +117,8 @@ namespace SubHub.Controllers
                 else
                 {
                     m_repo.SetCompleted(id.Value);
-                    return View();
+                    var model = m_repo.GetRequests();
+                    return View("Requests", model);
                 }
             }
             return View("Error");

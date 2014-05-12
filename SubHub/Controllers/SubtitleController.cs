@@ -90,7 +90,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        [Authorize]
+        //[Authorize]
         public ActionResult NewMedia()
         {
             var model = new MediaViewModel();

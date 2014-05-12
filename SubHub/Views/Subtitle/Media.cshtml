@@ -4,76 +4,63 @@
     ViewBag.Title = "Media";
 }
 
-<h2>Media</h2>
+<h2>@Model.Name</h2>
 
-<div>
-    <h4>Media</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Genre.Genre)
-        </dt>
+<hr />
+<div class="media-master">
+    <div class="media-poster-div">
+        <img src="@Model.PosterUrl" alt="@Model.Name" class="media-poster" />
+    </div>
+    <div class="media-info-text">
 
-        <dd>
-            @Html.DisplayFor(model => model.Genre.Genre)
-        </dd>
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre.Genre)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type.Type)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Genre.Genre)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type.Type)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Type.Type)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateAired)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Type.Type)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateAired)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateAired)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PosterUrl)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateAired.Year)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PosterUrl)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImdbUrl)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                <a href="@Model.ImdbUrl" target="_blank">Imdb Link</a>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SubtitleLanguages)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImdbUrl)
-        </dt>
+            <dd>
+                @using (Html.BeginForm("ViewSubtitle", "Subtitle", FormMethod.Get))
+                {
+                    @Html.Hidden("mediaId", Model.Id)
+                    @Html.DropDownList("languageId", Model.SubtitleLanguages)
+                    <input type="submit" value="Sækja texta" class="tfbutton get-text-button"/>
+                }
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImdbUrl)
-        </dd>
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SubtitleLanguages)
-        </dt>
-
-        <dd>
-            @using (Html.BeginForm("ViewSubtitle", "Subtitle", FormMethod.Get))
-            {
-                @Html.Hidden("mediaId", Model.Id)
-                @Html.DropDownList("languageId", Model.SubtitleLanguages)
-                <input type="submit" value="Sækja texta" />
-            }
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

@@ -1,22 +1,16 @@
 ﻿@model IEnumerable<SubHub.Models.Media>
 
-@{
+@*@{
     ViewBag.Title = "TvShowsByGenre";
-}
+}*@
 
-<h2>TvShowsByGenre</h2>
+<h2>@ViewBag.Title Tv Shows</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@Html.Partial("~/Views/Shared/_MediaList.cshtml")
+
+@*<table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Genre.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type.Type)
-        </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.DateAired)
         </th>
@@ -34,12 +28,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Genre.Genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type.Type)
-        </td>*@
+
         <td>
             @Html.DisplayFor(modelItem => item.DateAired)
         </td>
@@ -56,4 +45,4 @@
     </tr>
 }
 
-</table>
+</table>*@
