@@ -36,9 +36,21 @@ namespace SubHub.Controllers
             return View(result);
         }
 
-        public ActionResult Movies(string genre)
+        public ActionResult MoviesByGenre(string genre)
         {
-            return View();
+            int movieId = (from m in m_repo.GetMediaTypes()
+                           where m.Type == "Movie"
+                           select m.Id).SingleOrDefault();
+            var movies = from m in m_repo.GetMedias()
+                         where m.TypeId == movieId
+                         select m;
+            var genreId = (from g in m_repo.GetMediaGenres()
+                           where g.Genre == genre
+                           select g.Id).SingleOrDefault();
+            var result = from n in movies
+                         where n.GenreId == genreId
+                         select n;
+            return View(result);
         }
         public ActionResult TvShows()
         {
@@ -50,8 +62,20 @@ namespace SubHub.Controllers
                          select m;
             return View(result);
         }
-        public ActionResult TvShows(string genre)
+        public ActionResult TvShowsByGenre(string genre)
         {
+            int tvShowId = (from m in m_repo.GetMediaTypes()
+                            where m.Type == "TvShow"
+                            select m.Id).SingleOrDefault();
+            var tvShows = from m in m_repo.GetMedias()
+                         where m.TypeId == tvShowId
+                         select m;
+            var genreId = (from g in m_repo.GetMediaGenres()
+                           where g.Genre == genre
+                           select g.Id).SingleOrDefault();
+            var result = from n in tvShows
+                         where n.GenreId == genreId
+                         select n;
             return View();
         }
 
@@ -75,117 +99,7 @@ namespace SubHub.Controllers
         private SubHubContext db = new SubHubContext();
 
 
-        // GET: /Browse/
-        public ActionResult Index()
-        {
-            return View(db.Subtitles);
-        }
-
-        // GET: /Browse/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
-            {
-                return HttpNotFound();
-            }
-            return View(subtitle);
-        }
-
-        // GET: /Browse/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: /Browse/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Language,Type,Genre,Name,ImdbUrl,DateSubmitted,DateAired,PosterUrl")] Subtitle subtitle)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Subtitles.Add(subtitle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(subtitle);
-        }
-
-        // GET: /Browse/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
-            {
-                return HttpNotFound();
-            }
-            return View(subtitle);
-        }
-
-        // POST: /Browse/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Language,Type,Genre,Name,ImdbUrl,DateSubmitted,DateAired,PosterUrl")] Subtitle subtitle)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(subtitle).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(subtitle);
-        }
-
-        // GET: /Browse/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Subtitle subtitle = db.Subtitles.Find(id);
-            if (subtitle == null)
-            {
-                return HttpNotFound();
-            }
-            return View(subtitle);
-        }
-
-        // POST: /Browse/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Subtitle subtitle = db.Subtitles.Find(id);
-            db.Subtitles.Remove(subtitle);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+  
 
         // Til að gera prew og next page
         /*

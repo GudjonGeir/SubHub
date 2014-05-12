@@ -47,7 +47,7 @@ namespace SubHub.DAL
             context.SaveChanges();
 
             MediaGenre biography = new MediaGenre { Genre = "Biography" };
-            MediaGenre romance = new MediaGenre { Genre = "Romance "};
+            MediaGenre romance = new MediaGenre { Genre = "Romance " };
             MediaGenre scifi = new MediaGenre { Genre = "Sci-Fi" };
             var genres = new List<MediaGenre>() { biography, romance, scifi };
             genres.ForEach(g => context.MediaGenres.Add(g));
@@ -55,13 +55,13 @@ namespace SubHub.DAL
 
             Media media1 = new Media { Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", GenreId = 1 };
             Media media2 = new Media { Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", GenreId = 2 };
-            Media media3 = new Media { Name = "The Matrix", DateAired = new DateTime(1999, 3, 21), ImdbUrl = "http://www.imdb.com/title/tt0133093/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX640_SY720_.jpg" , GenreId = 3};
+            Media media3 = new Media { Name = "The Matrix", DateAired = new DateTime(1999, 3, 21), ImdbUrl = "http://www.imdb.com/title/tt0133093/?ref_=nv_sr_1", TypeId = 1, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX640_SY720_.jpg", GenreId = 3 };
             var medias = new List<Media>() { media1, media2, media3 };
             medias.ForEach(m => context.Medias.Add(m));
             context.SaveChanges();
 
             Subtitle subtitle1 = new Subtitle { DateSubmitted = DateTime.Now.AddDays(-3), LanguageId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user1") }, MediaId = 1 };
-            Subtitle subtitle2 = new Subtitle { DateSubmitted = DateTime.Now.AddDays(-10),LanguageId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user1"), userManager.FindByName("user2") }, MediaId = 2 };
+            Subtitle subtitle2 = new Subtitle { DateSubmitted = DateTime.Now.AddDays(-10), LanguageId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user1"), userManager.FindByName("user2") }, MediaId = 2 };
             Subtitle subtitle3 = new Subtitle { DateSubmitted = DateTime.Now.AddDays(-13), LanguageId = 1, Users = new List<ApplicationUser> { userManager.FindByName("user2"), userManager.FindByName("user3") }, MediaId = 3 };
             var subtitles = new List<Subtitle>() { subtitle1, subtitle2, subtitle3 };
             subtitles.ForEach(s => context.Subtitles.Add(s));

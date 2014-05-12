@@ -78,5 +78,6 @@ namespace SubHub.Models
             var idResult = um.AddToRole(userId, roleName);
             return idResult.Succeeded;
         }
+
     }
 }

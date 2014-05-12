@@ -26,16 +26,16 @@ namespace SubHub.Controllers
         }
 
 
-        public ActionResult ViewSubtitle(int? id)
+        public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
-            if (id.HasValue)
+            if (mediaId.HasValue && languageId.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
-                              where s.Id == id.Value
-                              select s).SingleOrDefault();
+                             where s.LanguageId == languageId && s.MediaId == mediaId
+                             select s).SingleOrDefault();
                 if (model == null)
                 {
-                    return View("Error");
+                    return View("Error"); // TODO: Offer to make new subtitle
                 }
                 else
                 {
@@ -63,14 +63,30 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                var model = (from m in m_repo.GetMedias()
+                var media = (from m in m_repo.GetMedias()
                              where m.Id == id.Value
                              select m).SingleOrDefault();
+                var languages = m_repo.GetSubtitleLanguages();
+                MediaViewModel model = new MediaViewModel { 
+                    DateAired = media.DateAired, 
+                    Id = media.Id,
+                    Genre = media.Genre, 
+                    ImdbUrl = media.ImdbUrl, 
+                    Name = media.Name, 
+                    PosterUrl = media.PosterUrl, 
+                    Type = media.Type,
+                    SelectedLanguage = "languageId",
+                    SubtitleLanguages = new List<SelectListItem>()};
+                foreach (var l in languages)
+                {
+                    model.SubtitleLanguages.Add(new SelectListItem { Value = l.Id.ToString(), Text = l.Language });
+                }
                 return View(model);
             }
             return View("Error");
         }
 
+        [Authorize]
         public ActionResult NewMedia()
         {
             var model = new MediaViewModel();
@@ -90,12 +106,13 @@ namespace SubHub.Controllers
             }
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult NewMedia(MediaViewModel model)
         {
             if (ModelState.IsValid)
             {
+                
                 var newMedia = new Media()
                 {
                     Name = model.Name,
@@ -104,6 +121,7 @@ namespace SubHub.Controllers
                     ImdbUrl = model.ImdbUrl,
                     PosterUrl = model.PosterUrl,
                     TypeId = model.TypeId
+               
                 };
                 m_repo.AddMedia(newMedia);
                 return RedirectToRoute(
@@ -113,6 +131,7 @@ namespace SubHub.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult NewSubtitle(int? id)
         {
             if (id.HasValue)
@@ -131,6 +150,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult NewSubtitle(SubtitleViewModel model)
@@ -152,10 +172,14 @@ namespace SubHub.Controllers
 
             if (ModelState.IsValid)
             {
+                string userId = User.Identity.GetUserId();
+                IdentityManager im = new IdentityManager();
+                List<ApplicationUser> user = new List<ApplicationUser> { im.GetUserById(userId) };
                 var subtitle = new Subtitle
                 {
                     LanguageId = model.LanguageId, 
-                    MediaId = model.MediaId
+                    MediaId = model.MediaId,
+                    Users = user
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
@@ -196,8 +220,6 @@ namespace SubHub.Controllers
                         }
 
                         reader.ReadLine();
-
-
                     }
                 }
 
@@ -227,6 +249,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult EditSubtitle(int? id, Subtitle s)
         {
@@ -236,14 +259,25 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        //TODO:Admin role can only delete
         [Authorize]
         public ActionResult DeleteSubtitle(int? id)
         {
+            if(id.HasValue)
+            {
+                var theSubtitle = (from s in m_repo.GetSubtitles()
+                             where s.Id == id
+                             select s).SingleOrDefault();
+                if (theSubtitle != null)
+                {
+                    m_repo.RemoveComment(id);
+                    //TODO: return some json string
+                }
+            }
+            return View("Error");
 
-
-            return View();
         }
-
+            
         [HttpPost]
         [Authorize]
         public ActionResult Upvote(int? id)
@@ -277,7 +311,7 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult Downvote(int? id)
+        public ActionResult DownVote(int? id)
         {
             if (id.HasValue)
             {
@@ -310,6 +344,8 @@ namespace SubHub.Controllers
         [HttpPost]
         public ActionResult Flag(int? id)
         {
+
+
             return View();
         }
 
@@ -356,12 +392,43 @@ namespace SubHub.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult DeleteComment(int? id)
+        public ActionResult RemoveComment(int? id)
         {
-            return View();
+            if(id != null)
+            {
+                var theComment = (from c in m_repo.GetAllComments()
+                                  where c.Id == id
+                                  select c).SingleOrDefault();
+                IdentityManager manager = new IdentityManager();
+                string userId = User.Identity.GetUserId();
+                if(theComment != null && userId == theComment.UserId)
+                {
+                    m_repo.RemoveComment(id);
+                    //TODO: return some json string
+                }
+            }
+            return View("Error");
         }
 
+        [HttpPost]
+        public ActionResult RemoveCommentTest(int? id, ApplicationUser theUser)
+        {
+            if (id != null)
+            {
+                var theComment = (from c in m_repo.GetAllComments()
+                                  where c.Id == id
+                                  select c).SingleOrDefault();
+                string userId = theUser.Id;
+                if (theComment != null && userId == theComment.UserId)
+                {
+                    m_repo.RemoveComment(id);
+                    //TODO: return some json string
+                }
+            }
+            return View("Error");
+        }
 
 	}
 }

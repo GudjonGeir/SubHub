@@ -258,10 +258,14 @@
     <Content Include="Views\Subtitle\Media.cshtml" />
     <Content Include="Views\Subtitle\NewSubtitle.cshtml" />
     <Content Include="Views\Browse\Search.cshtml" />
+    <Content Include="Views\Browse\Movies.cshtml" />
+    <Content Include="Views\Browse\TvShows.cshtml" />
+    <Content Include="Views\Request\Requests.cshtml" />
+    <Content Include="Views\Browse\MoviesByGenre.cshtml" />
+    <Content Include="Views\Browse\TvShowsByGenre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Request\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
