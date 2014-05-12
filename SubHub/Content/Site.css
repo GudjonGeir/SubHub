@@ -388,3 +388,8 @@ body
     display: inline;
     margin-left: 2em;
 }
+
+#h1-linkar-index
+{
+    text-decoration: none;
+}
