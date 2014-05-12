@@ -1,0 +1,13 @@
+﻿@model SubHub.Models.Media
+
+@{
+    ViewBag.Title = "Enginn texti";
+}
+
+<h2>Enginn texti</h2>
+<p>Ekki fannst texti á þessu tungumáli fyrir myndina @Model.Name, má bjóða þér að senda inn @Html.ActionLink("beiðni", "NewRequest", "Request")?</p>
+
+@using (Html.BeginForm("NewSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
+{
+    <input type="submit" value="Senda inn textaskrá" />
+}

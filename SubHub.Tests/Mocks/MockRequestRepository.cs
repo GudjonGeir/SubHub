@@ -60,5 +60,11 @@ namespace SubHub.Tests.Mocks
                 s.RequestRating.count += 1;
             }
         }
+
+
+        public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

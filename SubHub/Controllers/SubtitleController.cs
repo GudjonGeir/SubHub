@@ -36,7 +36,10 @@ namespace SubHub.Controllers
                              select s).SingleOrDefault();
                 if (model == null)
                 {
-                    return View("Error"); // TODO: Offer to make new subtitle
+                    var media = (from m in m_repo.GetMedias()
+                                 where m.Id == mediaId.Value
+                                 select m).SingleOrDefault();
+                    return View("NoSubtitleError", media); // TODO: Offer to make new subtitle
                 }
                 else
                 {

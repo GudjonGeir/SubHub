@@ -6,9 +6,10 @@
 
 <h2>Requests</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("NewRequest", "Request", FormMethod.Get))
+{ 
+    <input type="submit" value="Senda inn beiðni" />
+}
 <table class="table">
     <tr>
         @*<th>

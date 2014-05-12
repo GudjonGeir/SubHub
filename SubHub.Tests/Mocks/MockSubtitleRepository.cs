@@ -87,5 +87,11 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+
+        public IQueryable<SubtitleLine> GetSubtitleLines()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
