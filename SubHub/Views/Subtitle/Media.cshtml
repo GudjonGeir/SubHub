@@ -12,9 +12,8 @@
         <img src="@Model.PosterUrl" alt="@Model.Name" class="media-poster" />
     </div>
     <div class="media-info-text">
-        @*<h4>@Model.Name</h4>*@
-        @*<hr />*@
-        <dl>@*class="dl-horizontal"*@
+
+        <dl>
             <dt>
                 @Html.DisplayNameFor(model => model.Genre.Genre)
             </dt>
@@ -56,14 +55,12 @@
                 {
                     @Html.Hidden("mediaId", Model.Id)
                     @Html.DropDownList("languageId", Model.SubtitleLanguages)
-                    <input type="submit" value="Sækja texta" />
+                    <input type="submit" value="Sækja texta" class="tfbutton get-text-button"/>
                 }
             </dd>
 
         </dl>
+
     </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

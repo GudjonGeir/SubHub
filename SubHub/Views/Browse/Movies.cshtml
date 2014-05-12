@@ -6,9 +6,6 @@
 
 <h2>Movies</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         @*<th>
@@ -42,14 +39,14 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.Type.Type)
         </td>*@
-        <td>
+        <td class="list-text">
             <img src="@item.PosterUrl" alt="@item.Name" class="list-poster"/>
         </td>
 
         @*<td>
             @Html.DisplayFor(modelItem => item.PosterUrl)
         </td>*@
-        <td>
+        <td class="list-text">
             @Html.ActionLink(item.Name, "Media", "Subtitle", new { id = item.Id }, null)
             (
             @Html.DisplayFor(modelItem => item.DateAired.Year)
