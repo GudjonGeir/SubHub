@@ -14,7 +14,7 @@ namespace SubHub.Controllers
 {
     public class BrowseController : Controller
     {
-         private readonly ISubtitleRepository m_repo;
+        private readonly ISubtitleRepository m_repo;
 
         public BrowseController(ISubtitleRepository repo)
         {

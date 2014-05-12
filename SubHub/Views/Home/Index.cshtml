@@ -1,4 +1,6 @@
-﻿@{
+﻿@*@model IEnumerable<SubHub.Models.Media>*@
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,7 +13,13 @@
             <h2>Vinsælustu textarnir</h2>
             <div class="front-5-group">
                 <h3>Bíómyndir</h3>
-                
+                @*@foreach (var item in Model)
+                {
+                    <a href="#" class="thumbnail front-images">
+                        <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
+                        <h5>sækja texta</h5>
+                    </a>
+                }*@
                 <a href="#" class="thumbnail front-images">
                     <img src="http://media.sfx.co.uk/files/2012/09/The-Hobbit-An-Unexpected-Journey-poster-230912.jpg" alt="...">
                     <h5>sækja texta</h5>
