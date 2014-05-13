@@ -65,10 +65,10 @@ namespace SubHub.Tests.Mocks
 
         }
 
-        public void AddComment(Comment comment, int? id)
+        public void AddComment(Comment comment)
         {
             var model = (from m in m_subtitles
-                         where m.Id == id
+                         where m.Id == comment.SubtitleId
                          select m).SingleOrDefault();
             model.Comments.Add(comment);
         }

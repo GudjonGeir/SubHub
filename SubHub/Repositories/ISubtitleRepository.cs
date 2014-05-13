@@ -17,7 +17,7 @@ namespace SubHub.Repositories
         IQueryable<SubtitleLine> GetSubtitleLines();
         void UpVote(int? id, ApplicationUser user);
         void DownVote(int? id, ApplicationUser user);
-        void AddComment(Comment comment, int? id);
+        void AddComment(Comment comment);
         void RemoveComment(int? id);
         void AddMedia(Media m);
         IQueryable<Comment> GetAllComments();

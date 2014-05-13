@@ -3,6 +3,19 @@
 @{
     ViewBag.Title = "ViewSubtitle";
 }
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/ViewSubtitle.js"></script>
+
+<script type="text/html" id="comment-template">
+    <li class="list-group-item">
+        <p>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="text-primary" data-content="user"></span>
+            <span data-content="theComment"></span>
+        </p>
+        <span class="text-muted" data-content="theDateSubmitted"></span>
+    </li>
+</script>
 
 <h2>ViewSubtitle</h2>
 
@@ -27,6 +40,9 @@
         <dd>
             @Html.DisplayFor(model => model.DateSubmitted)
         </dd>
+        <dd>
+            @Html.Hidden("subtitleId", Model.Id)
+        </dd>
 
         @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
         {
@@ -34,9 +50,11 @@
         }
 
         <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
-        <button onclick="" class="btn btn-primary ">Send</button>
-
+        <button onclick="AddComment()" class="btn btn-primary ">Send</button>
     </dl>
+    <div class="comments">
+
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
