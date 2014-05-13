@@ -28,7 +28,7 @@ namespace SubHub.Controllers
         public ActionResult Movies()
         {
             int movieId = (from m in m_repo.GetMediaTypes()
-                           where m.Type == "Movie"
+                           where m.Type == "Kvikmyndir"
                            select m.Id).SingleOrDefault();
             var result = from m in m_repo.GetMedias()
                          where m.TypeId == movieId
@@ -39,7 +39,7 @@ namespace SubHub.Controllers
         public ActionResult MoviesByGenre(string genre)
         {
             int movieId = (from m in m_repo.GetMediaTypes()
-                           where m.Type == "Movie"
+                           where m.Type == "Kvikmyndir"
                            select m.Id).SingleOrDefault();
             var movies = from m in m_repo.GetMedias()
                          where m.TypeId == movieId
@@ -56,7 +56,7 @@ namespace SubHub.Controllers
         public ActionResult TvShows()
         {
             int tvShowId = (from m in m_repo.GetMediaTypes()
-                           where m.Type == "TvShow"
+                           where m.Type == "Þættir"
                            select m.Id).SingleOrDefault();
             var result = from m in m_repo.GetMedias()
                          where m.TypeId == tvShowId
@@ -66,7 +66,7 @@ namespace SubHub.Controllers
         public ActionResult TvShowsByGenre(string genre)
         {
             int tvShowId = (from m in m_repo.GetMediaTypes()
-                            where m.Type == "TvShow"
+                            where m.Type == "Þættir"
                             select m.Id).SingleOrDefault();
             var tvShows = from m in m_repo.GetMedias()
                          where m.TypeId == tvShowId

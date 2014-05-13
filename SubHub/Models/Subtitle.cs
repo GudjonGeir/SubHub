@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,8 @@ namespace SubHub.Models
         public          DateTime                     DateSubmitted   { get; set; }
         public          int                          LanguageId      { get; set; }
         public          int                          MediaId         { get; set; }
-        
+
+        [Display(Name = "Tungumál")]
         public virtual  SubtitleLanguage             Language        { get; set; }
         public virtual  Media                        Media           { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }   // Users who have edited the file

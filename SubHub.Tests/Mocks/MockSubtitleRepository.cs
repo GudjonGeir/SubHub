@@ -107,5 +107,11 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+
+        public void AddUserToSubtitle(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

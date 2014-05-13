@@ -23,14 +23,14 @@ namespace SubHub.Controllers
         public ActionResult Index()
         {
             int movieId = (from m in m_repo.GetMediaTypes()
-                           where m.Type == "Movie"
+                           where m.Type == "Kvikmyndir"
                            select m.Id).SingleOrDefault();
             var result = (from m in m_repo.GetMedias()
                          where m.TypeId == movieId
                          select m).Take(5).ToList();
 
             int tvShowId = (from m in m_repo.GetMediaTypes()
-                            where m.Type == "TvShow"
+                            where m.Type == "Þættir"
                             select m.Id).SingleOrDefault();
             var result2 = (from m in m_repo.GetMedias()
                          where m.TypeId == tvShowId
