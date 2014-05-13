@@ -492,4 +492,10 @@ body
 {
     position: relative;
     width: 50%; left:50%;
+
+}
+
+#about-srt
+{
+    color: gray;
 }
