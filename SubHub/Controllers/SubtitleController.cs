@@ -364,6 +364,7 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Downvote(int? id)
         {
             if (id.HasValue)
