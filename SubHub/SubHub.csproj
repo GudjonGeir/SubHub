@@ -209,12 +209,16 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\dots.js" />
+=======
+    <Content Include="Scripts\ViewSubtitle.js" />
+>>>>>>> c2c32b25caa581c6cd861aecbddc751985090765
     <Content Include="Scripts\HtmlPage1.html" />
-    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.loadTemplate-1.4.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
