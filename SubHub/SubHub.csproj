@@ -173,6 +173,7 @@
     <Compile Include="Controllers\SubtitleController.cs" />
     <Compile Include="DAL\SubHubContext.cs" />
     <Compile Include="DAL\SubHubDBInitializer.cs" />
+    <Compile Include="DAL\SubtitleId.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

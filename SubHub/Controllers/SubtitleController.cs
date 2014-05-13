@@ -33,7 +33,7 @@ namespace SubHub.Controllers
             {
                 var model = (from s in m_repo.GetSubtitles()
                              where s.LanguageId == languageId && s.MediaId == mediaId
-                             select s).SingleOrDefault();
+                             select s).ToList();
                 if (model == null)
                 {
                     var media = (from m in m_repo.GetMedias()
@@ -45,6 +45,7 @@ namespace SubHub.Controllers
                 {
                     return View(model);
                 }
+                
             }
             return View("Error");
         }
