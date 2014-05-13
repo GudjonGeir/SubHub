@@ -1,22 +1,15 @@
 ﻿
 
 $(document).on("click", ".like-request", function (e) {
-    
-
-    var currElem = $(this);
+ var currElem = $(this);
     $.post($(this).attr('href'), function (data) {
         
-        if (data != "")
-        {
+        if (data != "") {
             currElem.closest("td").children(".rating-count").html(data);
         }
-        else
-        {
+        else {
             currElem.closest("td").children(".upvote-error-message").show();
-        }
-        
-        
-        
+        }      
     });
     return false;
 });
