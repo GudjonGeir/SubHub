@@ -15,6 +15,8 @@ namespace SubHub.Models
         public virtual ICollection<RequestRating> RequestRatings { get; set; }
         public virtual ICollection<Request> Requests { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<SubtitleDownvote> SubtitleDownvotes { get; set; }
+        public virtual ICollection<SubtitleUpvote> SubtitleUpvotes { get; set; }
     }
 
 

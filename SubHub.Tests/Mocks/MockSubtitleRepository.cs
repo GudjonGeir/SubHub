@@ -48,20 +48,20 @@ namespace SubHub.Tests.Mocks
 
         public void UpVote(int? id, ApplicationUser user)
         {
-            var model = (from m in m_subtitles
-                         where m.Id == id
-                         select m).SingleOrDefault();
-            model.SubtitleRating.Count += 1;
-            model.SubtitleRating.Users.Add(user);
+            //var model = (from m in m_subtitles
+            //             where m.Id == id
+            //             select m).SingleOrDefault();
+            //model.SubtitleRating.Count += 1;
+            //model.SubtitleRating.Users.Add(user);
         }
 
         public void DownVote(int? id, ApplicationUser user)
         {
-            var model = (from m in m_subtitles
-                         where m.Id == id
-                         select m).SingleOrDefault();
-            model.SubtitleRating.Count -= 1;
-            model.SubtitleRating.Users.Add(user);
+            //var model = (from m in m_subtitles
+            //             where m.Id == id
+            //             select m).SingleOrDefault();
+            //model.SubtitleRating.Count -= 1;
+            //model.SubtitleRating.Users.Add(user);
 
         }
 
@@ -123,6 +123,62 @@ namespace SubHub.Tests.Mocks
 
 
         public IQueryable<SubtitleLine> GetSubtitleLines()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int Upvote(int? id, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Downvote(int? id, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRating(int id, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<SubtitleRating> GetSubtitleRatings()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<SubtitleUpvote> GetSubtitleUpvotes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<SubtitleDownvote> GetSubtitleDownvotes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<ApplicationUser> GetUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserToUpvotes(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserToDownvotes(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserFromUpvotes(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserFromDownvotes(int id, string userId)
         {
             throw new NotImplementedException();
         }

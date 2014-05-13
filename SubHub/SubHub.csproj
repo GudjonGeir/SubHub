@@ -180,8 +180,10 @@
     <Compile Include="Models\MediaGenre.cs" />
     <Compile Include="Models\MediaViewModel.cs" />
     <Compile Include="Models\RequestViewModel.cs" />
+    <Compile Include="Models\SubtitleDownvote.cs" />
     <Compile Include="Models\SubtitleLanguage.cs" />
     <Compile Include="Models\MediaType.cs" />
+    <Compile Include="Models\SubtitleUpvote.cs" />
     <Compile Include="Models\SubtitleViewModel.cs" />
     <Compile Include="Repositories\IRequestRepository.cs" />
     <Compile Include="Repositories\ISubtitleRepository.cs" />
@@ -210,6 +212,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dots.js" />
+    <Content Include="Scripts\SubtitleUpDownVoteScripts.js" />
     <Content Include="Scripts\ViewSubtitle.js" />
     <Content Include="Scripts\HtmlPage1.html" />
     <Content Include="Scripts\jquery-1.10.2.js" />

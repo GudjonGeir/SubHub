@@ -314,28 +314,50 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                var model = (from s in m_repo.GetSubtitles()
-                             where s.Id == id
-                             select s).SingleOrDefault();
-                if (model == null)
+                var subtitleRating = (from s in m_repo.GetSubtitles()
+                                      where s.Id == id.Value
+                                      select s).SingleOrDefault();
+                var subtitleUpvote = (from s in m_repo.GetSubtitleUpvotes()
+                                      where s.SubtitleId == id.Value
+                                      select s).SingleOrDefault();
+                var subtitleDownvote = (from s in m_repo.GetSubtitleDownvotes()
+                                        where s.SubtitleId == id.Value
+                                        select s).SingleOrDefault();
+                string userId = User.Identity.GetUserId();
+                var user = (from u in m_repo.GetUsers()
+                            where u.Id == userId
+                            select u).SingleOrDefault();
+                if (subtitleDownvote == null || subtitleUpvote == null || subtitleRating == null)
                 {
                     return View("Error");
                 }
+
+                int result, upvoteCount, downvoteCount;
+                if (subtitleUpvote.Users.Contains(user))
+                {
+                    upvoteCount = m_repo.Upvote(id.Value, -1);
+                    downvoteCount = subtitleDownvote.Count;
+                    result = upvoteCount = downvoteCount;
+                    m_repo.RemoveUserFromUpvotes(id.Value, userId);
+                }
+                else if (subtitleDownvote.Users.Contains(user))
+                {
+                    upvoteCount = m_repo.Upvote(id.Value, 1);
+                    downvoteCount = m_repo.Downvote(id.Value, -1);
+                    result = upvoteCount - downvoteCount;
+                    m_repo.RemoveUserFromDownvotes(id.Value, userId);
+                    m_repo.AddUserToUpvotes(id.Value, userId);
+                }
                 else
                 {
-                        IdentityManager manager = new IdentityManager();
-                        string userId = User.Identity.GetUserId();
-                        ApplicationUser theUser = manager.GetUserById(userId);
-                        string userName = User.Identity.Name;
-                        //if (model.SubtitleRating.Users.Contains(theUser))
-                        //{
-                        //    // TODO: you have already upvoted
-                        //    return View("Error");
-                        //}
-                        m_repo.UpVote(id, theUser);
-                        //TODO: implement json string
+                    upvoteCount = m_repo.Upvote(id.Value, 1);
+                    downvoteCount = subtitleDownvote.Count;
+                    result = upvoteCount - downvoteCount;
+                    m_repo.AddUserToUpvotes(id.Value, userId);
         
                 }
+                m_repo.UpdateRating(id.Value, result);
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
             return View();
         }

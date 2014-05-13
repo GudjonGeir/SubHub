@@ -82,6 +82,7 @@ namespace SubHub.Controllers
         }
 
         [Authorize]
+        [HttpPost]
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
@@ -121,6 +122,8 @@ namespace SubHub.Controllers
         //{
         //    return View();
         //}
+        [Authorize]
+        [HttpPost]
         public ActionResult Complete(int? id)
         {
             if(id.HasValue)
