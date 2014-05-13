@@ -4,7 +4,7 @@
     ViewBag.Title = "Requests";
 }
 
-<h2>Requests</h2>
+<h2>Beiðni</h2>
 
 @using (Html.BeginForm("NewRequest", "Request", FormMethod.Get))
 { 
@@ -38,6 +38,10 @@
         <td>
             <a href="@Url.Action("Upvote", new { id = r.Id })" class="like-request"><span class="glyphicon glyphicon-arrow-up"></span></a>
             <span class="rating-count">@Html.DisplayFor( modelItem => rating.count)</span>
+            
+            <div hidden class="upvote-error-message">
+                <p> Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</p>
+            </div>
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.User.UserName)

@@ -14,15 +14,15 @@ namespace SubHub.Tests.Controllers
     {
         private List<Media> PopulateMedia()
         {
-            MediaType movies = new MediaType { Type = "Movie" };
-            MediaType tvShows = new MediaType { Type = "TvShow" };
+            MediaType movies = new MediaType { Type = "Kvikmyndir" };
+            MediaType tvShows = new MediaType { Type = "Þættir" };
 
-            MediaGenre biography = new MediaGenre { Genre = "Biography" };
-            MediaGenre romance = new MediaGenre { Genre = "Romance " };
+            MediaGenre avisaga = new MediaGenre { Genre = "Ævisaga" };
+            MediaGenre romantik = new MediaGenre { Genre = "Rómantík" };
             MediaGenre scifi = new MediaGenre { Genre = "Sci-Fi" };
 
-            Media media1 = new Media { Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", Type = movies, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", Genre = biography };
-            Media media2 = new Media { Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", Type = movies, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", Genre = romance };
+            Media media1 = new Media { Name = "Catch me if you can", DateAired = new DateTime(2002, 12, 25), ImdbUrl = "http://www.imdb.com/title/tt0264464/?ref_=nv_sr_1", Type = movies, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX640_SY720_.jpg", Genre = avisaga };
+            Media media2 = new Media { Name = "The Notebook", DateAired = new DateTime(2003, 06, 25), ImdbUrl = "http://www.imdb.com/title/tt0332280/?ref_=nv_sr_1", Type = movies, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTUwMDg3OTA2N15BMl5BanBnXkFtZTcwNzc5OTYwOQ@@._V1_SX640_SY720_.jpg", Genre = romantik };
             Media media3 = new Media { Name = "The Matrix", DateAired = new DateTime(1999, 3, 21), ImdbUrl = "http://www.imdb.com/title/tt0133093/?ref_=nv_sr_1", Type = movies, PosterUrl = "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX640_SY720_.jpg", Genre = scifi };
             var medias = new List<Media>() { media1, media2, media3 };
             return medias;
