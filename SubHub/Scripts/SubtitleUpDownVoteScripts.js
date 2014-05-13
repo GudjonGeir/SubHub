@@ -1,30 +1,18 @@
 ﻿
 
-$(document).on("click", ".upvote-sub", function (e) {
+$(document).on("click", ".vote-sub", function (e) {
     var currElem = $(this);
     $.post($(this).attr('href'), function (data) {
 
-        if (data != "") {
-            currElem.closest("td").children(".rating-count").html(data);
+        if (data === "") {
+            currElem.closest("td").children(".upvote-error-message").show();
         }
         else {
-            currElem.closest("td").children(".upvote-error-message").show();
+            currElem.closest("td").children(".rating-count").html(data);
         }
     });
     return false;
 });
 
-$(document).on("click", ".downvote-sub", function (e) {
-    var currElem = $(this);
-    $.post($(this).attr('href'), function (data) {
 
-        if (data != "") {
-            currElem.closest("td").children(".rating-count").html(data);
-        }
-        else {
-            currElem.closest("td").children(".upvote-error-message").show();
-        }
-    });
-    return false;
-});
 

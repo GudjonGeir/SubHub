@@ -128,7 +128,6 @@ namespace SubHub.Tests.Mocks
         }
 
 
-<<<<<<< HEAD
         public int Upvote(int? id, int value)
         {
             throw new NotImplementedException();
@@ -183,8 +182,5 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
-=======
-
->>>>>>> 5e053567ec7818e67172f1a950fc3e6893ac01b8
     }
 }

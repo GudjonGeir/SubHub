@@ -338,7 +338,7 @@ namespace SubHub.Controllers
                 {
                     upvoteCount = m_repo.Upvote(id.Value, -1);
                     downvoteCount = subtitleDownvote.Count;
-                    result = upvoteCount = downvoteCount;
+                    result = upvoteCount - downvoteCount;
                     m_repo.RemoveUserFromUpvotes(id.Value, userId);
                 }
                 else if (subtitleDownvote.Users.Contains(user))
@@ -366,6 +366,53 @@ namespace SubHub.Controllers
         [HttpPost]
         public ActionResult Downvote(int? id)
         {
+            if (id.HasValue)
+            {
+                var subtitleRating = (from s in m_repo.GetSubtitles()
+                                      where s.Id == id.Value
+                                      select s).SingleOrDefault();
+                var subtitleUpvote = (from s in m_repo.GetSubtitleUpvotes()
+                                      where s.SubtitleId == id.Value
+                                      select s).SingleOrDefault();
+                var subtitleDownvote = (from s in m_repo.GetSubtitleDownvotes()
+                                        where s.SubtitleId == id.Value
+                                        select s).SingleOrDefault();
+                string userId = User.Identity.GetUserId();
+                var user = (from u in m_repo.GetUsers()
+                            where u.Id == userId
+                            select u).SingleOrDefault();
+                if (subtitleDownvote == null || subtitleUpvote == null || subtitleRating == null)
+                {
+                    return View("Error");
+                }
+
+                int result, upvoteCount, downvoteCount;
+                if (subtitleUpvote.Users.Contains(user))
+                {
+                    upvoteCount = m_repo.Upvote(id.Value, -1);
+                    downvoteCount = m_repo.Downvote(id.Value, 1);
+                    result = upvoteCount - downvoteCount;
+                    m_repo.RemoveUserFromUpvotes(id.Value, userId);
+                    m_repo.AddUserToDownvotes(id.Value, userId);
+                }
+                else if (subtitleDownvote.Users.Contains(user))
+                {
+                    upvoteCount = subtitleUpvote.Count;
+                    downvoteCount = m_repo.Downvote(id.Value, -1);
+                    result = upvoteCount - downvoteCount;
+                    m_repo.RemoveUserFromDownvotes(id.Value, userId);
+                }
+                else
+                {
+                    upvoteCount = subtitleUpvote.Count;
+                    downvoteCount = m_repo.Downvote(id.Value, 1);
+                    result = upvoteCount - downvoteCount;
+                    m_repo.AddUserToDownvotes(id.Value, userId);
+
+                }
+                m_repo.UpdateRating(id.Value, result);
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
             return View();
         }
 
