@@ -30,7 +30,7 @@
                         <input type="submit" value="Finna texta" class="tfbutton" />
                     }
                     <div class="tfclear"></div>
-</div>
+            </div>
 
             <div id="sidebar">
                 <!--class="navbar"-->
@@ -44,22 +44,36 @@
 
                         <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Hasar", "MoviesByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Grín", "MoviesByGenre", "Browse", new { genre = "Comedy" }, null)</li>
                             <li>@Html.ActionLink("Drama", "MoviesByGenre", "Browse", new { genre = "Drama" }, null)</li>
-                            <li>@Html.ActionLink("Ævintýri", "MoviesByGenre", "Browse", new { genre = "Adenture" }, null)</li>
-                            <li>@Html.ActionLink("Barna", "MoviesByGenre", "Browse", new { genre = "Children" }, null)</li>
+                            <li>@Html.ActionLink("Gamanmynd", "MoviesByGenre", "Browse", new { genre = "Gaman" }, null)</li>
+                            <li>@Html.ActionLink("Hrollvekja", "MoviesByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
+                            <li>@Html.ActionLink("Íslenskar Myndir", "MoviesByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
+                            <li>@Html.ActionLink("Rómantík", "MoviesByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
+                            <li>@Html.ActionLink("Sci-Fi", "MoviesByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
+                            <li>@Html.ActionLink("Spennutryllir", "MoviesByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
+                            <li>@Html.ActionLink("Söngleikur", "MoviesByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
+                            <li>@Html.ActionLink("Teiknimynd", "MoviesByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
+                            <li>@Html.ActionLink("Ævintýri", "MoviesByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
+                            <li>@Html.ActionLink("Ævisaga", "MoviesByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
+                            <li>@Html.ActionLink("Annað", "MoviesByGenre", "Browse", new { genre = "Annað" }, null)</li>
                         </ul>
                     </li>
                     <li class="dropdown divider-vertical">
                         @Html.ActionLink("Þættir ▼", "TvShows", "Browse")
                         <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Hasar", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Grín", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Drama", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
-                            <li>@Html.ActionLink("Ævintýri", "TvShowsByGenre", "Browse", new { genre = "Adventures" }, null)</li>
-                            <li>@Html.ActionLink("Barna", "TvShowsByGenre", "Browse", new { genre = "Action" }, null)</li>
+                            <li>@Html.ActionLink("Drama", "TvShowsByGenre", "Browse", new { genre = "Drama" }, null)</li>
+                            <li>@Html.ActionLink("Gamanþættir", "TvShowsByGenre", "Browse", new { genre = "Gaman" }, null)</li>
+                            <li>@Html.ActionLink("Hrollvekja", "TvShowsByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
+                            <li>@Html.ActionLink("Íslenskir", "TvShowsByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
+                            <li>@Html.ActionLink("Rómantík", "TvShowsByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
+                            <li>@Html.ActionLink("Sci-Fi", "TvShowsByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
+                            <li>@Html.ActionLink("Spennutryllir", "TvShowsByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
+                            <li>@Html.ActionLink("Söngleikur", "TvShowsByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
+                            <li>@Html.ActionLink("Teiknimynd", "TvShowsByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
+                            <li>@Html.ActionLink("Ævintýri", "TvShowsByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
+                            <li>@Html.ActionLink("Ævisaga", "TvShowsByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
+                            <li>@Html.ActionLink("Annað", "TvShowsByGenre", "Browse", new { genre = "Annað" }, null)</li>
                         </ul>
                     </li>
                     <li class="divider-vertical">@Html.ActionLink("Senda inn texta", "NewMedia", "Subtitle")</li>
