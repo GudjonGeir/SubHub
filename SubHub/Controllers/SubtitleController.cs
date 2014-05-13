@@ -90,7 +90,7 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        //[Authorize]
+        [Authorize]
         public ActionResult NewMedia()
         {
             var model = new MediaViewModel();
@@ -177,15 +177,20 @@ namespace SubHub.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.Identity.GetUserId();
-                IdentityManager im = new IdentityManager();
-                List<ApplicationUser> user = new List<ApplicationUser> { im.GetUserById(userId) };
+                List<ApplicationUser> users = new List<ApplicationUser>();;
                 var subtitle = new Subtitle
                 {
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
-                    //Users = user
+                    Users = users
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
+
+                //IdentityManager im = new IdentityManager();
+                
+                //user.Subtitles.Add(subtitle);
+                m_repo.AddUserToSubtitle(subtId, userId);
+
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
                 {
                     StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
@@ -348,45 +353,44 @@ namespace SubHub.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetComments(int? id)
+        public ActionResult GetComments(int id)
         {
             var result = (from s in m_repo.GetAllComments()
                           where s.SubtitleId == id
                           select s);
-            if(result != null)
+            List<dynamic> listi = new List<dynamic>();
+            foreach(Comment m in result)
             {
-                //return somekind of json string
-                return View(result);
+                listi.Add(new { CommentText = m.CommentText, DateSubmitted = m.DateSubmitted });
             }
+            IEnumerable<dynamic> listi1 = listi;
 
-            return View("Error");
+            return Json(listi1, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        [Authorize]
-        public ActionResult AddComment(string comment, int? subtitleid)
+        //[Authorize]
+        public ActionResult AddComment(Comment comment)
         {
-            if(subtitleid.HasValue && !String.IsNullOrEmpty(comment))
+            if(!String.IsNullOrEmpty(comment.CommentText))
             {
+                //TestGögn:
+                //ApplicationUser user = new ApplicationUser { Id = "user1", UserName = "dorismjatt" };
+
                 IdentityManager manager = new IdentityManager();
                 string userName = User.Identity.Name;
                 ApplicationUser user = manager.GetUser(userName);
                 string userId = user.Id;
                 DateTime timi = DateTime.Now;
-                Comment newComment = new Comment {/* UserId = userId,*/ SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi, /*User = user*/ };
-                //m_repo.AddComment(newComment);
-                return View(newComment);
+                Comment newComment = new Comment { UserId = user.Id, SubtitleId = comment.SubtitleId, CommentText = comment.CommentText, DateSubmitted = timi, User = user };
+                m_repo.AddComment(newComment);
                 //return Json string here
-            }
-            else if(!subtitleid.HasValue)
-            {
-                return View("Error");
+                return Json("", JsonRequestBehavior.AllowGet);
             }
             else
             {
                 ModelState.AddModelError("comment", "Commenttext cannot be empty!");
-                return View("Error");
-                //return some Json string
+                return Json("", JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -397,5 +401,27 @@ namespace SubHub.Controllers
         }
 
 
+        [Authorize]
+        public ActionResult TestAddComment(string comment, int? subtitleid)
+        {
+            if (subtitleid.HasValue && !String.IsNullOrEmpty(comment))
+            {
+                DateTime timi = DateTime.Now;
+                Comment newComment = new Comment {  SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi };
+                //m_repo.AddComment(newComment);
+                return View(newComment);
+                //return Json string here
+            }
+            else if (!subtitleid.HasValue)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ModelState.AddModelError("comment", "Commenttext cannot be empty!");
+                return View("Error");
+                //return some Json string
+            }
+        }
 	}
 }

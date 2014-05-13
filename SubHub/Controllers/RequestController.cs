@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SubHub.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace SubHub.Controllers
 {
@@ -77,15 +79,15 @@ namespace SubHub.Controllers
                 return RedirectToAction("Requests");
             }
             return View();
-            
-
         }
 
-        
+        [Authorize]
         public ActionResult Upvote(int? id)
         {
             if (id.HasValue)
             {
+                IdentityManager im = new IdentityManager();
+                string userId = User.Identity.GetUserId();
                 var requestRating = (from r in m_repo.GetRequestRatings()
                                      where r.RequestId == id.Value
                                      select r).SingleOrDefault();
@@ -95,16 +97,30 @@ namespace SubHub.Controllers
                 }
                 else
                 {
-                    m_repo.Upvote(id.Value);
-                    return RedirectToAction("Requests");
+                    int result;
+                    var user = (from u in m_repo.GetUsers()
+                                where u.Id == userId
+                                select u).SingleOrDefault();
+                    if (requestRating.Users.Contains(user))
+                    {
+                        result = m_repo.UpdateRating(id.Value, -1);
+                        m_repo.RemoveUserFromRating(id.Value, userId);
+                    }
+                    else
+                    {
+                        result = m_repo.UpdateRating(id.Value, 1);
+                        m_repo.AddUserToRating(id.Value, userId);
+                    }
+                    return Json(result, JsonRequestBehavior.AllowGet);
                 }
             }
             return View("Error");
         }
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
+
+        //public ActionResult Delete(int? id)
+        //{
+        //    return View();
+        //}
         public ActionResult Complete(int? id)
         {
             if(id.HasValue)
