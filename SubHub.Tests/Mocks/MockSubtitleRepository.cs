@@ -87,6 +87,10 @@ namespace SubHub.Tests.Mocks
             return m_subtitles[0].Comments.AsQueryable();
         }
 
+        public void AddUserToSubtitle(int id, string userId)
+        {
+
+        }
 
         public void AddMedia(Media m)
         {

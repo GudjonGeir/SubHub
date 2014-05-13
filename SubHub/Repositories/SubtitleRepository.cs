@@ -44,8 +44,6 @@ namespace SubHub.Repositories
 
         public int AddSubtitle(Subtitle s)
         {
-            int newID = m_db.Subtitles.Max(x => x.Id) + 1;
-            s.Id = newID;
             m_db.Subtitles.Add(s);
             m_db.SaveChanges();
             return s.Id;
@@ -59,6 +57,22 @@ namespace SubHub.Repositories
         public void AddSubtitleLine(SubtitleLine sl)
         {
             m_db.SubtitleLines.Add(sl);
+            m_db.SaveChanges();
+        }
+
+        public void AddUserToSubtitle(int id, string userId)
+        {
+            var sub = (from m in m_db.Subtitles
+                       where m.Id == id
+                       select m).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            if (!sub.Users.Contains(user))
+            {
+                sub.Users.Add(user);
+            }
+            
             m_db.SaveChanges();
         }
 
