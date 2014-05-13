@@ -106,7 +106,7 @@ namespace SubHub.Repositories
             var theSubtitle = (from c in m_db.Subtitles
                               where c.Id == comment.SubtitleId
                               select c).SingleOrDefault();
-            theSubtitle.Comments.Add(comment);
+            m_db.Comments.Add(comment);
             m_db.SaveChanges();
         }
 

@@ -25,7 +25,7 @@ function getAllComments(theId) {
                 var posts = [];
                 for (var i = 0; i < model.length ; i++) {
                     posts.push({
-                        user: "user" + i.toString(),
+                        user: model[i].UserName,
                         theDateSubmitted: model[i].DateSubmitted = ConvertStringToJSDate(model[i].DateSubmitted),
                         theComment: model[i].CommentText,
                     });
