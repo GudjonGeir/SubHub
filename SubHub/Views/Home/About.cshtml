@@ -1,5 +1,19 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<p>@ViewBag.Title.</p>
+
+<h2> Um notkun kerfisins: </h2>
+    <p> Subhub.is er vefsíða sem býður notendum sínum að sækja skjátexta við bíómyndir og þætti endurgjaldslaust. Notendur geta einnig hlaðið upp textaskrám, unnið í þýðingu á textaskrám frá einu tungumáli yfir á annað eða betrumbætt þýðingar frá öðrum notendum sem eru nú þegar til staðar fyrir tiltekna kvikmynd/þátt. Skrárnar eru allar á *.srt formi. </p>
+    <p id="about-srt"> *  Til að vita meira um .srt skrár ýttu <a href="http://videosubtitles.wordpress.com/2012/11/02/subrip-srt-subtitle-format/" target="_blank"> hér</a>. </p>
+<h4> Hvernig sæki ég texta? </h4>
+    <p> Það eru nokkrar leiðir til þess að sækja skjátexta:</p>
+        <ol>
+            <li> Skrifa nafnið á myndinni eða þættinum sem þú ert að leita að í leitarvélina efst á síðunni. </li>
+            <li> Klikkað á @Html.ActionLink("Kvikmyndir", "Movies", "Browse") eða @Html.ActionLink("Þættir", "TvShows", "Browse") þá birtist listi yfir myndir/þætti sem hægt er að sækja texta við. </li>
+            <li> Fara með músarbendilinn yfir kvikmyndir/eða þætti og þá birtist listi yfir þá flokka sem eru í boði. </li>
+        </ol>
+    <p> Þegar þú hefur fundið þá mynd/þátt sem þig vantar texta við þá klikkar þú á myndina, velur tungumál (ensku eða íslensku) og ýtir á hnappinn "Sækja texta". Ef textinn sem þú ert að leita að er ekki til þá getur þú sent inn beiðni fyrir hann með því að ýta @Html.ActionLink("hér", "Requests", "Request") eða með því að ýta á hnappinn "Beiðnir" efst á síðunni. </p>
+<h4> Hvernig hleð ég upp texta? </h4>
+    <p> Til að hlaða inn texta þá þarftu að vera innskráð/ur. Ýttu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn, ef þú ert nýr notandi getur þú búið til aðgang með því að ýta @Html.ActionLink("hér", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }). Þegar þú hefur skráð þig inn ýtir þú á @Html.ActionLink("Senda inn texta", "NewMedia", "Subtitle") efst á síðunni, fyllir inn þær upplýsingar sem beðið er um og hleður upp skránni.</p>
+
 
