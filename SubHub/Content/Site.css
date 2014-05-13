@@ -527,3 +527,8 @@ body
   background: #fff;
   opacity: 1;
 }
+
+.upvote-error-message
+{
+    color: red;
+}
