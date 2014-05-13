@@ -34,16 +34,43 @@ namespace SubHub.Repositories
             }
         }
 
-        public void Upvote(int id)
+        public int UpdateRating(int id, int value)
         {
             var s = (from l in m_db.RequestRatings
                     where l.RequestId == id
                     select l).SingleOrDefault();
             if (s != null)
             {
-                s.count += 1;
+
+                s.count += value;
                 m_db.SaveChanges();
+                return s.count;
             }
+            return 0;
+        }
+
+        public void RemoveUserFromRating(int id, string userId)
+        {
+            var rating = (from l in m_db.RequestRatings
+                     where l.RequestId == id
+                     select l).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            rating.Users.Remove(user);
+            m_db.SaveChanges();
+        }
+
+        public void AddUserToRating(int id, string userId)
+        {
+            var rating = (from l in m_db.RequestRatings
+                          where l.RequestId == id
+                          select l).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            rating.Users.Add(user);
+            m_db.SaveChanges();
         }
 
         public IQueryable<RequestRating> GetRequestRatings()
@@ -60,6 +87,11 @@ namespace SubHub.Repositories
         {
             m_db.Requests.Add(m);
             m_db.SaveChanges();
+        }
+
+        public IQueryable<ApplicationUser> GetUsers()
+        {
+            return m_db.Users;
         }
     }
 }
