@@ -492,4 +492,38 @@ body
 {
     position: relative;
     width: 50%; left:50%;
+
+}
+
+#about-srt
+{
+    color: gray;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 8%;
+  bottom: 0;
+  text-align: center;
+}
+
+.dots li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  text-indent: -999em;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: .4;
+  -webkit-transition: background .5s, opacity .5s;
+  -moz-transition: background .5s, opacity .5s;
+  transition: background .5s, opacity .5s;
+}
+
+.dots li.active {
+  background: #fff;
+  opacity: 1;
 }

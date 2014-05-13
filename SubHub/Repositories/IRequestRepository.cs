@@ -14,8 +14,11 @@ namespace SubHub.Repositories
         IQueryable<RequestRating> GetRequestRatings();
         void RemoveRequest(int? id);
         void SetCompleted(int id);
-        void Upvote(int id);
+        int UpdateRating(int id, int value);
+        void RemoveUserFromRating(int id, string userId);
+        void AddUserToRating(int id, string userId);
         IQueryable<SubtitleLanguage> GetSubtitleLanguages();
         void AddRequest(Request m);
+        IQueryable<ApplicationUser> GetUsers();
     }
 }

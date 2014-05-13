@@ -12,6 +12,7 @@ namespace SubHub.Models
         [Display(Name = "Útgáfudagur")]
         public DateTime DateAired { get; set; }
         public string PosterUrl { get; set; }
+        [Display(Name = "Nafn")]
         public string Name { get; set; }
         [Display(Name = "Imdb Hlekkur")]
         public string ImdbUrl { get; set; }

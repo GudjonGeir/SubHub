@@ -11,9 +11,22 @@ namespace SubHub.Tests.Mocks
     class MockRequestRepository : IRequestRepository
     {
         private readonly List<Request> m_requests;
+        private readonly List<Media> m_media;
+        private readonly List<SubtitleLanguage> m_mediaLanguages;
 
         public MockRequestRepository(List<Request> requests)
         {
+            m_requests = requests;
+        }
+
+        public MockRequestRepository(List<Media> media)
+        {
+            m_media = media;
+        }
+
+        public MockRequestRepository(List<SubtitleLanguage> medialanguages, List<Request> requests)
+        {
+            m_mediaLanguages = medialanguages;
             m_requests = requests;
         }
 
@@ -69,9 +82,30 @@ namespace SubHub.Tests.Mocks
 
         public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
         {
-            throw new NotImplementedException();
+            return m_mediaLanguages.AsQueryable();
         }
 
 
+
+
+        public int UpdateRating(int id, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserFromRating(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserToRating(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<ApplicationUser> GetUsers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

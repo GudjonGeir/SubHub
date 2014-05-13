@@ -36,8 +36,8 @@
 		 var rating = r.RequestRating;
       <tr>
         <td>
-            <a href="@Url.Action("Upvote", new { id = r.Id })"><span class="glyphicon glyphicon-arrow-up"></span></a>
-            @Html.DisplayFor( modelItem => rating.count)
+            <a href="@Url.Action("Upvote", new { id = r.Id })" class="like-request"><span class="glyphicon glyphicon-arrow-up"></span></a>
+            <span class="rating-count">@Html.DisplayFor( modelItem => rating.count)</span>
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.User.UserName)
@@ -98,3 +98,6 @@
 
 
 </table>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/RequestUpvoteScripts.js"></script>
