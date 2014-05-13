@@ -209,11 +209,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-<<<<<<< HEAD
     <Content Include="Scripts\dots.js" />
-=======
     <Content Include="Scripts\ViewSubtitle.js" />
->>>>>>> c2c32b25caa581c6cd861aecbddc751985090765
     <Content Include="Scripts\HtmlPage1.html" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
