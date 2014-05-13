@@ -96,7 +96,7 @@ namespace SubHub.Controllers
                 ViewBag.Title = query;
                 return View(media);
             }
-            return View("Index");
+            return View("Error");
         }
 
         private SubHubContext db = new SubHubContext();
