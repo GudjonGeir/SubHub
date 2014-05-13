@@ -12,6 +12,7 @@ namespace SubHub.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "This Field is required")]
+        [Display(Name = "Nafn")]
         public string Name { get; set; }
         public int LanguageId { get; set; }
         public List<SelectListItem> SubtitleLanguages { get; set; }
