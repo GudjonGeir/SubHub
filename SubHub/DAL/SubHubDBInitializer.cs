@@ -153,101 +153,102 @@ namespace SubHub.DAL
             SubtitleLine subtitle4Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Thankyou comeagain", LineTwo = "", SubtitleId = 4 };
             SubtitleLine subtitle4Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "you have to destroy the brain..", LineTwo = "shoot 'em in the head", SubtitleId = 4 };
 
-            SubtitleLine subtitle5Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Call me Commander", LineTwo = "", SubtitleId = 4 };
-            SubtitleLine subtitle5Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "You were only supposed to", LineTwo = "blow the bloody doors off!", SubtitleId = 4 };
-            SubtitleLine subtitle5Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Doctor...that's an order", LineTwo = "", SubtitleId = 4 };
+            SubtitleLine subtitle5Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Call me Commander", LineTwo = "", SubtitleId = 5 };
+            SubtitleLine subtitle5Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "You were only supposed to", LineTwo = "blow the bloody doors off!", SubtitleId = 5 };
+            SubtitleLine subtitle5Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Doctor...that's an order", LineTwo = "", SubtitleId = 5 };
 
-            SubtitleLine subtitle6Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "good luck...", LineTwo = "", SubtitleId = 5 };
-            SubtitleLine subtitle6Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I'm a lead farmer,", LineTwo = " motherfucka!!!", SubtitleId = 5 };
-            SubtitleLine subtitle6Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Say hellooooooo to my ", LineTwo = " little friend!!", SubtitleId = 5 };
+            SubtitleLine subtitle6Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "good luck...", LineTwo = "", SubtitleId = 6 };
+            SubtitleLine subtitle6Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I'm a lead farmer,", LineTwo = " motherfucka!!!", SubtitleId = 6 };
+            SubtitleLine subtitle6Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Say hellooooooo to my ", LineTwo = " little friend!!", SubtitleId = 6 };
 
-            SubtitleLine subtitle7Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "His name is Jason...and it's", LineTwo = "his birthday today.", SubtitleId = 6 };
-            SubtitleLine subtitle7Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "People perceive you as somewhat...", LineTwo = "", SubtitleId = 6 };
-            SubtitleLine subtitle7Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Tempestuous?", LineTwo = "", SubtitleId = 6 };
+            SubtitleLine subtitle7Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "His name is Jason...and it's", LineTwo = "his birthday today.", SubtitleId = 7 };
+            SubtitleLine subtitle7Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "People perceive you as somewhat...", LineTwo = "", SubtitleId = 7 };
+            SubtitleLine subtitle7Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Tempestuous?", LineTwo = "", SubtitleId = 7 };
 
-            SubtitleLine subtitle8Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Are you guys even real cops?", LineTwo = "You look like the kids on Halloween.", SubtitleId = 7 };
-            SubtitleLine subtitle8Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "If them boys is cops, I'm DEA.", LineTwo = "[Schmidt does a fake laugh]", SubtitleId = 7 };
-            SubtitleLine subtitle8Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "I know! Right? I know! It's hilarious.", LineTwo = "[Schmidt stops laughing]", SubtitleId = 7 };
+            SubtitleLine subtitle8Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Are you guys even real cops?", LineTwo = "You look like the kids on Halloween.", SubtitleId = 8 };
+            SubtitleLine subtitle8Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "If them boys is cops, I'm DEA.", LineTwo = "[Schmidt does a fake laugh]", SubtitleId = 8 };
+            SubtitleLine subtitle8Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "I know! Right? I know! It's hilarious.", LineTwo = "[Schmidt stops laughing]", SubtitleId = 8 };
 
-            SubtitleLine subtitle9Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Fuck you, pig!", LineTwo = "", SubtitleId = 8 };
-            SubtitleLine subtitle9Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "(LILTING MELODY PLAYED ON ACOUSTIC GUITAR)", LineTwo = "", SubtitleId = 8 };
-            SubtitleLine subtitle9Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Hasta la vista, baby", LineTwo = "", SubtitleId = 8 };
+            SubtitleLine subtitle9Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Fuck you, pig!", LineTwo = "", SubtitleId = 9 };
+            SubtitleLine subtitle9Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "(LILTING MELODY PLAYED ON ACOUSTIC GUITAR)", LineTwo = "", SubtitleId = 9 };
+            SubtitleLine subtitle9Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Hasta la vista, baby", LineTwo = "", SubtitleId = 9 };
 
-            SubtitleLine subtitle10Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "(WATER SPLASHES)", LineTwo = "", SubtitleId = 9 };
-            SubtitleLine subtitle10Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "(LILTING MELODY PLAYED ON ACOUSTIC GUITAR)", LineTwo = "", SubtitleId = 9 };
-            SubtitleLine subtitle10Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "(VIOLINS JOIN IN)", LineTwo = "(FRENCH HORNS PLAYING)", SubtitleId = 9 };
+            SubtitleLine subtitle10Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "(WATER SPLASHES)", LineTwo = "", SubtitleId = 10 };
+            SubtitleLine subtitle10Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "(LILTING MELODY PLAYED ON ACOUSTIC GUITAR)", LineTwo = "", SubtitleId = 10 };
+            SubtitleLine subtitle10Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "(VIOLINS JOIN IN)", LineTwo = "(FRENCH HORNS PLAYING)", SubtitleId = 10 };
 
-            SubtitleLine subtitle11Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Here's my motherfucking", LineTwo = "farm!!!", SubtitleId = 10 };
-            SubtitleLine subtitle11Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "You mean, the little dimples", LineTwo = "around the tits?", SubtitleId = 10 };
-            SubtitleLine subtitle11Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "I am your father", LineTwo = "", SubtitleId = 10 };
+            SubtitleLine subtitle11Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Here's my motherfucking", LineTwo = "farm!!!", SubtitleId = 11 };
+            SubtitleLine subtitle11Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "You mean, the little dimples", LineTwo = "around the tits?", SubtitleId = 11 };
+            SubtitleLine subtitle11Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "I am your father", LineTwo = "", SubtitleId = 11 };
 
-            SubtitleLine subtitle12Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Do you guys have drugs?", LineTwo = "", SubtitleId = 11 };
-            SubtitleLine subtitle12Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Does Lipitor count?", LineTwo = "", SubtitleId = 11 };
-            SubtitleLine subtitle12Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "How many times do I have to kill", LineTwo = "the same stinking panda?!", SubtitleId = 11 };
+            SubtitleLine subtitle12Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Do you guys have drugs?", LineTwo = "", SubtitleId = 12 };
+            SubtitleLine subtitle12Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Does Lipitor count?", LineTwo = "", SubtitleId = 12 };
+            SubtitleLine subtitle12Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "How many times do I have to kill", LineTwo = "the same stinking panda?!", SubtitleId = 12 };
 
-            SubtitleLine subtitle13Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Dude, I think it's best to", LineTwo = "just tell 'em.", SubtitleId = 12 };
-            SubtitleLine subtitle13Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I'm Pregnant.", LineTwo = "", SubtitleId = 12 };
-            SubtitleLine subtitle13Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Oh, God.", LineTwo = "", SubtitleId = 12 };
+            SubtitleLine subtitle13Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Dude, I think it's best to", LineTwo = "just tell 'em.", SubtitleId = 13 };
+            SubtitleLine subtitle13Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I'm Pregnant.", LineTwo = "", SubtitleId = 13 };
+            SubtitleLine subtitle13Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Oh, God.", LineTwo = "", SubtitleId = 13 };
 
-            SubtitleLine subtitle14Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Well I am who I am!", LineTwo = "", SubtitleId = 13 };
-            SubtitleLine subtitle14Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Well maybe you were, five", LineTwo = "procedures ago.", SubtitleId = 13 };
-            SubtitleLine subtitle14Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Are you going bald?", LineTwo = "", SubtitleId = 13 };
+            SubtitleLine subtitle14Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Well I am who I am!", LineTwo = "", SubtitleId = 14 };
+            SubtitleLine subtitle14Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Well maybe you were, five", LineTwo = "procedures ago.", SubtitleId = 14 };
+            SubtitleLine subtitle14Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Are you going bald?", LineTwo = "", SubtitleId = 14 };
 
-            SubtitleLine subtitle15Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Motherfucker Jones.", LineTwo = "", SubtitleId = 14 };
-            SubtitleLine subtitle15Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Your first name is", LineTwo = "Motherfucker?!", SubtitleId = 14 };
-            SubtitleLine subtitle15Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Last name Jones. You got", LineTwo = "a problem with that?", SubtitleId = 14 };
+            SubtitleLine subtitle15Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "Motherfucker Jones.", LineTwo = "", SubtitleId = 15 };
+            SubtitleLine subtitle15Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "Your first name is", LineTwo = "Motherfucker?!", SubtitleId = 15 };
+            SubtitleLine subtitle15Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Last name Jones. You got", LineTwo = "a problem with that?", SubtitleId = 15 };
 
-            SubtitleLine subtitle16Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "My real name is Dean.", LineTwo = "", SubtitleId = 15 };
-            SubtitleLine subtitle16Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = " I know who he is, bitch! ", LineTwo = "", SubtitleId = 15 };
-            SubtitleLine subtitle16Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Sorry!", LineTwo = "", SubtitleId = 15 };
+            SubtitleLine subtitle16Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "My real name is Dean.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle16Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = " I know who he is, bitch! ", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle16Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "Sorry!", LineTwo = "", SubtitleId = 16 };
 
-            SubtitleLine subtitle17Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle17Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle17Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle17Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 17 };
+            SubtitleLine subtitle17Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 17 };
+            SubtitleLine subtitle17Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 17 };
 
-            SubtitleLine subtitle18Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "You, me? Fat chance!", LineTwo = "", SubtitleId = 17 };
-            SubtitleLine subtitle18Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I have a chance!", LineTwo = "And it's fat!", SubtitleId = 17 };
-            SubtitleLine subtitle18Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "This is so illegal.", LineTwo = "", SubtitleId = 17 };
+            SubtitleLine subtitle18Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:05,019 --> 00:00:06,719", LineOne = "You, me? Fat chance!", LineTwo = "", SubtitleId = 18 };
+            SubtitleLine subtitle18Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:06,720 --> 00:00:09,322", LineOne = "I have a chance!", LineTwo = "And it's fat!", SubtitleId = 18 };
+            SubtitleLine subtitle18Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:09,323 --> 00:00:11,324", LineOne = "This is so illegal.", LineTwo = "", SubtitleId = 18 };
 
-            SubtitleLine subtitle19Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle19Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle19Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle19Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 19 };
+            SubtitleLine subtitle19Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 19 };
+            SubtitleLine subtitle19Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 19 };
 
-            SubtitleLine subtitle20Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I have a chance!", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle20Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Motherfucker Jones", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle20Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle20Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I have a chance!", LineTwo = "", SubtitleId = 20 };
+            SubtitleLine subtitle20Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Motherfucker Jones", LineTwo = "", SubtitleId = 20 };
+            SubtitleLine subtitle20Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 20 };
             
-            SubtitleLine subtitle21Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle21Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle21Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle21Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 21 };
+            SubtitleLine subtitle21Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 21 };
+            SubtitleLine subtitle21Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 21 };
 
-            SubtitleLine subtitle22Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle22Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle22Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle22Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 22 };
+            SubtitleLine subtitle22Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 22 };
+            SubtitleLine subtitle22Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 22 };
 
-            SubtitleLine subtitle23Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle23Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle23Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle23Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 23 };
+            SubtitleLine subtitle23Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 23 };
+            SubtitleLine subtitle23Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 23 };
 
-            SubtitleLine subtitle24Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle24Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle24Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle24Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 24 };
+            SubtitleLine subtitle24Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 24 };
+            SubtitleLine subtitle24Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 24 };
 
-            SubtitleLine subtitle25Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle25Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle25Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle25Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 25 };
+            SubtitleLine subtitle25Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 25 };
+            SubtitleLine subtitle25Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 25 };
 
-            SubtitleLine subtitle26Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle26Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle26Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle26Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 26 };
+            SubtitleLine subtitle26Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 26 };
+            SubtitleLine subtitle26Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 26 };
 
-            SubtitleLine subtitle27Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle27Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle27Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle27Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 27 };
+            SubtitleLine subtitle27Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 27 };
+            SubtitleLine subtitle27Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 27 };
 
-            SubtitleLine subtitle28Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle28Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 16 };
-            SubtitleLine subtitle28Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 16 };
+            SubtitleLine subtitle28Line1 = new SubtitleLine { LineNumber = 1, Time = "00:00:11,019 --> 00:00:12,719", LineOne = "I got a job today.", LineTwo = "", SubtitleId = 28 };
+            SubtitleLine subtitle28Line2 = new SubtitleLine { LineNumber = 2, Time = "00:00:12,720 --> 00:00:015,322", LineOne = "Where?", LineTwo = "", SubtitleId = 28 };
+            SubtitleLine subtitle28Line3 = new SubtitleLine { LineNumber = 3, Time = "00:00:15,323 --> 00:00:17,324", LineOne = "Writin' for the Jackson Journal.", LineTwo = "", SubtitleId = 28 };
+
             var subtitleLiness = new List<SubtitleLine>() { subtitle1Line1, subtitle1Line2, subtitle1Line3, subtitle2Line1, subtitle2Line2, subtitle2Line3, subtitle3Line1, subtitle3Line2, subtitle3Line3, 
                                                             subtitle4Line1, subtitle4Line2, subtitle4Line3, subtitle5Line1, subtitle5Line2, subtitle5Line3, subtitle6Line1, subtitle6Line2, subtitle6Line3,
                                                             subtitle7Line1, subtitle7Line2, subtitle7Line3, subtitle8Line1, subtitle8Line2, subtitle8Line3, subtitle9Line1, subtitle9Line2, subtitle9Line3,

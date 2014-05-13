@@ -9,6 +9,7 @@ namespace SubHub.Models
     public class Subtitle
     {
         public          int                          Id              { get; set; }
+        [Display(Name = "Dagsetning")]
         public          DateTime                     DateSubmitted   { get; set; }
         public          int                          LanguageId      { get; set; }
         public          int                          MediaId         { get; set; }
