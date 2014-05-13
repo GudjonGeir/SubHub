@@ -98,12 +98,16 @@ namespace SubHub.Repositories
 
         public IQueryable<Comment> GetAllComments()
         {
-            return m_db.Comments;
+            return m_db.Comments.AsQueryable();
         }
 
         public void AddComment(Comment comment)
         {
-            m_db.Comments.Add(comment);
+            var theSubtitle = (from c in m_db.Subtitles
+                              where c.Id == comment.SubtitleId
+                              select c).SingleOrDefault();
+            theSubtitle.Comments.Add(comment);
+            m_db.SaveChanges();
         }
 
         public void RemoveComment(int? id)

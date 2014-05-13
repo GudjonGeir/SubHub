@@ -100,5 +100,14 @@ namespace SubHub.Tests.Controllers
             Assert.IsTrue(requests1[1].Name == "Catch me if you can");
             Assert.IsTrue(requests1[2].Completed == false);
         }
+
+        [TestMethod]
+        public void TestNewRequest()
+        {
+            SubtitleLanguage english = new SubtitleLanguage { Language = "English" };
+            SubtitleLanguage icelandic = new SubtitleLanguage { Language = "Icelandic" };
+            List<SubtitleLanguage> languages = new List<SubtitleLanguage> { english, icelandic };
+
+        }
     }
 }

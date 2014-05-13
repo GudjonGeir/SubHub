@@ -101,6 +101,27 @@ namespace SubHub.Tests.Controllers
 
 
         }
+
+        [TestMethod]
+        public void TestAddComment()
+        {
+            //Arrange:
+            string theComment = "im a test comment";
+            int id = 1;
+            var controller = new SubtitleController();
+
+            //Act:
+            var result = controller.TestAddComment(theComment, id);
+
+            //Assert:
+            var viewResult = (ViewResult)result;
+            Comment model1 = viewResult.Model as Comment;
+            Assert.IsTrue(model1.SubtitleId == id);
+            Assert.IsTrue(model1.CommentText == theComment);
+
+        }
+
+
         //[TestMethod]
         //public void TestViewSubtitleWithIncorrectId()
         //{

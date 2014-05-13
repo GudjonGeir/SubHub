@@ -11,16 +11,22 @@ namespace SubHub.Tests.Mocks
     class MockSubtitleRepository : ISubtitleRepository
     {
         private readonly List<Subtitle> m_subtitles;
+        private readonly List<SubtitleLanguage> m_mediaLanguages;
         private readonly List<Media> m_media;
+
+        public MockSubtitleRepository(List<Media> media)
+        {
+            m_media = media;
+        }
 
         public MockSubtitleRepository(List<Subtitle> subtitles)
         {
             m_subtitles = subtitles;
         }
 
-        public MockSubtitleRepository(List<Media> media)
+        public MockSubtitleRepository(List<SubtitleLanguage> media)
         {
-            m_media = media;
+            m_mediaLanguages = media;
         }
 
         public IQueryable<Subtitle> GetSubtitles()
@@ -51,12 +57,20 @@ namespace SubHub.Tests.Mocks
 
         public void DownVote(int? id, ApplicationUser user)
         {
+            var model = (from m in m_subtitles
+                         where m.Id == id
+                         select m).SingleOrDefault();
+            model.SubtitleRating.Count -= 1;
+            model.SubtitleRating.Users.Add(user);
 
         }
 
         public void AddComment(Comment comment)
         {
-
+            var model = (from m in m_subtitles
+                         where m.Id == comment.SubtitleId
+                         select m).SingleOrDefault();
+            model.Comments.Add(comment);
         }
 
         public void RemoveComment(int? id)
@@ -73,6 +87,10 @@ namespace SubHub.Tests.Mocks
             return m_subtitles[0].Comments.AsQueryable();
         }
 
+        public void AddUserToSubtitle(int id, string userId)
+        {
+
+        }
 
         public void AddMedia(Media m)
         {
@@ -88,7 +106,7 @@ namespace SubHub.Tests.Mocks
 
         public IQueryable<Media> GetMedias()
         {
-            return m_media.AsQueryable();
+            throw new NotImplementedException();
         }
 
         public IQueryable<MediaGenre> GetMediaGenres()
@@ -99,7 +117,8 @@ namespace SubHub.Tests.Mocks
 
         public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
         {
-            throw new NotImplementedException();
+            return m_mediaLanguages.AsQueryable();
+
         }
 
 

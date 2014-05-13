@@ -79,8 +79,6 @@ namespace SubHub.Controllers
                 return RedirectToAction("Requests");
             }
             return View();
-            
-
         }
 
         [Authorize]
@@ -119,11 +117,10 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-
+        //public ActionResult Delete(int? id)
+        //{
+        //    return View();
+        //}
         public ActionResult Complete(int? id)
         {
             if(id.HasValue)
