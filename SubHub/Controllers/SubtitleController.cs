@@ -32,7 +32,9 @@ namespace SubHub.Controllers
             if (mediaId.HasValue && languageId.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
+                             join m in m_repo.GetSubtitleRatings() on s.Id equals m.SubtitleId
                              where s.LanguageId == languageId && s.MediaId == mediaId
+                             orderby m.Count descending
                              select s).ToList();
                 if (!model.Any())
                 {
@@ -143,7 +145,8 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value };
+                var media = m_repo.GetMedias().Where(s => s.Id == id.Value).SingleOrDefault();
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value, MediaName = media.Name };
                 var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
 
                 model.SubtitleLanguages = new List<SelectListItem>();
@@ -185,13 +188,13 @@ namespace SubHub.Controllers
                 {
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
-                    Users = users
+                    Users = users, 
+                    Comments = new List<Comment>(), 
+                    DateSubmitted = DateTime.Now, 
+                    SubtitleRating = new SubtitleRating()
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
 
-                //IdentityManager im = new IdentityManager();
-                
-                //user.Subtitles.Add(subtitle);
                 m_repo.AddUserToSubtitle(subtId, userId);
 
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
@@ -266,6 +269,7 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult EditSubtitleLines(SubtitleLine s)
         {
             if (ModelState.IsValid)
@@ -280,15 +284,13 @@ namespace SubHub.Controllers
                     Time = s.Time
                 };
                 m_repo.UpdateSubtitleLine(result);
-                //var model = (from m in m_repo.GetSubtitleLines()
-                //             where m.SubtitleId == s.SubtitleId
-                //             orderby m.LineNumber
-                //             select m).ToList();
+
                 return RedirectToAction("EditSubtitleLines", s.SubtitleId);
             }
             return View("Error");
         }
 
+        [Authorize]
         public ActionResult EditSubtitle(int? id)
         {
             if (id.HasValue)

@@ -1,9 +1,9 @@
 ﻿@model SubHub.Models.SubtitleViewModel
 @{
-    ViewBag.Title = "NewSubtitle";
+    ViewBag.Title = "Hlaða upp textaskrá fyrir " + Model.MediaName; 
 }
 
-<h2>NewSubtitle</h2>
+<h2>@ViewBag.Title</h2>
 
 
 <form action="" method="post" enctype="multipart/form-data" >

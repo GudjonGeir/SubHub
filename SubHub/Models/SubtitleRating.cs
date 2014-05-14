@@ -14,5 +14,9 @@ namespace SubHub.Models
         public          int                          Count       { get; set; }    
         public virtual  Subtitle                     Subtitle    { get; set; }   // Corresponding subtitle for the rating
 
+        public SubtitleRating()
+        {
+            Count = 0;
+        }
     }
 }
