@@ -5,7 +5,7 @@
     
 }
 <script src="~/scripts/jquery-1.10.2.js"></script>
-<script src="~/scripts/ViewSubtitle.js"></script>
+
 
 @if(ViewBag.LanguageId == 1)
 {
@@ -85,7 +85,13 @@ else
     <tr>
 
         <td>
-            @item.SubtitleRating.Count
+            <a href="@Url.Action("Upvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-up"></span></a>
+            <a href="@Url.Action("Downvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-down"></span></a>
+            <span class="rating-count">@item.SubtitleRating.Count</span>
+
+            <div hidden class="upvote-error-message">
+                <p> Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</p>
+            </div>
         </td>
 
         <td>
@@ -151,7 +157,7 @@ else
         @Html.ActionLink("Back to List", "Index")
     </p>*@
 
-<script type="text/html" id="comment-template">
+@*<script type="text/html" id="comment-template">
     <li class="list-group-item">
         <p>
             <span class="glyphicon glyphicon-user"></span>
@@ -160,4 +166,6 @@ else
         </p>
         <span class="text-muted" data-content="theDateSubmitted"></span>
     </li>
-</script>
+</script>*@
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/SubtitleUpDownVoteScripts.js"></script>
