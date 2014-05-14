@@ -254,9 +254,7 @@ namespace SubHub.Controllers
                     }
                 }
 
-                return RedirectToRoute(
-                    "Default",
-                    new { controller = "Home", action = "Index" });
+                return RedirectToAction("ViewSubtitle", new { mediaID = subtitle.MediaId, languageId = subtitle.LanguageId });
             }
             return View(model);
         }
