@@ -5,7 +5,6 @@
 
 }
 
-<h2>ViewSubtitle</h2>
 <script src="~/scripts/jquery-1.10.2.js"></script>
 
 
@@ -64,37 +63,11 @@ else
         <td>
             @Html.ActionLink("Sjá umsagnir", "SubtitleComments", new { id = item.Id } )
         </td>
-        <tr>
-
-            <td>
-                <a href="@Url.Action("Upvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-up"></span></a>
-                <a href="@Url.Action("Downvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-down"></span></a>
-                <span class="rating-count">@item.SubtitleRating.Count</span>
-
-                <div hidden class="upvote-error-message">
-                    <p> Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</p>
-                </div>
-            </td>
-
-            <td>
-                @item.DateSubmitted
-            </td>
-
-            <td>
-                @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = item.Id }, FormMethod.Get))
-                {
-                    <input type="submit" value="Hala niður" class="tfbutton get-text-button" />
-                }
-            </td>
-            <td>
-                Sjá umsagnir
-            </td>
             <td>
                 @Html.ActionLink("Breyta", "EditSubtitleLines", new { subtitleId = item.Id })
             </td>
 
         </tr>
-    </tr>
     }
 
 </table>
