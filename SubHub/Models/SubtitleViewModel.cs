@@ -20,6 +20,9 @@ namespace SubHub.Models
         public virtual Media Media { get; set; }
         [Display(Name = "Tungumál")]
         public List<SelectListItem> SubtitleLanguages { get; set; }
+        [Display(Name = "Nafn")]
+        public string Name { get; set; }
+
 
         [Display(Name = "Textaskrá")]
         public HttpPostedFileBase SrtUpload { get; set; }

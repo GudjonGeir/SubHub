@@ -148,9 +148,7 @@ namespace SubHub.Controllers
                
                 };
                 m_repo.AddMedia(newMedia);
-                return RedirectToRoute(
-                    "Default",
-                    new { controller = "Home", action = "Index" });
+                return RedirectToAction("Media", new { id = newMedia.Id });
             }
             return View(model);
         }
@@ -201,6 +199,7 @@ namespace SubHub.Controllers
                 List<ApplicationUser> users = new List<ApplicationUser>();;
                 var subtitle = new Subtitle
                 {
+                    Name = model.Name,
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
                     Users = users, 
