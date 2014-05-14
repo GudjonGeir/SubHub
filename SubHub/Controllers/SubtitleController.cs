@@ -26,6 +26,21 @@ namespace SubHub.Controllers
             m_repo = new SubtitleRepository();
         }
 
+        public ActionResult SubtitleComments(int? id)
+        {
+            if (id.HasValue)
+            {
+                var subtitle = (from s in m_repo.GetSubtitles()
+                                where s.Id == id
+                                select s).SingleOrDefault();
+                
+                if(subtitle != null)
+                {
+                    return View(subtitle);
+                }
+            }
+            return View("Error");
+        }
 
         public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
@@ -485,18 +500,20 @@ namespace SubHub.Controllers
             var result = (from s in m_repo.GetAllComments()
                           where s.SubtitleId == id
                           select s);
-            List<dynamic> listi = new List<dynamic>();
-            foreach(Comment m in result)
-            {
-                listi.Add(new { CommentText = m.CommentText, DateSubmitted = m.DateSubmitted });
-            }
-            IEnumerable<dynamic> listi1 = listi;
 
-            return Json(listi1, JsonRequestBehavior.AllowGet);
+            var newResult = from c in result
+                            select new
+                            {
+                                UserName = c.User.UserName,
+                                CommentText = c.CommentText,
+                                DateSubmitted = c.DateSubmitted,
+                                Id = c.Id,
+                            };
+            return Json(newResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult AddComment(Comment comment)
         {
             if(!String.IsNullOrEmpty(comment.CommentText))
@@ -504,12 +521,9 @@ namespace SubHub.Controllers
                 //TestGögn:
                 //ApplicationUser user = new ApplicationUser { Id = "user1", UserName = "dorismjatt" };
 
-                IdentityManager manager = new IdentityManager();
-                string userName = User.Identity.Name;
-                ApplicationUser user = manager.GetUser(userName);
-                string userId = user.Id;
+                string userId = User.Identity.GetUserId();
                 DateTime timi = DateTime.Now;
-                Comment newComment = new Comment { UserId = user.Id, SubtitleId = comment.SubtitleId, CommentText = comment.CommentText, DateSubmitted = timi, User = user };
+                Comment newComment = new Comment { UserId = userId, SubtitleId = comment.SubtitleId, CommentText = comment.CommentText, DateSubmitted = timi };
                 m_repo.AddComment(newComment);
                 //return Json string here
                 return Json("", JsonRequestBehavior.AllowGet);
@@ -521,10 +535,27 @@ namespace SubHub.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteComment(int? id)
         {
-            return View();
+            if(id == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                var comment = (from c in m_repo.GetAllComments()
+                               where c.Id == id.Value
+                               select c).SingleOrDefault();
+                string userId = User.Identity.GetUserId();
+                if(comment != null && comment.UserId == userId)
+                {
+                    m_repo.RemoveComment(id);
+                }
+            }
+
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
 

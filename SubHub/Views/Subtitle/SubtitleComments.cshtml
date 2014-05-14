@@ -1,0 +1,30 @@
+﻿@model SubHub.Models.Subtitle
+
+    @{
+        ViewBag.Title = "SubtitleComments";
+    }
+
+@Html.HiddenFor(model => HttpContext.Current.User.Identity.Name, new { @id = "user" })
+@Html.HiddenFor(model => model.Id, new { @id = "subtitleId" })&#x09;
+    <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
+    <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
+    <button onclick="AddComment()" class="btn btn-primary ">Send</button>
+<span hidden id="errorMessage" style="color: red">&#x09;Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</span>
+    <div class="comments">
+
+    </div>
+
+    <script type="text/html" id="comment-template">
+        <li class="list-group-item">
+            <span data-link-wrap="deletelink" class="glyphicon glyphicon-remove"></span>
+            <p>
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="text-primary" data-content="user"></span>
+                <span data-content="theComment"></span>
+            </p>
+            <span class="text-muted" data-content="theDateSubmitted"></span>
+        </li>
+    </script>
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/viewcomments.js"></script>
