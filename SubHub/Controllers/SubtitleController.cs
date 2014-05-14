@@ -26,6 +26,21 @@ namespace SubHub.Controllers
             m_repo = new SubtitleRepository();
         }
 
+        public ActionResult SubtitleComments(int? id)
+        {
+            if (id.HasValue)
+            {
+                var subtitle = (from s in m_repo.GetSubtitles()
+                                where s.Id == id
+                                select s).SingleOrDefault();
+                
+                if(subtitle != null)
+                {
+                    return View(subtitle);
+                }
+            }
+            return View("Error");
+        }
 
         public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
@@ -437,7 +452,8 @@ namespace SubHub.Controllers
                             {
                                 UserName = c.User.UserName,
                                 CommentText = c.CommentText,
-                                DateSubmitted = c.DateSubmitted
+                                DateSubmitted = c.DateSubmitted,
+                                Id = c.Id,
                             };
             return Json(newResult, JsonRequestBehavior.AllowGet);
         }
@@ -473,7 +489,6 @@ namespace SubHub.Controllers
             {
                 return View("Error");
             }
-
             else
             {
                 var comment = (from c in m_repo.GetAllComments()
@@ -486,7 +501,7 @@ namespace SubHub.Controllers
                 }
             }
 
-            return View();
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
 

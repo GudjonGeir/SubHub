@@ -1,52 +1,22 @@
 ﻿@model SubHub.Models.Subtitle
 
-@{
-    ViewBag.Title = "SubtitleComments";
-}
+    @{
+        ViewBag.Title = "SubtitleComments";
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
+@Html.HiddenFor(model => HttpContext.Current.User.Identity.Name, new { @id = "user" })
+@Html.HiddenFor(model => model.Id, new { @id = "subtitleId" })&#x09;
+    <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
+    <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
+    <button onclick="AddComment()" class="btn btn-primary ">Send</button>
+<span hidden id="errorMessage" style="color: red">&#x09;Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</span>
+    <div class="comments">
 
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-
-        <dd class="hidden" id="theuser">
-            @HttpContext.Current.User.Identity.Name
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateSubmitted)
-        </dt>
-
-        <dd>
-
-            @Html.DisplayFor(model => model.DateSubmitted)
-        </dd>
-        <dd>
-            @Html.Hidden("subtitleId", Model.Id)
-        </dd>
-
-        @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
-        {
-            <input type="submit" value="Hala niður" />
-        }
-
-        <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
-        <button onclick="AddComment()" class="btn btn-primary ">Send</button>
-        </dl>
-        <div class="comments">
-
-        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 
-<script type="text/html" id="comment-template">
+    <script type="text/html" id="comment-template">
         <li class="list-group-item">
+            <span data-link-wrap="deletelink" class="glyphicon glyphicon-remove"></span>
             <p>
                 <span class="glyphicon glyphicon-user"></span>
                 <span class="text-primary" data-content="user"></span>
@@ -55,3 +25,6 @@
             <span class="text-muted" data-content="theDateSubmitted"></span>
         </li>
     </script>
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/viewcomments.js"></script>
