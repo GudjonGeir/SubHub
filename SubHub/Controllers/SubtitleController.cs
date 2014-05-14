@@ -242,6 +242,51 @@ namespace SubHub.Controllers
             return View(model);
         }
 
+
+        public ActionResult EditSubtitleLines(int? id)
+        {
+            if (id.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitleLines()
+                             where s.SubtitleId == id
+                             orderby s.LineNumber
+                             select s).ToList();
+                if (!model.Any())
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult EditSubtitleLines(SubtitleLine s)
+        {
+            if (ModelState.IsValid)
+            {
+                SubtitleLine result = new SubtitleLine()
+                {
+                    SubtitleId = s.SubtitleId,
+                    LineNumber = s.LineNumber,
+                    Id = s.Id,
+                    LineOne = s.LineOne,
+                    LineTwo = s.LineTwo,
+                    Time = s.Time
+                };
+                m_repo.UpdateSubtitleLine(result);
+                //var model = (from m in m_repo.GetSubtitleLines()
+                //             where m.SubtitleId == s.SubtitleId
+                //             orderby m.LineNumber
+                //             select m).ToList();
+                return RedirectToAction("EditSubtitleLines", s.SubtitleId);
+            }
+            return View("Error");
+        }
+
         public ActionResult EditSubtitle(int? id)
         {
             if (id.HasValue)
