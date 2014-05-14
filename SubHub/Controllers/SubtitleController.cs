@@ -34,7 +34,7 @@ namespace SubHub.Controllers
                 var model = (from s in m_repo.GetSubtitles()
                              where s.LanguageId == languageId && s.MediaId == mediaId
                              select s).ToList();
-                if (model == null)
+                if (!model.Any())
                 {
                     var media = (from m in m_repo.GetMedias()
                                  where m.Id == mediaId.Value
@@ -43,6 +43,8 @@ namespace SubHub.Controllers
                 }
                 else
                 {
+                    ViewBag.LanguageId = languageId;
+                    ViewBag.MovieName = model.FirstOrDefault().Media.Name.ToString();
                     return View(model);
                 }
                 
@@ -364,6 +366,7 @@ namespace SubHub.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Downvote(int? id)
         {
             if (id.HasValue)

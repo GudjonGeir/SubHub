@@ -6,6 +6,21 @@
 }
 
 <h2>ViewSubtitle</h2>
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+
+@if(ViewBag.LanguageId == 1)
+{
+    <h2>Enskir textar fyrir "@ViewBag.MovieName"</h2>
+}
+else if(ViewBag.LanguageId == 2)
+{
+    <h2>Íslenskir textar fyrir "@ViewBag.MovieName"</h2>
+}
+else
+{ 
+    <h2>Textar fyrir "@ViewBag.MovieName"</h2>
+}
 
 
 <table class="table">
@@ -49,7 +64,7 @@
         <td>
             @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = item.Id }, FormMethod.Get))
             {
-                <input type="submit" value="Hala niður" />
+                <input type="submit" value="Hala niður" class="tfbutton get-text-button" />
             }
         </td>
         <td>
