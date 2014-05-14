@@ -67,7 +67,7 @@
         else
         {
             <td>
-                @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = r.Id }, null)
+                @Html.ActionLink("Uppfylla beiðni", "Complete", "Request", new { id = r.Id }, new { @class = "complete-request" })
                 <span class="glyphicon glyphicon-check"></span>
             </td>
         }

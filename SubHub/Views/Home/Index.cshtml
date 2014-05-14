@@ -28,9 +28,11 @@
 <script src="~/Scripts/BannerSliderImages.js"></script>
 <script src="~/Scripts/dots.js"></script>
         <div id="popular-master">
-            <h2>Vinsælustu textarnir</h2>
+            
+            <h3 id="most-popular-title">Vinsælustu textarnir</h3>
+            <br />
             <div class="front-5-group">
-                <h3>Bíómyndir</h3>
+                <h4>Bíómyndir</h4>
                 @{var items = (from m in Model select m).ToList();}
                 @for (int i = 0; i < 5; i++ )
                 {
@@ -44,7 +46,7 @@
             </div>
 
             <div class="front-5-group">
-                <h3>Þættir</h3>
+                <h4>Þættir</h4>
 
                 @{var items2 = (from m in Model select m).ToList();}
                 @for (int i = 5; i < 10; i++)
