@@ -26,7 +26,11 @@ namespace SubHub.Controllers
 
         public ActionResult Requests()
         {
-            var requests = m_repo.GetRequests();
+            var requests = from r in m_repo.GetRequests()
+                           join n in m_repo.GetRequestRatings() on r.Id equals n.RequestId
+                           orderby n.count descending
+                           select r;
+
             return View(requests);
 
         }

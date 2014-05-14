@@ -32,6 +32,7 @@ namespace SubHub.Controllers
                            select m.Id).SingleOrDefault();
             var result = from m in m_repo.GetMedias()
                          where m.TypeId == movieId
+                         orderby m.Name
                          select m;
             return View(result);
         }
@@ -49,6 +50,7 @@ namespace SubHub.Controllers
                            select g.Id).SingleOrDefault();
             var result = from n in movies
                          where n.GenreId == genreId
+                         orderby n.Name
                          select n;
             ViewBag.Title = genre;
             return View(result);
@@ -60,6 +62,7 @@ namespace SubHub.Controllers
                            select m.Id).SingleOrDefault();
             var result = from m in m_repo.GetMedias()
                          where m.TypeId == tvShowId
+                         orderby m.Name
                          select m;
             return View(result);
         }
@@ -76,6 +79,7 @@ namespace SubHub.Controllers
                            select g.Id).SingleOrDefault();
             var result = from n in tvShows
                          where n.GenreId == genreId
+                         orderby n.Name
                          select n;
             ViewBag.Title = genre;
             return View(result);
@@ -91,41 +95,13 @@ namespace SubHub.Controllers
                 media = media.Where(m => m.Name.Contains(query));
                 if (!media.Any())
                 {
-                    return View("Error"); // TODO: Specific error page, no results found
+                    return View("Error");
                 }
+                media = media.OrderBy(m => m.Name);
                 ViewBag.Title = query;
                 return View(media);
             }
             return View("Error");
         }
-
-        private SubHubContext db = new SubHubContext();
-
-
-
-
-        // Til að gera prew og next page
-
-        /*
-         * Til að gera prew og next page
-         * Síða: http://stackoverflow.com/questions/9321710/how-to-do-prev-next-page
-         
-         public PaginatedList<T>(IQueryable<T> source, int pageIndex, int? pageSize)
-         {
-             PageIndex = pageIndex; //global variable
-             PageSize = pageSize ?? source.Count(); //global variable
-             TotalCount = source.Count(); //global variable
-             TotalPages = (int)Math.Ceiling(TotalCount /(double)PageSize); //global variable
-             this.AddRange(source.Skip(PageIndex*PageSize).Take(PageSize));
-          }
-          public bool HasPreviousPage
-          {  
-              get {   return(PageIndex >0); //same global variable  }
-           }
-          public bool HasNextPage
-          {  
-              get {   return(PageIndex <0); //same global variable   }
-           }
-         */
     }
 }
