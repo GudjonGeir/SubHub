@@ -210,5 +210,13 @@ namespace SubHub.Repositories
             line.Time = s.Time;
             m_db.SaveChanges();
         }
+
+
+        public void DownloadCounterUpOne(int mediaId)
+        {
+            var media = m_db.Medias.Where(m => m.Id == mediaId).SingleOrDefault();
+            media.DownloadCount++;
+            m_db.SaveChanges();
+        }
     }
 }

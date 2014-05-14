@@ -27,6 +27,7 @@ namespace SubHub.Controllers
                            select m.Id).SingleOrDefault();
             var result = (from m in m_repo.GetMedias()
                          where m.TypeId == movieId
+                         orderby m.DownloadCount descending
                          select m).Take(5).ToList();
 
             int tvShowId = (from m in m_repo.GetMediaTypes()
@@ -34,6 +35,7 @@ namespace SubHub.Controllers
                             select m.Id).SingleOrDefault();
             var result2 = (from m in m_repo.GetMedias()
                          where m.TypeId == tvShowId
+                         orderby m.DownloadCount descending
                          select m).Take(5);
             foreach (var item in result2)
             {
