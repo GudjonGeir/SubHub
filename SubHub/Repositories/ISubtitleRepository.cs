@@ -36,5 +36,6 @@ namespace SubHub.Repositories
         void RemoveUserFromUpvotes(int id, string userId);
         void RemoveUserFromDownvotes(int id, string userId);
         void UpdateSubtitleLine(SubtitleLine s);
+        void DownloadCounterUpOne(int mediaId);
     }
 }

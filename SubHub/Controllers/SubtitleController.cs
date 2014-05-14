@@ -144,8 +144,8 @@ namespace SubHub.Controllers
                     GenreId = model.GenreId,
                     ImdbUrl = model.ImdbUrl,
                     PosterUrl = model.PosterUrl,
-                    TypeId = model.TypeId
-               
+                    TypeId = model.TypeId,
+                    DownloadCount = 0
                 };
                 m_repo.AddMedia(newMedia);
                 return RedirectToAction("Media", new { id = newMedia.Id });
@@ -355,10 +355,12 @@ namespace SubHub.Controllers
                                     where s.SubtitleId == id.Value
                                     orderby s.LineNumber
                                     select s;
-                var subtitleName = (from s in m_repo.GetSubtitles()
+                var media = (from s in m_repo.GetSubtitles()
                                join m in m_repo.GetMedias() on s.MediaId equals m.Id
                                where s.Id == id.Value
-                               select m.Name).SingleOrDefault();
+                               select m).SingleOrDefault();
+                string subtitleName = media.Name;
+                m_repo.DownloadCounterUpOne(media.Id);
                                
 
                 foreach(var line in subtitleLines)
