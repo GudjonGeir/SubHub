@@ -58,8 +58,15 @@
                     <input type="submit" value="Sækja texta" class="tfbutton get-text-button"/>
                 }
             </dd>
-
+            
         </dl>
+        <div>
+            @using (Html.BeginForm("NewSubtitle", "Subtitle", FormMethod.Get))
+            {
+                @Html.Hidden("id", Model.Id)
+                <input type="submit" value="Hlaða upp texta" class="tfbutton get-text-button" />
+            }
+        </div>
 
     </div>
 </div>
