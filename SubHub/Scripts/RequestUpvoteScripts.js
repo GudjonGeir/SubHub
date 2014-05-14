@@ -15,3 +15,11 @@ $(document).on("click", ".like-request", function (e) {
 });
 
 
+$(document).on("click", ".complete-request", function (e) {
+    var currElem = $(this);
+    $.post($(this).attr('href'), function (data) {
+        location.reload(false);
+    });
+    
+    return false;
+});
