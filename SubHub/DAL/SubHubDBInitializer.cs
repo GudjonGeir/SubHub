@@ -39,7 +39,7 @@ namespace SubHub.DAL
             MediaGenre islenskt = new MediaGenre { Genre = "Íslenskt-efni" };   //5
             MediaGenre romantik = new MediaGenre { Genre = "Rómantík" };        //6
             MediaGenre scifi = new MediaGenre { Genre = "Sci-Fi" };             //7
-            MediaGenre spenna = new MediaGenre { Genre = "Spennatryllir" };     //8
+            MediaGenre spenna = new MediaGenre { Genre = "Spennutryllir" };     //8
             MediaGenre songleikur = new MediaGenre { Genre = "Söngleikur" };    //9
             MediaGenre teiknimynd = new MediaGenre { Genre = "Teiknimynd" };    //10
             MediaGenre avintyri = new MediaGenre { Genre = "Ævintýri" };       //11
