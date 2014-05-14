@@ -2,5 +2,9 @@
     ViewBag.Title = "Login Failure";
 }
 
-<h2>@ViewBag.Title.</h2>
-<h3 class="text-error">Unsuccessful login with service.</h3>
+<h2>Innskráning mistókst</h2>
+<ul>
+    <li> Athugaðu hvort notandanafn og lykilorð hafi verið rétt slegin inn. </li>
+    <li> Ef þú átt ekki þegar aðgang. <li>@Html.ActionLink("Nýskráðu þig hér.", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li></li>
+
+</ul>
