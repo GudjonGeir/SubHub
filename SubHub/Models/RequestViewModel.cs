@@ -14,6 +14,7 @@ namespace SubHub.Models
         [Required(ErrorMessage = "Það þarf að fylla inn í þennan reit")]
         [Display(Name = "Nafn")]
         public string Name { get; set; }
+        [Display(Name = "Tungumál")]
         public int LanguageId { get; set; }
         public List<SelectListItem> SubtitleLanguages { get; set; }
     }

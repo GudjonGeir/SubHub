@@ -145,7 +145,8 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value };
+                var media = m_repo.GetMedias().Where(s => s.Id == id.Value).SingleOrDefault();
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value, MediaName = media.Name };
                 var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
 
                 model.SubtitleLanguages = new List<SelectListItem>();
