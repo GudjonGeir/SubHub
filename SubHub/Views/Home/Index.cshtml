@@ -10,6 +10,9 @@
 <div class="panel panel-default" id="front-area">
     <div class="panel-body">-->
 
+<h2 id="blessadur"> Velkomin á SubHub </h2>
+<h4 id="blessadur"> Hér getur þú fundið skjátexta fyrir bíómyndir og þætti </h4>
+
 <div class="banner-slider-images">
     <ul>
         <li><img id="slider-images" src="http://omgtens.com/wp-content/uploads/2014/02/The-Wolf-of-Wall-Street.jpg" /></li>
@@ -32,7 +35,7 @@
             <h3 id="most-popular-title">Vinsælustu textarnir</h3>
             <br />
             <div class="front-5-group">
-                <h4>Bíómyndir</h4>
+                <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
                 @{var items = (from m in Model select m).ToList();}
                 @for (int i = 0; i < 5; i++ )
                 {
@@ -46,7 +49,7 @@
             </div>
 
             <div class="front-5-group">
-                <h4>Þættir</h4>
+                <h4 id="front-page-tv-shows-movies">Þættir</h4>
 
                 @{var items2 = (from m in Model select m).ToList();}
                 @for (int i = 5; i < 10; i++)
