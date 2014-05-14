@@ -26,21 +26,7 @@ namespace SubHub.Controllers
             m_repo = new SubtitleRepository();
         }
 
-        public ActionResult SubtitleComments(int? id)
-        {
-            if (id.HasValue)
-            {
-                var subtitle = (from s in m_repo.GetSubtitles()
-                                where s.Id == id
-                                select s).SingleOrDefault();
-                
-                if(subtitle != null)
-                {
-                    return View(subtitle);
-                }
-            }
-            return View("Error");
-        }
+        
 
         public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
@@ -489,6 +475,21 @@ namespace SubHub.Controllers
         public ActionResult Flag(int? id)
         {
             return View();
+        }
+
+        public ActionResult SubtitleComments(int? id)
+        {
+            if (id.HasValue)
+            {
+                var subtitle = (from s in m_repo.GetSubtitles()
+                                where s.Id == id
+                                select s).SingleOrDefault();
+                if (subtitle != null)
+                {
+                    return View(subtitle);
+                }
+            }
+            return View("Error");
         }
 
         [HttpGet]

@@ -4,16 +4,25 @@
         ViewBag.Title = "SubtitleComments";
     }
 
+<h3>Skrifa athugasemd fyrir "@Model.Name"</h3>
 @Html.HiddenFor(model => HttpContext.Current.User.Identity.Name, new { @id = "user" })
 @Html.HiddenFor(model => model.Id, new { @id = "subtitleId" })&#x09;
-    <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
-    <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
-    <button onclick="AddComment()" class="btn btn-primary ">Send</button>
+    <div id="asdf">
+        <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
+        @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
+        {
+            <input id="asdfgh" type="submit" value="Hala niður" class="tfbutton get-text-button" />
+        }
+        <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
+        <button id="asdfg" onclick="AddComment()" class="btn btn-primary ">Skrá inn athugasemd</button>
+        
+        
+    </div>
 <span hidden id="errorMessage" style="color: red">&#x09;Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</span>
     <div class="comments">
 
     </div>
-
+<div>
     <script type="text/html" id="comment-template">
         <li class="list-group-item">
             <span data-link-wrap="deletelink" class="glyphicon glyphicon-remove"></span>
@@ -25,6 +34,7 @@
             <span class="text-muted" data-content="theDateSubmitted"></span>
         </li>
     </script>
+</div>
 
 <script src="~/scripts/jquery-1.10.2.js"></script>
 <script src="~/scripts/viewcomments.js"></script>
