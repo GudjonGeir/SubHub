@@ -1,29 +1,85 @@
-﻿@model SubHub.Models.Subtitle
+﻿@model IEnumerable<SubHub.Models.Subtitle>
 
 @{
     ViewBag.Title = "ViewSubtitle";
+    
 }
 <script src="~/scripts/jquery-1.10.2.js"></script>
-<script src="~/scripts/ViewSubtitle.js"></script>
 
-<script type="text/html" id="comment-template">
-    <li class="list-group-item">
-        <p>
-            <span class="glyphicon glyphicon-user"></span>
-            <span class="text-primary" data-content="user"></span>
-            <span data-content="theComment"></span>
-        </p>
-        <span class="text-muted" data-content="theDateSubmitted"></span>
-    </li>
-</script>
 
-<h2>ViewSubtitle</h2>
+@if(ViewBag.LanguageId == 1)
+{
+    <h2>Enskir textar fyrir "@ViewBag.MovieName"</h2>
+}
+else if(ViewBag.LanguageId == 2)
+{
+    <h2>Íslenskir textar fyrir "@ViewBag.MovieName"</h2>
+}
+else
+{ 
+    <h2>Textar fyrir "@ViewBag.MovieName"</h2>
+}
 
-<div>
-    <h4>Subtitle</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
+
+<table class="table">
+    <tr>
+
+        <th>
+            Stigagjöf
+        </th>
+
+        <th>
+            Dagsetning
+        </th>
+
+        <th>
+            
+        </th>
+
+        <th>
+
+        </th>
+
+    </tr>
+    @foreach(var item in Model)
+    {
+    <tr>
+
+        <td>
+            <a href="@Url.Action("Upvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-up"></span></a>
+            <a href="@Url.Action("Downvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-down"></span></a>
+            <span class="rating-count">@item.SubtitleRating.Count</span>
+
+            <div hidden class="upvote-error-message">
+                <p> Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</p>
+            </div>
+        </td>
+
+        <td>
+            @item.DateSubmitted
+        </td>
+
+        <td>
+            @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = item.Id }, FormMethod.Get))
+            {
+                <input type="submit" value="Hala niður" class="tfbutton get-text-button" />
+            }
+        </td>
+        <td>
+            Sjá umsagnir
+        </td>
+
+    </tr>
+    }
+
+</table>
+
+
+
+
+
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.Language)
         </dt>
 
@@ -38,6 +94,7 @@
         </dt>
 
         <dd>
+
             @Html.DisplayFor(model => model.DateSubmitted)
         </dd>
         <dd>
@@ -51,12 +108,25 @@
 
         <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
         <button onclick="AddComment()" class="btn btn-primary ">Send</button>
-    </dl>
-    <div class="comments">
+        </dl>
+        <div class="comments">
 
+        </div>
     </div>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+@*<script type="text/html" id="comment-template">
+    <li class="list-group-item">
+        <p>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="text-primary" data-content="user"></span>
+            <span data-content="theComment"></span>
+        </p>
+        <span class="text-muted" data-content="theDateSubmitted"></span>
+    </li>
+</script>*@
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/SubtitleUpDownVoteScripts.js"></script>

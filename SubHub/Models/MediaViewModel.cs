@@ -12,6 +12,7 @@ namespace SubHub.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "Útgáfudagur")]
+        [DataType(DataType.Date)]
         public DateTime DateAired { get; set; }
         public string PosterUrl { get; set; }
         [Required(ErrorMessage="This Field is required")]

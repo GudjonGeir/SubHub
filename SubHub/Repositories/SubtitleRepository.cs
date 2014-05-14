@@ -72,27 +72,36 @@ namespace SubHub.Repositories
             {
                 sub.Users.Add(user);
             }
-            
+
             m_db.SaveChanges();
         }
 
-        public void UpVote(int? id, ApplicationUser user)
+        public int Upvote(int? id, int value)
+        {
+            var model = (from m in m_db.SubtitleUpvotes
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count += value;
+            m_db.SaveChanges();
+            return model.Count;
+        }
+
+        public int Downvote(int? id, int value)
+        {
+            var model = (from m in m_db.SubtitleDownvotes
+                         where m.SubtitleId == id
+                         select m).SingleOrDefault();
+            model.Count += value;
+            m_db.SaveChanges();
+            return model.Count;
+        }
+
+        public void UpdateRating(int id, int value)
         {
             var model = (from m in m_db.SubtitleRatings
                          where m.SubtitleId == id
                          select m).SingleOrDefault();
-            model.Count += 1;
-            model.Users.Add(user);
-            m_db.SaveChanges();
-        }
-
-        public void DownVote(int? id, ApplicationUser user)
-        {
-            var model = (from m in m_db.SubtitleRatings
-                         where m.SubtitleId == id
-                         select m).SingleOrDefault();
-            model.Count -= 1;
-            model.Users.Add(user);
+            model.Count = value;
             m_db.SaveChanges();
         }
 
@@ -104,8 +113,8 @@ namespace SubHub.Repositories
         public void AddComment(Comment comment)
         {
             var theSubtitle = (from c in m_db.Subtitles
-                              where c.Id == comment.SubtitleId
-                              select c).SingleOrDefault();
+                               where c.Id == comment.SubtitleId
+                               select c).SingleOrDefault();
             theSubtitle.Comments.Add(comment);
             m_db.SaveChanges();
         }
@@ -119,5 +128,87 @@ namespace SubHub.Repositories
             m_db.SaveChanges();
         }
 
+
+        public IQueryable<ApplicationUser> GetUsers()
+        {
+            return m_db.Users;
+        }
+
+
+
+        public IQueryable<SubtitleRating> GetSubtitleRatings()
+        {
+            return m_db.SubtitleRatings;
+        }
+
+        public IQueryable<SubtitleUpvote> GetSubtitleUpvotes()
+        {
+            return m_db.SubtitleUpvotes;
+        }
+
+        public IQueryable<SubtitleDownvote> GetSubtitleDownvotes()
+        {
+            return m_db.SubtitleDownvotes;
+        }
+
+        public void AddUserToUpvotes(int id, string userId)
+        {
+            var upvote = (from u in m_db.SubtitleUpvotes
+                          where u.SubtitleId == id
+                          select u).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            upvote.Users.Add(user);
+            m_db.SaveChanges();
+        }
+        public void AddUserToDownvotes(int id, string userId)
+        {
+            var downvote = (from u in m_db.SubtitleDownvotes
+                          where u.SubtitleId == id
+                          select u).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            downvote.Users.Add(user);
+            m_db.SaveChanges();
+        }
+        public void RemoveUserFromUpvotes(int id, string userId)
+        {
+            var upvote = (from u in m_db.SubtitleUpvotes
+                          where u.SubtitleId == id
+                          select u).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            upvote.Users.Remove(user);
+            m_db.SaveChanges();
+            
+        }
+        public void RemoveUserFromDownvotes(int id, string userId)
+        {
+            var downvote = (from u in m_db.SubtitleDownvotes
+                          where u.SubtitleId == id
+                          select u).SingleOrDefault();
+            var user = (from u in m_db.Users
+                        where u.Id == userId
+                        select u).SingleOrDefault();
+            downvote.Users.Remove(user);
+            m_db.SaveChanges();
+        }
+
+
+        public void UpdateSubtitleLine(SubtitleLine s)
+        {
+            var line = (from l in m_db.SubtitleLines
+                        where l.Id == s.Id
+                        select l).SingleOrDefault();
+            line.LineNumber = s.LineNumber;
+            line.LineOne = s.LineOne;
+            line.LineTwo = s.LineTwo;
+            line.SubtitleId = s.SubtitleId;
+            line.Time = s.Time;
+            m_db.SaveChanges();
+        }
     }
 }

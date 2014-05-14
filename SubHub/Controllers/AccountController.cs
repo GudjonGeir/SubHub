@@ -55,7 +55,7 @@ namespace SubHub.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Vitlaust notandanafn eða lykilorð.");
                 }
             }
 

@@ -262,9 +262,22 @@ namespace SubHub.DAL
             subtitleLiness.ForEach(s => context.SubtitleLines.Add(s));
             context.SaveChanges();
 
-            SubtitleRating subtitleRating1 = new SubtitleRating { Count = 2, SubtitleId = 1, Users = new List<ApplicationUser>() { userManager.FindByName("user2"), userManager.FindByName("user3") }};
-            SubtitleRating subtitleRating2 = new SubtitleRating { Count = 1, SubtitleId = 2, Users = new List<ApplicationUser>() { userManager.FindByName("user3") } };
-            SubtitleRating subtitleRating3 = new SubtitleRating { Count = 2, SubtitleId = 3, Users = new List<ApplicationUser>() { userManager.FindByName("user1"), userManager.FindByName("user2"), userManager.FindByName("user3") } };
+            SubtitleUpvote subtitleUpvote1 = new SubtitleUpvote { Count = 2, SubtitleId = 1, Users = new List<ApplicationUser>() { userManager.FindByName("user2"), userManager.FindByName("user3") } };
+            SubtitleDownvote subtitleDownvote1 = new SubtitleDownvote { Count = 1, SubtitleId = 1, Users = new List<ApplicationUser>() { userManager.FindByName("user1") } };
+            SubtitleUpvote subtitleUpvote2 = new SubtitleUpvote { Count = 3, SubtitleId = 2, Users = new List<ApplicationUser>() { userManager.FindByName("user2"), userManager.FindByName("user3"), userManager.FindByName("user1") } };
+            SubtitleDownvote subtitleDownvote2 = new SubtitleDownvote { Count = 0, SubtitleId = 2, Users = new List<ApplicationUser>() };
+            SubtitleUpvote subtitleUpvote3 = new SubtitleUpvote { Count = 2, SubtitleId = 3, Users = new List<ApplicationUser>() { userManager.FindByName("user1"), userManager.FindByName("user3") } };
+            SubtitleDownvote subtitleDownvote3 = new SubtitleDownvote { Count = 1, SubtitleId = 3, Users = new List<ApplicationUser>() { userManager.FindByName("user2") } };
+            var subtitleUpvotes = new List<SubtitleUpvote>() { subtitleUpvote1, subtitleUpvote2, subtitleUpvote3 };
+            var subtitleDownvotes = new List<SubtitleDownvote>() { subtitleDownvote1, subtitleDownvote2, subtitleDownvote3 };
+
+            subtitleUpvotes.ForEach(s => context.SubtitleUpvotes.Add(s));
+            subtitleDownvotes.ForEach(s => context.SubtitleDownvotes.Add(s));
+            context.SaveChanges();
+
+            SubtitleRating subtitleRating1 = new SubtitleRating { Count = 1, SubtitleId = 1 };
+            SubtitleRating subtitleRating2 = new SubtitleRating { Count = 3, SubtitleId = 2 };
+            SubtitleRating subtitleRating3 = new SubtitleRating { Count = 1, SubtitleId = 3 };
             var subtitleRatings = new List<SubtitleRating>() { subtitleRating1, subtitleRating2, subtitleRating3 };
             subtitleRatings.ForEach(u => context.SubtitleRatings.Add(u));
             context.SaveChanges();
