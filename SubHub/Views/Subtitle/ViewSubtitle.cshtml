@@ -20,45 +20,6 @@ else
     <h2>Textar fyrir "@ViewBag.MovieName"</h2>
 }
 
-@*<div>
-
-    <hr />
-
-    <div class="panel panel-default">
-            @{var list = (from m in Model select m).ToList();}
-            @foreach (var item in list)
-            {
-                <div class="panel-body">
-                    <dl class="dl-horizontal">
-                        <dt>
-                            Language
-                            @Html.DisplayNameFor(model => model.Language)
-                        </dt>
-
-                        <dd>
-                            @item.LanguageId
-                            @Html.DisplayFor(model => model.Language)
-                        </dd>
-
-                        <dt>
-                            Dagsetning
-                            @Html.DisplayNameFor(model => model.DateSubmitted)
-                        </dt>
-
-                        <dd>
-                            @item.DateSubmitted
-                            @Html.DisplayFor(model => model.DateSubmitted)
-                        </dd>
-                    </dl>
-                    @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = item.Id }, FormMethod.Get))
-                    {
-                        <input type="submit" value="Hala niður" />
-                    }
-                </div>
-            }
-     </div>
-</div>*@
-
 
 <table class="table">
     <tr>
