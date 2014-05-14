@@ -196,5 +196,19 @@ namespace SubHub.Repositories
             downvote.Users.Remove(user);
             m_db.SaveChanges();
         }
+
+
+        public void UpdateSubtitleLine(SubtitleLine s)
+        {
+            var line = (from l in m_db.SubtitleLines
+                        where l.Id == s.Id
+                        select l).SingleOrDefault();
+            line.LineNumber = s.LineNumber;
+            line.LineOne = s.LineOne;
+            line.LineTwo = s.LineTwo;
+            line.SubtitleId = s.SubtitleId;
+            line.Time = s.Time;
+            m_db.SaveChanges();
+        }
     }
 }

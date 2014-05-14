@@ -162,7 +162,8 @@ h1
 {
     display: inline;
     vertical-align: middle;
-    color: rgb(225,225,225);
+    /*color: rgb(225,225,225);*/
+    color: #00adee;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 

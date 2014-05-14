@@ -182,5 +182,11 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+
+        public void UpdateSubtitleLine(SubtitleLine s)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,9 +11,17 @@ namespace SubHub.Models
     {
         public         int      Id          { get; set; }
         public         int      SubtitleId  { get; set; }
+
+        [Display(Name = "Línu númer")]
         public         int      LineNumber  { get; set; }
+
+        [Display(Name = "Tími línu")]
         public         string   Time        { get; set; }
+
+        [Display(Name = "Texti eitt")]
         public         string   LineOne     { get; set; }
+
+        [Display(Name = "Texti tvö")]
         public         string   LineTwo     { get; set; }     
         public virtual Subtitle Subtitle    { get; set; } // Corresponding subtitle for the line
     }

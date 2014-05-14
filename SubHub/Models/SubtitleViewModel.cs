@@ -12,6 +12,8 @@ namespace SubHub.Models
     {
         public int Id { get; set; }
         public DateTime DateSubmitted { get; set; }
+        public string MediaName { get; set; }
+        [Display(Name = "Tungumál")]
         public int LanguageId { get; set; }
         public int MediaId { get; set; }
         public virtual SubtitleLanguage Language { get; set; }
@@ -19,6 +21,7 @@ namespace SubHub.Models
         [Display(Name = "Tungumál")]
         public List<SelectListItem> SubtitleLanguages { get; set; }
 
+        [Display(Name = "Textaskrá")]
         public HttpPostedFileBase SrtUpload { get; set; }
 
         public SubtitleViewModel()

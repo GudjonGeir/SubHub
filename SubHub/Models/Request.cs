@@ -18,6 +18,7 @@ namespace SubHub.Models
         public         bool            Completed       { get; set; }
         public string UserId { get; set; }
         public int LanguageId { get; set; }
+        [Display(Name = "Tungumál")]
         public virtual SubtitleLanguage Language { get; set; }
         public virtual ApplicationUser User { get; set; }   
         public virtual RequestRating   RequestRating   { get; set; }   // Corresponding rating for the request

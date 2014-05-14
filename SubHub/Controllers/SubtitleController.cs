@@ -47,7 +47,9 @@ namespace SubHub.Controllers
             if (mediaId.HasValue && languageId.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitles()
+                             join m in m_repo.GetSubtitleRatings() on s.Id equals m.SubtitleId
                              where s.LanguageId == languageId && s.MediaId == mediaId
+                             orderby m.Count descending
                              select s).ToList();
                 if (!model.Any())
                 {
@@ -158,7 +160,8 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value };
+                var media = m_repo.GetMedias().Where(s => s.Id == id.Value).SingleOrDefault();
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value, MediaName = media.Name };
                 var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
 
                 model.SubtitleLanguages = new List<SelectListItem>();
@@ -200,13 +203,13 @@ namespace SubHub.Controllers
                 {
                     LanguageId = model.LanguageId, 
                     MediaId = model.MediaId,
-                    Users = users
+                    Users = users, 
+                    Comments = new List<Comment>(), 
+                    DateSubmitted = DateTime.Now, 
+                    SubtitleRating = new SubtitleRating()
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
 
-                //IdentityManager im = new IdentityManager();
-                
-                //user.Subtitles.Add(subtitle);
                 m_repo.AddUserToSubtitle(subtId, userId);
 
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
@@ -259,6 +262,57 @@ namespace SubHub.Controllers
             return View(model);
         }
 
+        [Authorize]
+        public ActionResult EditSubtitleLines(int? subtitleId)
+        {
+            if (subtitleId.HasValue)
+            {
+                var model = (from s in m_repo.GetSubtitleLines()
+                             where s.SubtitleId == subtitleId
+                             orderby s.LineNumber
+                             select s).ToList();
+                if (!model.Any())
+                {
+                    return View("Error");
+                }
+                else
+                {
+                    var media = (from m in m_repo.GetMedias()
+                                 join l in m_repo.GetSubtitles() on m.Id equals l.MediaId
+                                 where l.Id == subtitleId.Value
+                                 select m).SingleOrDefault();
+                    ViewBag.Title = media.Name;
+                    return View(model);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult EditSubtitleLines(SubtitleLine s)
+        {
+            if (ModelState.IsValid)
+            {
+                SubtitleLine result = new SubtitleLine()
+                {
+                    SubtitleId = s.SubtitleId,
+                    LineNumber = s.LineNumber,
+                    Id = s.Id,
+                    LineOne = s.LineOne,
+                    LineTwo = s.LineTwo,
+                    Time = s.Time
+                };
+                m_repo.UpdateSubtitleLine(result);
+
+
+
+                return RedirectToAction("EditSubtitleLines", new { subtitleId = s.SubtitleId });
+            }
+            return View("Error");
+        }
+
+        [Authorize]
         public ActionResult EditSubtitle(int? id)
         {
             if (id.HasValue)

@@ -4,7 +4,7 @@
     ViewBag.Title = "Requests";
 }
 
-<h2>Beiðni</h2>
+<h2>Beiðnir</h2>
 
 @using (Html.BeginForm("NewRequest", "Request", FormMethod.Get))
 { 
@@ -24,6 +24,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateSubmitted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Completed)
@@ -52,7 +55,10 @@
         <td>
             @Html.DisplayFor(modelItem => r.DateSubmitted)
         </td>
-        @if(r.Completed)
+        <td>
+            @Html.DisplayFor(modelItem => r.Language.Language)
+        </td>
+        @if (r.Completed)
         {
             <td>
                 Beiðni uppfyllt
