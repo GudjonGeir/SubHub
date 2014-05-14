@@ -40,9 +40,8 @@ else
 
     </tr>
     @foreach (var item in Model)
-    {
+{
     <tr>
-
         <td>
             <a href="@Url.Action("Upvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-up"></span></a>
             <a href="@Url.Action("Downvote", new { id = item.Id })" class="vote-sub"><span class="glyphicon glyphicon-arrow-down"></span></a>
@@ -52,7 +51,6 @@ else
                 <p> Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</p>
             </div>
         </td>
-
         <td>
             @item.DateSubmitted
         </td>
@@ -65,6 +63,7 @@ else
         </td>
         <td>
             @Html.ActionLink("Sjá umsagnir", "SubtitleComments", new { id = item.Id } )
+        </td>
         <tr>
 
             <td>
@@ -92,8 +91,9 @@ else
             </td>
             <td>
                 @Html.ActionLink("Breyta", "EditSubtitleLines", new { subtitleId = item.Id })
-        </td>
+            </td>
 
+        </tr>
     </tr>
 
     </td>
