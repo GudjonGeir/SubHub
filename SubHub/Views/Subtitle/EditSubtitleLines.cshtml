@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SubHub.Models.SubtitleLine>
+
+@{
+    ViewBag.Title = "EditSubtitleLines";
+}
+
+<h2>EditSubtitleLines</h2>
+
+@foreach (var model in Model)
+{
+    using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(modelItem => model.Id)
+        @Html.HiddenFor(modelItem => model.SubtitleId)
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(modelItem => model.LineNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelItem => model.LineNumber)
+                @Html.ValidationMessageFor(modelItem => model.LineNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(modelItem => model.Time, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelItem => model.Time)
+                @Html.ValidationMessageFor(modelItem => model.Time)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(modelItem => model.LineOne, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelItem => model.LineOne)
+                @Html.ValidationMessageFor(modelItem => model.LineOne)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(modelItem => model.LineTwo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelItem => model.LineTwo)
+                @Html.ValidationMessageFor(modelItem => model.LineTwo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Vista" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
