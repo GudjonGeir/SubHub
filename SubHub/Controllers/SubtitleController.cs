@@ -302,7 +302,7 @@ namespace SubHub.Controllers
                 };
                 m_repo.UpdateSubtitleLine(result);
 
-
+                m_repo.AddUserToSubtitle(result.SubtitleId, User.Identity.GetUserId());
 
                 return RedirectToAction("EditSubtitleLines", new { subtitleId = s.SubtitleId });
             }
