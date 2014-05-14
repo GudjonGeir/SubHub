@@ -243,7 +243,7 @@ h1
     //border: 1px solid red;
     //display: inline-block;*/
     
-    padding: 10px 30px 30px 30px;
+    padding: 10px 0px 30px 0px;
     margin: 0px;
     border-top: 0px;
     -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
@@ -480,12 +480,13 @@ body
 .banner-slider-images li { list-style: none; }
 .banner-slider-images {position: relative; overflow: auto;}
 .banner-slider-images ul li { float: left;}
-.banner-slider-images { width: 90%; height: 400px; left: 8%;}
+.banner-slider-images { width: 90%; height: 400px; left: 8%; margin-top: 5%;}
 #slider-images
 {
     width: 600px;
     height: 400px; 
     border: groove rgb(81,81,81);  
+    
 }
 
 #nextandprev
@@ -498,4 +499,37 @@ body
 #about-srt
 {
     color: gray;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 8%;
+  bottom: 0;
+  text-align: center;
+}
+
+.dots li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  text-indent: -999em;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: .4;
+  -webkit-transition: background .5s, opacity .5s;
+  -moz-transition: background .5s, opacity .5s;
+  transition: background .5s, opacity .5s;
+}
+
+.dots li.active {
+  background: #fff;
+  opacity: 1;
+}
+
+.upvote-error-message
+{
+    color: red;
 }

@@ -86,5 +86,26 @@ namespace SubHub.Tests.Mocks
         }
 
 
+
+
+        public int UpdateRating(int id, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserFromRating(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserToRating(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<ApplicationUser> GetUsers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

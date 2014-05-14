@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,6 +16,7 @@ namespace SubHub.Models
         public int MediaId { get; set; }
         public virtual SubtitleLanguage Language { get; set; }
         public virtual Media Media { get; set; }
+        [Display(Name = "Tungumál")]
         public List<SelectListItem> SubtitleLanguages { get; set; }
 
         public HttpPostedFileBase SrtUpload { get; set; }
