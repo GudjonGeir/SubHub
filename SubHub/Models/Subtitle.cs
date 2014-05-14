@@ -13,6 +13,9 @@ namespace SubHub.Models
         public          DateTime                     DateSubmitted   { get; set; }
         public          int                          LanguageId      { get; set; }
         public          int                          MediaId         { get; set; }
+        
+        [Display(Name = "Nafn")]
+        public string Name { get; set; }
 
         [Display(Name = "Tungumál")]
         public virtual  SubtitleLanguage             Language        { get; set; }

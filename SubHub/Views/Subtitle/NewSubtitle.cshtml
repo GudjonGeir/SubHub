@@ -13,6 +13,15 @@
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.MediaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.LanguageId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
