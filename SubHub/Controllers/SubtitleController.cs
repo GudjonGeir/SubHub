@@ -247,13 +247,13 @@ namespace SubHub.Controllers
             return View(model);
         }
 
-
-        public ActionResult EditSubtitleLines(int? id)
+        [Authorize]
+        public ActionResult EditSubtitleLines(int? subtitleId)
         {
-            if (id.HasValue)
+            if (subtitleId.HasValue)
             {
                 var model = (from s in m_repo.GetSubtitleLines()
-                             where s.SubtitleId == id
+                             where s.SubtitleId == subtitleId
                              orderby s.LineNumber
                              select s).ToList();
                 if (!model.Any())
@@ -262,6 +262,11 @@ namespace SubHub.Controllers
                 }
                 else
                 {
+                    var media = (from m in m_repo.GetMedias()
+                                 join l in m_repo.GetSubtitles() on m.Id equals l.MediaId
+                                 where l.Id == subtitleId.Value
+                                 select m).SingleOrDefault();
+                    ViewBag.Title = media.Name;
                     return View(model);
                 }
             }
@@ -285,7 +290,9 @@ namespace SubHub.Controllers
                 };
                 m_repo.UpdateSubtitleLine(result);
 
-                return RedirectToAction("EditSubtitleLines", s.SubtitleId);
+
+
+                return RedirectToAction("EditSubtitleLines", new { subtitleId = s.SubtitleId });
             }
             return View("Error");
         }
