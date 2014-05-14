@@ -543,5 +543,17 @@ body
 #most-popular-title
 {
     text-align: center;
+    font-weight: bold;
     
+}
+
+#front-page-tv-shows-movies
+{
+    font-weight: bold;
+}
+
+#blessadur
+{
+    color: black;
+    text-align: center;
 }
