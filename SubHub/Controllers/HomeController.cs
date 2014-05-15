@@ -20,6 +20,10 @@ namespace SubHub.Controllers
         {
             m_repo = new SubtitleRepository();
         }
+        /// <summary>
+        /// We make a linq query to search for the 5 most popular
+        /// downloads for movies and tv shows, to display it on the front page
+        /// </summary>
         public ActionResult Index()
         {
             int movieId = (from m in m_repo.GetMediaTypes()

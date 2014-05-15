@@ -42,7 +42,7 @@ namespace SubHub.Controllers
                     var media = (from m in m_repo.GetMedias()
                                  where m.Id == mediaId.Value
                                  select m).SingleOrDefault();
-                    return View("NoSubtitleError", media); // TODO: Offer to make new subtitle
+                    return View("NoSubtitleError", media);
                 }
                 else
                 {
@@ -55,8 +55,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-
-        //Fall ViewSubtitleByGenre
         [HttpGet]
         public ActionResult MediaByGenre(string genre)
         {
@@ -523,14 +521,12 @@ namespace SubHub.Controllers
         {
             if(!String.IsNullOrEmpty(comment.CommentText))
             {
-                //TestGögn:
-                //ApplicationUser user = new ApplicationUser { Id = "user1", UserName = "dorismjatt" };
 
                 string userId = User.Identity.GetUserId();
                 DateTime timi = DateTime.Now;
                 Comment newComment = new Comment { UserId = userId, SubtitleId = comment.SubtitleId, CommentText = comment.CommentText, DateSubmitted = timi };
                 m_repo.AddComment(newComment);
-                //return Json string here
+
                 return Json("", JsonRequestBehavior.AllowGet);
             }
             else
@@ -571,9 +567,7 @@ namespace SubHub.Controllers
             {
                 DateTime timi = DateTime.Now;
                 Comment newComment = new Comment {  SubtitleId = subtitleid.Value, CommentText = comment, DateSubmitted = timi };
-                //m_repo.AddComment(newComment);
                 return View(newComment);
-                //return Json string here
             }
             else if (!subtitleid.HasValue)
             {
@@ -583,7 +577,6 @@ namespace SubHub.Controllers
             {
                 ModelState.AddModelError("comment", "Commenttext cannot be empty!");
                 return View("Error");
-                //return some Json string
             }
         }
 	}

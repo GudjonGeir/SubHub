@@ -30,19 +30,10 @@ namespace SubHub.DAL
         public DbSet<SubtitleDownvote> SubtitleDownvotes { get; set; }
         public DbSet<SubtitleUpvote> SubtitleUpvotes { get; set; }
 
-        //public System.Data.Entity.DbSet<SubHub.Models.ApplicationUser> AspNetUsers { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-
-            //modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
-            //modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
         }
 
 

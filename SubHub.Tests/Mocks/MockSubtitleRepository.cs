@@ -205,11 +205,5 @@ namespace SubHub.Tests.Mocks
         {
             throw new NotImplementedException();
         }
-
-
-        public void DownloadCounterUpOne(int mediaId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
