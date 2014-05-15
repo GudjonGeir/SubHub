@@ -27,7 +27,13 @@ namespace SubHub.Controllers
         }
 
         
-
+        /// <summary>
+        /// To get the correct subtitle we need the Id for the 
+        /// correct media(movie or tvshow) and the requested
+        /// requested language id(english or icelandic)
+        /// If no subtitle exists, we are redirected to a
+        /// nice error page asking if the user wants to make a request
+        /// </summary>
         public ActionResult ViewSubtitle(int? mediaId, int? languageId)
         {
             if (mediaId.HasValue && languageId.HasValue)
@@ -83,6 +89,10 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        /// <summary>
+        /// Gets the required values to fill in for a new 
+        /// subtitle into a model and sends it to the view
+        /// </summary>
         [Authorize]
         public ActionResult NewMedia()
         {
@@ -103,6 +113,12 @@ namespace SubHub.Controllers
             }
             return View(model);
         }
+
+        /// <summary>
+        /// Takes all properties in the model and assigns
+        /// it into a new Media object which we add into
+        /// the database
+        /// </summary>
         [Authorize]
         [HttpPost]
         public ActionResult NewMedia(MediaViewModel model)
@@ -287,43 +303,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        [Authorize]
-        public ActionResult EditSubtitle(int? id)
-        {
-            if (id.HasValue)
-            {
-                var model = (from s in m_repo.GetSubtitles()
-                             where s.Id == id
-                             select s).SingleOrDefault();
-                if(model == null)
-                {
-                    return View("Error");
-                }
-                else 
-                {
-                    return View(model);
-                }
-            }
-            return View("Error");
-        }
-
-        [HttpPost]
-        public ActionResult EditSubtitle(int? id, Subtitle s)
-        {
-
-
-            return View();
-        }
-
-        [HttpPost]
-        [Authorize]
-        public ActionResult DeleteSubtitle(int? id)
-        {
-
-
-            return View();
-        }
-
         public ActionResult DownloadSubtitle(int? id)
         {
             if (id.HasValue)
@@ -465,12 +444,10 @@ namespace SubHub.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Flag(int? id)
-        {
-            return View();
-        }
-
+        /// <summary>
+        /// Returns the model for the correct subtitle into
+        /// the comment section
+        /// </summary>
         public ActionResult SubtitleComments(int? id)
         {
             if (id.HasValue)
@@ -486,45 +463,52 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
+        /// <summary>
+        /// If the id doesnt have a value or the subitle
+        /// doesnt exist we return a error page, if it does
+        /// we return a collection of comments for the 
+        /// corresponding subtitle
+        /// </summary>
         [HttpGet]
-        public ActionResult GetComments(int id)
+        public ActionResult GetComments(int? id)
         {
-            var result = (from s in m_repo.GetAllComments()
-                          where s.SubtitleId == id
-                          select s);
-
-            var newResult = from c in result
-                            select new
-                            {
-                                UserName = c.User.UserName,
-                                CommentText = c.CommentText,
-                                DateSubmitted = c.DateSubmitted,
-                                Id = c.Id,
-                            };
-            return Json(newResult, JsonRequestBehavior.AllowGet);
+            if(id.HasValue)
+            {
+                var result = (from s in m_repo.GetAllComments()
+                              where s.SubtitleId == id.Value
+                              select s);
+                var newResult = from c in result
+                                select new
+                                {
+                                    UserName = c.User.UserName,
+                                    CommentText = c.CommentText,
+                                    DateSubmitted = c.DateSubmitted,
+                                    Id = c.Id,
+                                };
+                return Json(newResult, JsonRequestBehavior.AllowGet);
+            }
+            return View("Error");
         }
 
+        /// <summary>
+        /// Adds a comment into the right subtitle
+        /// The javascript takes care of the logic(ex. string is null)
+        /// </summary>
         [HttpPost]
         [Authorize]
         public ActionResult AddComment(Comment comment)
         {
-            if(!String.IsNullOrEmpty(comment.CommentText))
-            {
-
                 string userId = User.Identity.GetUserId();
                 DateTime timi = DateTime.Now;
                 Comment newComment = new Comment { UserId = userId, SubtitleId = comment.SubtitleId, CommentText = comment.CommentText, DateSubmitted = timi };
                 m_repo.AddComment(newComment);
 
                 return Json("", JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                ModelState.AddModelError("comment", "Commenttext cannot be empty!");
-                return Json("", JsonRequestBehavior.AllowGet);
-            }
         }
 
+        /// <summary>
+        /// Deletes the corresponding comment if the id isnt null
+        /// </summary>
         [Authorize]
         [HttpPost]
         public ActionResult DeleteComment(int? id)
@@ -548,7 +532,10 @@ namespace SubHub.Controllers
             return Json("", JsonRequestBehavior.AllowGet);
         }
 
-
+        /// <summary>
+        /// This works just like the function above, except it needed
+        /// to be implemented this way to test it
+        /// </summary>
         [Authorize]
         public ActionResult TestAddComment(string comment, int? subtitleid)
         {
