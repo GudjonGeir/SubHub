@@ -13,7 +13,7 @@ namespace SubHub.Models
         public         int             SubtitleId    { get; set; }
         public         string          CommentText   { get; set; }
         public         DateTime        DateSubmitted { get; set; }
-        public virtual ApplicationUser User          { get; set; }
+        public virtual ApplicationUser User { get; set; }
         [Required]
         public virtual Subtitle        Subtitle      { get; set; }
 

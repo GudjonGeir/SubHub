@@ -24,14 +24,14 @@ namespace SubHub.Models
         public virtual MediaGenre Genre { get; set; }
         [Display(Name = "Týpa")]
         public virtual MediaType Type { get; set; }
-        [Display(Name = "Tungumál")]
+
         public virtual ICollection<Subtitle> Subtitles { get; set; }
 
 
         public Media()
         {
             Subtitles = new List<Subtitle>();
-            
+
         }
     }
 }
