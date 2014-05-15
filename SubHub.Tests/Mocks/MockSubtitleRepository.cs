@@ -13,10 +13,16 @@ namespace SubHub.Tests.Mocks
         private readonly List<Subtitle> m_subtitles;
         private readonly List<SubtitleLanguage> m_mediaLanguages;
         private readonly List<Media> m_media;
+        private readonly List<MediaType> m_mediaTypes;
 
         public MockSubtitleRepository(List<Media> media)
         {
             m_media = media;
+        }
+
+        public MockSubtitleRepository(List<MediaType> mediaTypes)
+        {
+            m_mediaTypes = mediaTypes;
         }
 
         public MockSubtitleRepository(List<Subtitle> subtitles)
@@ -87,6 +93,12 @@ namespace SubHub.Tests.Mocks
             return m_subtitles[0].Comments.AsQueryable();
         }
 
+        public void DownloadCounterUpOne(int mediaId)
+        {
+            var media = m_media.Where(m => m.Id == mediaId).SingleOrDefault();
+            media.DownloadCount++;
+        }
+
         public void AddUserToSubtitle(int id, string userId)
         {
 
@@ -100,13 +112,18 @@ namespace SubHub.Tests.Mocks
 
         public IQueryable<MediaType> GetMediaTypes()
         {
-            throw new NotImplementedException();
+            List<MediaType> types = new List<MediaType>();
+            MediaType movies = new MediaType {  Type = "Kvikmyndir", Id = 1 };
+            MediaType tvShows = new MediaType { Type = "Þættir", Id = 2 };
+            types.Add(movies);
+            types.Add(tvShows);
+            return types.AsQueryable();
         }
 
 
         public IQueryable<Media> GetMedias()
         {
-            throw new NotImplementedException();
+            return m_media.AsQueryable();
         }
 
         public IQueryable<MediaGenre> GetMediaGenres()
