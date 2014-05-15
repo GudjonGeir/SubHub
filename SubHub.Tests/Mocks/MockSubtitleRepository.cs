@@ -47,11 +47,6 @@ namespace SubHub.Tests.Mocks
         }
 
 
-        public void AddSubtitleLine(SubtitleLine sl)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpVote(int? id, ApplicationUser user)
         {
             //var model = (from m in m_subtitles
@@ -128,7 +123,12 @@ namespace SubHub.Tests.Mocks
 
         public IQueryable<MediaGenre> GetMediaGenres()
         {
-            throw new NotImplementedException();
+            List<MediaGenre> genres = new List<MediaGenre>();
+            foreach (var item in m_media)
+            {
+                genres.Add(item.Genre);
+            }
+            return genres.AsQueryable();
         }
 
 
@@ -207,7 +207,9 @@ namespace SubHub.Tests.Mocks
         }
 
 
-        public void DownloadCounterUpOne(int mediaId)
+
+
+        public void AddSubtitleLine(List<SubtitleLine> sl)
         {
             throw new NotImplementedException();
         }
