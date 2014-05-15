@@ -13,7 +13,7 @@ namespace SubHub.Repositories
         IQueryable<Subtitle>GetSubtitles();
 
         int AddSubtitle(Subtitle s);
-        void AddSubtitleLine(SubtitleLine sl);
+        void AddSubtitleLine(List<SubtitleLine> sl);
         void AddUserToSubtitle(int id, string userId);
         IQueryable<SubtitleLine> GetSubtitleLines();
         int Upvote(int? id, int value);

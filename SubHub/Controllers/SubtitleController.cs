@@ -202,6 +202,7 @@ namespace SubHub.Controllers
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
                 {
                     StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
+                    List<SubtitleLine> lines = new List<SubtitleLine>();
                     while (!reader.EndOfStream)
                     {
                         SubtitleLine sl = new SubtitleLine();
@@ -229,7 +230,7 @@ namespace SubHub.Controllers
                         sl.LineTwo = tmpString;
 
                         sl.SubtitleId = subtId;
-                        m_repo.AddSubtitleLine(sl);
+                        lines.Add(sl);
 
                         if (String.IsNullOrEmpty(tmpString))
                         {
@@ -240,6 +241,8 @@ namespace SubHub.Controllers
 
 
                     }
+                    m_repo.AddSubtitleLine(lines);
+
                 }
 
                 return RedirectToAction("ViewSubtitle", new { mediaID = subtitle.MediaId, languageId = subtitle.LanguageId });
