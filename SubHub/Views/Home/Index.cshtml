@@ -27,36 +27,30 @@
 
 <script src="~/Scripts/BannerSliderImages.js"></script>
 <script src="~/Scripts/dots.js"></script>
+
 <br />
-        <div id="popular-master">
-            
-            <h3 id="most-popular-title">Vinsælustu textarnir</h3>
-      
-            <div class="front-5-group">
-                <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
-                @{var items = (from m in Model select m).ToList();}
-                @for (int i = 0; i < 5; i++ )
-                {
-                    <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images">
-                        @*<h5>@items[i].Name</h5>*@
-                        <img src="@items[i].PosterUrl.ToString()" alt="...">
-           
-                    </a>
-                }
 
-            </div>
+<div id="popular-master">
+    <h3 id="most-popular-title">Vinsælustu textarnir</h3>
+<div class="front-5-group">
+    <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
 
-            <div class="front-5-group">
-                <h4 id="front-page-tv-shows-movies">Þættir</h4>
+    @{var items = (from m in Model select m).ToList();}
+    @for (int i = 0; i < 5; i++ )
+        {
+            <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images"> <img src="@items[i].PosterUrl.ToString()" alt="..."> </a>
+        }
 
-                @{var items2 = (from m in Model select m).ToList();}
-                @for (int i = 5; i < 10; i++)
-                {
-                    <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images">
-                        <img src="@items2[i].PosterUrl.ToString()" alt="...">
-                      
-                    </a>
-                }
+</div>
 
-            </div>
-        </div>
+<div class="front-5-group">
+    <h4 id="front-page-tv-shows-movies">Þættir</h4>
+
+    @{var items2 = (from m in Model select m).ToList();}
+    @for (int i = 5; i < 10; i++)
+        {
+            <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images"> <img src="@items2[i].PosterUrl.ToString()" alt="..."> </a>
+        }
+
+    </div>
+    </div>
