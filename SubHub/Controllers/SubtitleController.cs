@@ -55,20 +55,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-
-        //Fall ViewSubtitleByGenre
-        [HttpGet]
-        public ActionResult MediaByGenre(string genre)
-        {
-            int genreId = (from m in m_repo.GetMediaGenres()
-                          where m.Genre == genre
-                          select m.Id).SingleOrDefault();
-
-            var result = (from m in m_repo.GetMedias()
-                          where m.GenreId == genreId
-                          select m).SingleOrDefault();
-            return View(result);
-        }
         public ActionResult Media(int? id)
         {
             if (id.HasValue)

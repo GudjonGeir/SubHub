@@ -276,6 +276,7 @@
     <Content Include="Scripts\BannerSliderImages.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\dots.js" />
