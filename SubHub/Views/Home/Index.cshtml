@@ -6,12 +6,9 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//unslider.com/unslider.min.js"></script>  
-<!--
-<div class="panel panel-default" id="front-area">
-    <div class="panel-body">-->
 
-<h2 id="blessadur"> Velkomin á SubHub </h2>
-<h4 id="blessadur"> Hér getur þú fundið skjátexta fyrir bíómyndir og þætti </h4>
+<h2 id="front-page-titles-for-welcome"> Velkomin á SubHub </h2>
+<h4 id="front-page-titles-for-welcome"> Hér getur þú fundið skjátexta fyrir bíómyndir og þætti </h4>
 
 <div class="banner-slider-images">
     <ul>
@@ -30,10 +27,11 @@
 
 <script src="~/Scripts/BannerSliderImages.js"></script>
 <script src="~/Scripts/dots.js"></script>
+<br />
         <div id="popular-master">
             
             <h3 id="most-popular-title">Vinsælustu textarnir</h3>
-            <br />
+      
             <div class="front-5-group">
                 <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
                 @{var items = (from m in Model select m).ToList();}
@@ -42,7 +40,7 @@
                     <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images">
                         @*<h5>@items[i].Name</h5>*@
                         <img src="@items[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
+           
                     </a>
                 }
 
@@ -56,26 +54,9 @@
                 {
                     <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images">
                         <img src="@items2[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
+                      
                     </a>
                 }
 
             </div>
         </div>
-
-        <!--<div id="slider-div">
-            <div class="tcycle">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p1.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p2.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p3.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p4.jpg">
-            </div>
-        </div>-->
-    <!--</div>
-</div>
--->
-<!--
-<div id="front-area">
-    
-</div>
--->
