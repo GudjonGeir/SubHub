@@ -122,7 +122,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        
         [Authorize]
         [HttpPost]
         public ActionResult Complete(int? id)

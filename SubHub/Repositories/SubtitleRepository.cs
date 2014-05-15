@@ -138,8 +138,6 @@ namespace SubHub.Repositories
             return m_db.Users;
         }
 
-
-
         public IQueryable<SubtitleRating> GetSubtitleRatings()
         {
             return m_db.SubtitleRatings;

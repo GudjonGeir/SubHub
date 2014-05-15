@@ -207,8 +207,6 @@ namespace SubHub.Tests.Mocks
         }
 
 
-
-
         public void AddSubtitleLine(List<SubtitleLine> sl)
         {
             throw new NotImplementedException();

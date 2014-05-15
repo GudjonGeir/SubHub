@@ -8,97 +8,88 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/themes/base/css")
-
 </head>
 <body>
 
-    <div id="banner-master">
-        <!--<h1 id="banner-text">SUBHUB</h1>-->
-        <div id="banner-middler">
-            <div id="tfheader">
-                <a href="/Home">
-                    <img id="banner-logo" src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABVAAD/4QNvaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M0RFQTBCRTk1RERCRTMxMUI2NTBCODUzQUFFRTg2ODkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUU2NkEwNjVEQjhGMTFFMzhENzY4MTg4RUJBOUUwOEUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUU2NkEwNjREQjhGMTFFMzhENzY4MTg4RUJBOUUwOEUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MjRBMTZDNDg3REJFMzExQjY1MEI4NTNBQUVFODY4OSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozREVBMEJFOTVEREJFMzExQjY1MEI4NTNBQUVFODY4OSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6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" />
-                </a>
-                <a href="/Home" id="h1-linkar-index">
-                    <h1>SubHub</h1>
-                </a>
-                    @*<form id="tfnewsearch" method="get" action="http://www.imdb.com/find?q=hobbit&s=all">
-                <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="Find Subtitle" class="tfbutton">
-            </form>*@
-                    @using (Html.BeginForm("Search", "Browse", FormMethod.Get, new { @class = "searchform" }))
-                    {
-                        @Html.TextBox("query", "", new Dictionary<string, object>() { { "class", "tftextinput" }, { "size", "21" } })
-                        <input type="submit" value="Finna texta" class="tfbutton" />
-                    }
-                    <div class="tfclear"></div>
-            </div>
+<div id="banner-master">
+<div id="banner-middler">
+<div id="tfheader">
 
-            <div id="sidebar">
-                <!--class="navbar"-->
-                <ul class="nav navbar-nav">
-                    <li class="divider-vertical">
-                        @Html.ActionLink("Heim", "Index", "Home")
-                    </li>
-                    <li class="dropdown divider-vertical">
+    <a href="/Home"> <img id="banner-logo" src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABVAAD/4QNvaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M0RFQTBCRTk1RERCRTMxMUI2NTBCODUzQUFFRTg2ODkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUU2NkEwNjVEQjhGMTFFMzhENzY4MTg4RUJBOUUwOEUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUU2NkEwNjREQjhGMTFFMzhENzY4MTg4RUJBOUUwOEUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MjRBMTZDNDg3REJFMzExQjY1MEI4NTNBQUVFODY4OSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozREVBMEJFOTVEREJFMzExQjY1MEI4NTNBQUVFODY4OSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6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" /> </a>
+    <a href="/Home" id="h1-linkar-index"> <h1>SubHub</h1> </a>
+                          
+    @using (Html.BeginForm("Search", "Browse", FormMethod.Get, new { @class = "searchform" }))
+        {
+            @Html.TextBox("query", "", new Dictionary<string, object>() { { "class", "tftextinput" }, { "size", "21" } })
+            <input type="submit" value="Finna texta" class="tfbutton" />
+        }
 
-                        @Html.ActionLink("Kvikmyndir ▼", "Movies", "Browse")
+<div class="tfclear"></div>
+</div>
+<div id="sidebar">
 
-                        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Drama", "MoviesByGenre", "Browse", new { genre = "Drama" }, null)</li>
-                            <li>@Html.ActionLink("Gamanmynd", "MoviesByGenre", "Browse", new { genre = "Gaman" }, null)</li>
-                            <li>@Html.ActionLink("Hrollvekja", "MoviesByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
-                            <li>@Html.ActionLink("Íslenskar Myndir", "MoviesByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
-                            <li>@Html.ActionLink("Rómantík", "MoviesByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
-                            <li>@Html.ActionLink("Sci-Fi", "MoviesByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
-                            <li>@Html.ActionLink("Spennutryllir", "MoviesByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
-                            <li>@Html.ActionLink("Söngleikur", "MoviesByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
-                            <li>@Html.ActionLink("Teiknimynd", "MoviesByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
-                            <li>@Html.ActionLink("Ævintýri", "MoviesByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
-                            <li>@Html.ActionLink("Ævisaga", "MoviesByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
-                            <li>@Html.ActionLink("Annað", "MoviesByGenre", "Browse", new { genre = "Annað" }, null)</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown divider-vertical">
-                        @Html.ActionLink("Þættir ▼", "TvShows", "Browse")
-                        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Drama", "TvShowsByGenre", "Browse", new { genre = "Drama" }, null)</li>
-                            <li>@Html.ActionLink("Gamanþættir", "TvShowsByGenre", "Browse", new { genre = "Gaman" }, null)</li>
-                            <li>@Html.ActionLink("Hrollvekja", "TvShowsByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
-                            <li>@Html.ActionLink("Íslenskir", "TvShowsByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
-                            <li>@Html.ActionLink("Rómantík", "TvShowsByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
-                            <li>@Html.ActionLink("Sci-Fi", "TvShowsByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
-                            <li>@Html.ActionLink("Spennutryllir", "TvShowsByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
-                            <li>@Html.ActionLink("Söngleikur", "TvShowsByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
-                            <li>@Html.ActionLink("Teiknimynd", "TvShowsByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
-                            <li>@Html.ActionLink("Ævintýri", "TvShowsByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
-                            <li>@Html.ActionLink("Ævisaga", "TvShowsByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
-                            <li>@Html.ActionLink("Annað", "TvShowsByGenre", "Browse", new { genre = "Annað" }, null)</li>
-                        </ul>
-                    </li>
-                    <li class="divider-vertical">@Html.ActionLink("Senda inn texta", "NewMedia", "Subtitle")</li>
-                    <li class="divider-vertical">@Html.ActionLink("Beiðnir", "Requests", "Request")</li>
-                    <li>@Html.ActionLink("Um notkun", "About", "Home")</li>
-                </ul>
-            </div>
-            <div id="login-div">
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default" id="front-area">
-        @RenderBody()
-        <div class="panel-body">
-            
-        </div>
-    </div>
+        <ul class="nav navbar-nav">
+            <li class="divider-vertical"> @Html.ActionLink("Heim", "Index", "Home") </li>             
+        
+            <li class="dropdown divider-vertical"> @Html.ActionLink("Kvikmyndir ▼", "Movies", "Browse")            
+                        
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Drama", "MoviesByGenre", "Browse", new { genre = "Drama" }, null)</li>
+            <li>@Html.ActionLink("Gamanmynd", "MoviesByGenre", "Browse", new { genre = "Gaman" }, null)</li>
+            <li>@Html.ActionLink("Hrollvekja", "MoviesByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
+            <li>@Html.ActionLink("Íslenskar Myndir", "MoviesByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
+            <li>@Html.ActionLink("Rómantík", "MoviesByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
+            <li>@Html.ActionLink("Sci-Fi", "MoviesByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
+            <li>@Html.ActionLink("Spennutryllir", "MoviesByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
+            <li>@Html.ActionLink("Söngleikur", "MoviesByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
+            <li>@Html.ActionLink("Teiknimynd", "MoviesByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
+            <li>@Html.ActionLink("Ævintýri", "MoviesByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
+            <li>@Html.ActionLink("Ævisaga", "MoviesByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
+            <li>@Html.ActionLink("Annað", "MoviesByGenre", "Browse", new { genre = "Annað" }, null)</li>
+        </ul>
+            </li>
+            <li class="dropdown divider-vertical">
+                @Html.ActionLink("Þættir ▼", "TvShows", "Browse")
 
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Drama", "TvShowsByGenre", "Browse", new { genre = "Drama" }, null)</li>
+            <li>@Html.ActionLink("Gamanþættir", "TvShowsByGenre", "Browse", new { genre = "Gaman" }, null)</li>
+            <li>@Html.ActionLink("Hrollvekja", "TvShowsByGenre", "Browse", new { genre = "Hrollvekja" }, null)</li>
+            <li>@Html.ActionLink("Íslenskir", "TvShowsByGenre", "Browse", new { genre = "Íslenskt-efni" }, null)</li>
+            <li>@Html.ActionLink("Rómantík", "TvShowsByGenre", "Browse", new { genre = "Rómantík" }, null)</li>
+            <li>@Html.ActionLink("Sci-Fi", "TvShowsByGenre", "Browse", new { genre = "Sci-Fi" }, null)</li>
+            <li>@Html.ActionLink("Spennutryllir", "TvShowsByGenre", "Browse", new { genre = "Spennutryllir" }, null)</li>
+            <li>@Html.ActionLink("Söngleikur", "TvShowsByGenre", "Browse", new { genre = "Söngleikur" }, null)</li>
+            <li>@Html.ActionLink("Teiknimynd", "TvShowsByGenre", "Browse", new { genre = "Teiknimynd" }, null)</li>
+            <li>@Html.ActionLink("Ævintýri", "TvShowsByGenre", "Browse", new { genre = "Ævintýri" }, null)</li>
+            <li>@Html.ActionLink("Ævisaga", "TvShowsByGenre", "Browse", new { genre = "Ævisaga" }, null)</li>
+            <li>@Html.ActionLink("Annað", "TvShowsByGenre", "Browse", new { genre = "Annað" }, null)</li>
+        </ul>
+            </li>
+            <li class="divider-vertical">@Html.ActionLink("Senda inn texta", "NewMedia", "Subtitle")</li>
+            <li class="divider-vertical">@Html.ActionLink("Beiðnir", "Requests", "Request")</li>
+            <li>@Html.ActionLink("Um notkun", "About", "Home")</li>
+        </ul>
+</div>
+
+<div id="login-div">
+    @Html.Partial("_LoginPartial")
+</div>
+</div>
+</div>
+
+<div class="panel panel-default" id="front-area">
+    @RenderBody()
+<div class="panel-body">
+</div>
+</div>
 
     @Scripts.Render("~/bundles/jquery") 
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
+
     <script src="~/scripts/jquery.loadtemplate-1.4.3.min.js"></script>
+
 </body>
 </html>
