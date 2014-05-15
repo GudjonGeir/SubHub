@@ -122,10 +122,6 @@ namespace SubHub.Controllers
             return View("Error");
         }
 
-        //public ActionResult Delete(int? id)
-        //{
-        //    return View();
-        //}
         [Authorize]
         [HttpPost]
         public ActionResult Complete(int? id)

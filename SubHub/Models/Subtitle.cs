@@ -30,10 +30,6 @@ namespace SubHub.Models
         public Subtitle()
         {
             DateSubmitted = DateTime.Now;
-            //Users = new List<ApplicationUser>();
-            //SubtitleLines = new List<SubtitleLine>();
-            //Comments = new List<Comment>();
-            //SubtitleRating = new SubtitleRating();
         }
     }
 }

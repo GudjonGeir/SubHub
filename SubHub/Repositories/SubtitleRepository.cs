@@ -54,9 +54,13 @@ namespace SubHub.Repositories
             return m_db.SubtitleLines;
         }
 
-        public void AddSubtitleLine(SubtitleLine sl)
+        public void AddSubtitleLine(List<SubtitleLine> sl)
         {
-            m_db.SubtitleLines.Add(sl);
+            foreach (var item in sl)
+            {
+                m_db.SubtitleLines.Add(item);
+            }
+            
             m_db.SaveChanges();
         }
 
@@ -133,8 +137,6 @@ namespace SubHub.Repositories
         {
             return m_db.Users;
         }
-
-
 
         public IQueryable<SubtitleRating> GetSubtitleRatings()
         {
