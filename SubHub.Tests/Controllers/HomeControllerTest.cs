@@ -44,7 +44,6 @@ namespace SubHub.Tests.Controllers
 
             // Assert
             var result1 = result.Model as List<Media>;
-            Assert.IsTrue("atli hommi" == "atli hommi");
             Assert.IsTrue(result1[1].Name == "The Notebook");
             Assert.IsTrue(result1[0].Name == "The Matrix");
             Assert.IsTrue(result1[2].Name == "Catch me if you can");
