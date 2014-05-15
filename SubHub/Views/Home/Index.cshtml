@@ -30,10 +30,11 @@
 
 <script src="~/Scripts/BannerSliderImages.js"></script>
 <script src="~/Scripts/dots.js"></script>
+<br />
         <div id="popular-master">
             
             <h3 id="most-popular-title">Vinsælustu textarnir</h3>
-            <br />
+      
             <div class="front-5-group">
                 <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
                 @{var items = (from m in Model select m).ToList();}
@@ -42,7 +43,7 @@
                     <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images">
                         @*<h5>@items[i].Name</h5>*@
                         <img src="@items[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
+           
                     </a>
                 }
 
@@ -56,7 +57,7 @@
                 {
                     <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images">
                         <img src="@items2[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
+                      
                     </a>
                 }
 
