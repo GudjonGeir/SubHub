@@ -51,6 +51,7 @@ input[type="checkbox"].input-validation-error {
     font-weight: bold;
     /*//text-transform: uppercase;*/
     color: rgb(118,170,218);
+    
     /*//height: 15px;
     //border: 1px solid red;*/
 }
@@ -577,7 +578,78 @@ body
     margin-top: -4em;
     
 }
+
 .form-group-username
 {
     margin-left: 0em;
 }
+
+/* --------------------------------------- */
+/* Kóði sem gerir bootstrap non-responsive */
+/* --------------------------------------- */
+
+/* Account for fixed navbar */
+body {
+  min-width: 800px; /*970px*/
+}
+
+/* Finesse the page header spacing */
+.page-header {
+  margin-bottom: 30px;
+}
+.page-header .lead {
+  margin-bottom: 10px;
+}
+
+/* Non-responsive overrides
+ *
+ * Utilitze the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+.container {
+  width: 800px;/*970px*/
+  max-width: none !important;
+}
+
+.container .navbar-header,
+.container .navbar-collapse {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+  float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+
+.navbar-toggle {
+  display: none;
+}
+.navbar-collapse {
+  border-top: 0;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+  float: right;
+}
+
