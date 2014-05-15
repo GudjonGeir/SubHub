@@ -43,7 +43,7 @@
             </dt>
 
             <dd>
-                <a href="@Model.ImdbUrl" target="_blank">Imdb Link</a>
+                <a href="@Model.ImdbUrl" target="_blank">@Model.Name</a>
             </dd>
 
             <dt>
@@ -60,11 +60,12 @@
             </dd>
             
         </dl>
+        <hr/>
         <div>
             @using (Html.BeginForm("NewSubtitle", "Subtitle", FormMethod.Get))
             {
                 @Html.Hidden("id", Model.Id)
-                <input type="submit" value="Hlaða upp texta" class="tfbutton get-text-button" />
+                <input type="submit" value="Hlaða upp texta" class="graybutton get-text-button" />
             }
         </div>
 

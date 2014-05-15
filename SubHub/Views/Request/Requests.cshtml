@@ -7,15 +7,14 @@
 <h2>Beiðnir</h2>
 
 @using (Html.BeginForm("NewRequest", "Request", FormMethod.Get))
-{ 
-    <input type="submit" value="Senda inn beiðni" />
+{
+    <input type="submit" value="Senda inn beiðni" class="tfbutton get-text-button" />
 }
 <table class="table">
     <tr>
         
         <th>
             Stigagjöf
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -69,7 +68,6 @@
     </tr>
 	}
 }
-
 
 </table>
 

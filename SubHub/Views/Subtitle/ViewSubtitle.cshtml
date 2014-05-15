@@ -2,11 +2,9 @@
 
 @{
     ViewBag.Title = "ViewSubtitle";
-
 }
 
 <script src="~/scripts/jquery-1.10.2.js"></script>
-
 
 @if (ViewBag.LanguageId == 1)
 {
@@ -21,10 +19,8 @@ else
     <h2>Textar fyrir "@ViewBag.MovieName"</h2>
 }
 
-
 <table class="table">
     <tr>
-
         <th>
             Stigagjöf
         </th>
@@ -75,59 +71,5 @@ else
 
 </table>
 
-
-
-
-
-
-@*<dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateSubmitted)
-        </dt>
-
-        <dd>
-
-            @Html.DisplayFor(model => model.DateSubmitted)
-        </dd>
-        <dd>
-            @Html.Hidden("subtitleId", Model.Id)
-        </dd>
-
-        @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
-        {
-            <input type="submit" value="Hala niður" />
-        }
-
-        <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
-        <button onclick="AddComment()" class="btn btn-primary ">Send</button>
-        </dl>
-        <div class="comments">
-
-        </div>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
-
-@*<script type="text/html" id="comment-template">
-        <li class="list-group-item">
-            <p>
-                <span class="glyphicon glyphicon-user"></span>
-                <span class="text-primary" data-content="user"></span>
-                <span data-content="theComment"></span>
-            </p>
-            <span class="text-muted" data-content="theDateSubmitted"></span>
-        </li>
-    </script>*@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/SubtitleUpDownVoteScripts.js"></script>

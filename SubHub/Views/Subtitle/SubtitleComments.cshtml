@@ -5,17 +5,21 @@
     }
 
 <h3>Skrifa athugasemd fyrir "@Model.Name"</h3>
+<hr class="subtitle-hr" />
+
 @Html.HiddenFor(model => HttpContext.Current.User.Identity.Name, new { @id = "user" })
 @Html.HiddenFor(model => model.Id, new { @id = "subtitleId" })&#x09;
     <div id="asdf">
-        <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
+        
         @using (Html.BeginForm("DownloadSubtitle", "Subtitle", new { id = Model.Id }, FormMethod.Get))
         {
-            <input id="asdfgh" type="submit" value="Hala niður" class="tfbutton get-text-button" />
+            <input id="get-subtitle" type="submit" value="Hala niður" class="tfbutton get-text-button" />
         }
-        <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
-        <button id="asdfg" onclick="AddComment()" class="btn btn-primary ">Skrá inn athugasemd</button>
         
+        <textarea class="form-control" rows="3" id="CommentText" name="CommentText"></textarea>
+
+        <p hidden id="emptyText" style="color: red">&#x09;Comment text cannot be empty!</p>
+        <button id="add-comment" onclick="AddComment()" class="graybutton get-text-button">Skrá inn athugasemd</button>        
         
     </div>
 <span hidden id="errorMessage" style="color: red">&#x09;Smelltu @Html.ActionLink("hér", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) til að skrá þig inn.</span>

@@ -6,13 +6,14 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//unslider.com/unslider.min.js"></script>  
-<!--
-<div class="panel panel-default" id="front-area">
-    <div class="panel-body">-->
 
-<h2 id="blessadur"> Velkomin á SubHub </h2>
-<h4 id="blessadur"> Hér getur þú fundið skjátexta fyrir bíómyndir og þætti </h4>
+<h2 id="front-page-titles-for-welcome"> Velkomin á SubHub </h2>
+<h4 id="front-page-titles-for-welcome"> Hér getur þú fundið skjátexta fyrir bíómyndir og þætti </h4>
 
+@* 
+  Listi yfir myndir sem birtast í "Image-Slider" á forsíðunni notaði Jvascript sem kallast
+  "Unslider" til að ná þessari tilteknu virkni.  
+*@
 <div class="banner-slider-images">
     <ul>
         <li> <a href="@Url.Action("Media", "Subtitle", new { id = 8 })"> <img id="slider-images" src="http://omgtens.com/wp-content/uploads/2014/02/The-Wolf-of-Wall-Street.jpg" /> </a> </li>
@@ -29,54 +30,40 @@
     </ul>
 </div>
 
+@*
+  Include .js script-in fyrir image-sliderinn annað fyrir sjálfann slider-inn og hitt fyrir
+  navigation punktana sem birtast á myndunum.
+*@
 <script src="~/Scripts/BannerSliderImages.js"></script>
 <script src="~/Scripts/dots.js"></script>
-        <div id="popular-master">
-            
-            <h3 id="most-popular-title">Vinsælustu textarnir</h3>
-            <br />
-            <div class="front-5-group">
-                <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
-                @{var items = (from m in Model select m).ToList();}
-                @for (int i = 0; i < 5; i++ )
-                {
-                    <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images">
-                        @*<h5>@items[i].Name</h5>*@
-                        <img src="@items[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
-                    </a>
-                }
 
-            </div>
+<br />
 
-            <div class="front-5-group">
-                <h4 id="front-page-tv-shows-movies">Þættir</h4>
+<div id="popular-master">
+    <h3 id="most-popular-title">Vinsælustu textarnir</h3>
+<div class="front-5-group">
+    <h4 id="front-page-tv-shows-movies">Bíómyndir</h4>
 
-                @{var items2 = (from m in Model select m).ToList();}
-                @for (int i = 5; i < 10; i++)
-                {
-                    <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images">
-                        <img src="@items2[i].PosterUrl.ToString()" alt="...">
-                        <h5>Sækja texta</h5>
-                    </a>
-                }
+@*
+  Notuðum for-lykkju sem heldur utan um það að birta fimm vinsælustu myndirnar og fimm
+  vinsælustu þættina. Download-counter sér um að uppfæra vinsælustu myndirnar og þættina.
+*@
 
-            </div>
-        </div>
+    @{var items = (from m in Model select m).ToList();}
+    @for (int i = 0; i < 5; i++ )
+        {
+            <a href="@Url.Action("Media", "Subtitle", new { id = items[i].Id }, null)" class="thumbnail front-images"> <img src="@items[i].PosterUrl.ToString()" alt="..."> </a>
+        }
 
-        <!--<div id="slider-div">
-            <div class="tcycle">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p1.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p2.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p3.jpg">
-                <img class="slider-picture-size" src="http://jquery.malsup.com/cycle2/images/p4.jpg">
-            </div>
-        </div>-->
-    <!--</div>
 </div>
--->
-<!--
-<div id="front-area">
-    
+
+<div class="front-5-group">
+    <h4 id="front-page-tv-shows-movies">Þættir</h4>
+
+    @{var items2 = (from m in Model select m).ToList();}
+    @for (int i = 5; i < 10; i++)
+        {
+            <a href="@Url.Action("Media", "Subtitle", new { id = items2[i].Id }, null)" class="thumbnail front-images"> <img src="@items2[i].PosterUrl.ToString()" alt="..."> </a>
+        }
 </div>
--->
+</div>
