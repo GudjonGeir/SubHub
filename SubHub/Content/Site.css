@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #919191;
+    background-color: rgb(215,215,215);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -42,59 +42,26 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+/* Div á banner tökkunum */
 #sidebar
 {
     margin-left: 10px;
     float: left;
-    /*//width: 145px;*/
     font-size: small;
     font-weight: bold;
-    /*//text-transform: uppercase;*/
     color: rgb(118,170,218);
-    
-    /*//height: 15px;
-    //border: 1px solid red;*/
 }
 
-
-
-
-#banner-text
-{
-    margin-left: 2em;
-}
-
-#right-sidebar
-{
-    width: 225px;
-    height: 450px;
-    float: right;
-    /*//background-color: lightgray;
-    //border: 1px solid red;*/
-}
-
-.most-popular-sidebar
-{
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    /*//border: 1px solid red;*/
-    background-color: lightgray;
-}
-
-.right-side-list
-{
-    list-style-type: none;
-}
-
+/*Miðjusetur megininnihald síðurnar*/
 #main-content
 {
     margin-left: auto;
     margin-right: auto;
-    /*//width: 300px;
-    //border: 1px solid red;*/
 }
 
+
+/*Helling af stillingum fyrir drop-down banner menu*/
+/* ------------------------------------ */
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
@@ -124,6 +91,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     margin-top: -1px;
 }
 
+/*Lætur genre listann vera sýnilega þegar þú hover'ar*/
 li:hover #menu1
 {
     visibility: visible;
@@ -134,43 +102,20 @@ li:hover #menu2
     visibility: visible;
 }
 
-#master-control
-{
-    width: 500px;
-}
-
-.container
-{
-    /*//width: 400px;*/
-}
-
+/*Stillir max breidd á myndunum á forsíðunni*/
 .thumbnail
 {
     max-width: 125px;
 }
 
-#main-div
-{
-    width: 500px;
-    border: 1px solid red;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
+/*Stillingar fyrir SubHub Logo headerinn*/
 h1
 {
     display: inline;
     vertical-align: middle;
-    /*color: rgb(225,225,225);*/
     color: #00adee;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
-
-
-
 
 
 #tfheader
@@ -180,7 +125,6 @@ h1
 }
 #tfnewsearch
 {
-	/*//float: inherit;*/
     display: inline;
 	padding:20px;
     vertical-align: middle;
@@ -222,7 +166,7 @@ h1
 	background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
 	background: -moz-linear-gradient(top,  #0095cc,  #00678e);
 }
-	/* Fixes submit button height problem in Firefox */
+/* Fixes submit button height problem in Firefox */
 .tfbutton::-moz-focus-inner 
 {
     border: 0;
@@ -234,17 +178,16 @@ h1
     margin-bottom: 0px;
 }
 
+body
+{
+    margin: 0px;
+    padding-top: 0px;
+}
+
+/*Sér um stærð og bakgrunnslit bannersins*/
 #banner-master
 {
-    /*//background-color: #E3E3E3;*/
     background-color: rgb(81, 81, 81);
-    /*// -------------------------
-        //
-    // background-color: #E8E8E8;
-    // -------------------------
-    //border: 1px solid red;
-    //display: inline-block;*/
-    
     padding: 10px 0px 30px 0px;
     margin: 0px;
     border-top: 0px;
@@ -253,12 +196,9 @@ h1
     color: rgb(118,170,218);
 }
 
-body
-{
-    margin: 0px;
-    padding-top: 0px;
-}
 
+
+/*Staðsetur logo'ið*/
 #banner-logo
 {
     margin-left: 20px;
@@ -270,20 +210,12 @@ body
     height: 30px;
     padding-top: 0;
     color: rgb(231,240,250);
-    /*//text-shadow: black 0.1em 0.1em 0.2em;
-    //text-shadow:black 1px 1px rgba(0, 0, 0, 0.5);*/
 }
 
-/*#login-div
-{
-    //border: 1px solid red;
-}*/
-
+/*Miðjusetur megininnihald banners*/
 #banner-middler
 {
-    /*//border: 1px solid green;*/
     width: 850px;
-
     margin-left:auto;
     margin-right: auto;
 }
@@ -294,12 +226,6 @@ body
     height: 20em;
 }
 
-.tcycle
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
 #slider-div
 {
     margin-left: auto;
@@ -307,11 +233,9 @@ body
 
 }
 
+/*Stillingar á blaðsíðunni á Layout sem segir til um hvernig content er raðað upp*/
 #front-area
 {
-    
-    /*//background-color: #EBEBFA;
-    //background-color: #F5F5F5;*/
     width: 60em;
     min-height: 30em;
     margin-top: 15px;
@@ -322,11 +246,9 @@ body
     padding: 15px 35px 35px 35px;
 }
 
+/*Gerir línurnar milli takkanna í banner'inum*/
 .divider-vertical {
-/*//height: 10px;
-//border: -25px 0px 0px 0px;*/
-border-right: 1px solid gray;
-/*//border-left: 1px solid rgb(128, 128, 128);*/
+    border-right: 1px solid gray;
 }
 
 .slider-picture-size
@@ -335,10 +257,9 @@ border-right: 1px solid gray;
     
 }
 
-
+/*Div sem heldur utan um vinsælustu 5 af einhverju á forsíðunni*/
 .front-5-group
 {
-    /*//border: 1px solid red;*/
     width: 643px;
     margin-left: auto;
     margin-right: auto;
@@ -346,7 +267,6 @@ border-right: 1px solid gray;
 
 #popular-master
 {
-    /*//border: 1px solid red;*/
     width: 725px;
     margin-left: auto;
     margin-right: auto;
@@ -358,18 +278,14 @@ border-right: 1px solid gray;
     vertical-align: bottom;
 }
 
-body
-{
-    background-color: rgb(215,215,215);
-}
-
+/*Stillir hæðina á vinsælustu myndunum á forsíðunni*/
 .thumbnail img
 { 
-    /*min-height:50px;*/ 
     height:170px; 
 
 }
 
+/*Stillir litin á drop-down menu'inum*/
 #sidebar li > a:hover 
 {
     background: #0095cd;
@@ -392,16 +308,9 @@ body
     margin-left: 2em;
 }
 
-
 .date-aired-th
 {
     width: 7em;
-}
-
-.date-aired-td
-{
-    /*text-align: right;*/
-    /*padding: 20px;*/
 }
 
 .name-th
@@ -414,6 +323,7 @@ body
     width: 6em;
 }
 
+/*Stillingar á útliti þegar þú skoðar lista af myndum/þáttum */
 .list-poster
 {
     height: 3.35em;
@@ -438,13 +348,11 @@ body
 
 .media-master
 {
-    /*border: 1px solid blue;*/
     width: 750px;
 }
 
 .media-poster-div
 {
-    /*border: 1px solid red;*/
     width: 245px;
     height: 350px;
     float: left;
@@ -453,12 +361,8 @@ body
 
 .media-info-text
 {
-    
-    /*border: 1px solid green;*/
-    /*border-left: 20px;*/
     padding-left: 20px;
     margin-left: 245px;
-    /*width: 300px;*/
 }
 
 .get-text-button
@@ -479,6 +383,8 @@ body
 
 }
 
+/*Helling af stillingum fyrir image-slider'inn sem er efst á forsíðunni*/
+/*---------------------------------------------------------------------*/
 .banner-slider-images li { list-style: none; }
 .banner-slider-images {position: relative; overflow: auto;}
 .banner-slider-images ul li { float: left;}
@@ -487,15 +393,13 @@ body
 {
     width: 600px;
     height: 400px; 
-    border: groove rgb(81,81,81);  
-    
+    border: groove rgb(81,81,81);      
 }
 
 #nextandprev
 {
     position: relative;
     width: 50%; left:50%;
-
 }
 
 #about-srt
@@ -575,8 +479,7 @@ body
 {
     position: absolute;
     margin-left: 25em;
-    margin-top: -4em;
-    
+    margin-top: -4em;   
 }
 
 .form-group-username
