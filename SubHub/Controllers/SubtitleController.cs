@@ -191,7 +191,9 @@ namespace SubHub.Controllers
                     Users = users, 
                     Comments = new List<Comment>(), 
                     DateSubmitted = DateTime.Now, 
-                    SubtitleRating = new SubtitleRating()
+                    SubtitleRating = new SubtitleRating(), 
+                    SubtitleUpvote = new SubtitleUpvote(), 
+                    SubtitleDownvote = new SubtitleDownvote()
                 };
                 int subtId = m_repo.AddSubtitle(subtitle);
 
