@@ -36,10 +36,10 @@ namespace SubHub.Migrations
             MediaGenre romantik = new MediaGenre { Genre = "Rómantík" };        //6
             MediaGenre scifi = new MediaGenre { Genre = "Sci-Fi" };             //7
             MediaGenre spenna = new MediaGenre { Genre = "Spennutryllir" };     //8
-            MediaGenre songleikur = new MediaGenre { Genre = "Söngleikur" };    //9
-            MediaGenre teiknimynd = new MediaGenre { Genre = "Teiknimynd" };    //10
+            MediaGenre songleikur = new MediaGenre { Genre = "Söngleikir" };    //9
+            MediaGenre teiknimynd = new MediaGenre { Genre = "Teiknimyndir" };    //10
             MediaGenre avintyri = new MediaGenre { Genre = "Ævintıri" };       //11
-            MediaGenre avisaga = new MediaGenre { Genre = "Ævisaga" };          //12
+            MediaGenre avisaga = new MediaGenre { Genre = "Ævisögur" };          //12
             var genres = new List<MediaGenre>() { annad, drama, gaman, hrollvekja, islenskt, romantik, scifi, spenna, songleikur, teiknimynd, avintyri, avisaga };
             genres.ForEach(g => context.MediaGenres.Add(g));
             context.SaveChanges();
