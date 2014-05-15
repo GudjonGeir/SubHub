@@ -1,23 +1,21 @@
 namespace SubHub.Migrations
 {
     using SubHub.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SubHub.DAL.SubHubContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SubHub.DAL.SubHubContext context)
         {
-
             MediaType movies = new MediaType { Type = "Kvikmyndir" };
             MediaType tvShows = new MediaType { Type = "Þættir" };
             var mediaTypes = new List<MediaType>() { movies, tvShows };
@@ -80,6 +78,5 @@ using System.Linq;
             medias.ForEach(m => context.Medias.Add(m));
             context.SaveChanges();
         }
-        
     }
 }
