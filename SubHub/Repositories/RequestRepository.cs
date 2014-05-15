@@ -80,7 +80,7 @@ namespace SubHub.Repositories
 
         public IQueryable<SubtitleLanguage> GetSubtitleLanguages()
         {
-            return m_db.MediaLanguages;
+            return m_db.SubtitleLanguages;
         }
 
         public void AddRequest(Request m)
