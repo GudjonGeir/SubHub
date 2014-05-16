@@ -361,30 +361,30 @@ namespace SubHub.Controllers
                 }
 
                 int result, upvoteCount, downvoteCount;
-                if (subtitleUpvote.Users.Contains(user))
-                {
-                    upvoteCount = m_repo.Upvote(id.Value, -1);
-                    downvoteCount = subtitleDownvote.Count;
-                    result = upvoteCount - downvoteCount;
-                    m_repo.RemoveUserFromUpvotes(id.Value, userId);
+                if (subtitleUpvote.Users.Contains(user))                                            // If the user has already upvoted
+                {                                                                                   
+                    upvoteCount = m_repo.Upvote(id.Value, -1);                                      // Add to upvotes and get resulting upvote count
+                    downvoteCount = subtitleDownvote.Count;                                         // get current downvote count
+                    result = upvoteCount - downvoteCount;                                           // get current rating
+                    m_repo.RemoveUserFromUpvotes(id.Value, userId);                                 // Remove user from upvotes
                 }
-                else if (subtitleDownvote.Users.Contains(user))
+                else if (subtitleDownvote.Users.Contains(user))                                     // If the user has downvoted
                 {
-                    upvoteCount = m_repo.Upvote(id.Value, 1);
-                    downvoteCount = m_repo.Downvote(id.Value, -1);
-                    result = upvoteCount - downvoteCount;
-                    m_repo.RemoveUserFromDownvotes(id.Value, userId);
-                    m_repo.AddUserToUpvotes(id.Value, userId);
+                    upvoteCount = m_repo.Upvote(id.Value, 1);                                       // Add to upvotes and get resulting upvote count
+                    downvoteCount = m_repo.Downvote(id.Value, -1);                                  // Remove from downvotes and get resulting downvote count
+                    result = upvoteCount - downvoteCount;                                           // Current rating
+                    m_repo.RemoveUserFromDownvotes(id.Value, userId);                               // Remove user from downvotes
+                    m_repo.AddUserToUpvotes(id.Value, userId);                                      // Add user to upvotes
                 }
                 else
                 {
-                    upvoteCount = m_repo.Upvote(id.Value, 1);
-                    downvoteCount = subtitleDownvote.Count;
-                    result = upvoteCount - downvoteCount;
-                    m_repo.AddUserToUpvotes(id.Value, userId);
+                    upvoteCount = m_repo.Upvote(id.Value, 1);                                       // Add to upvotes and get resulting upvote count
+                    downvoteCount = subtitleDownvote.Count;                                         // get current downvote count
+                    result = upvoteCount - downvoteCount;                                           // Current rating
+                    m_repo.AddUserToUpvotes(id.Value, userId);                                      // Add user to upvotes
         
                 }
-                m_repo.UpdateRating(id.Value, result);
+                m_repo.UpdateRating(id.Value, result);                                              // Upvote rating with result in db
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
             return View();
@@ -392,7 +392,7 @@ namespace SubHub.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Downvote(int? id)
+        public ActionResult Downvote(int? id)                                                       // See upvote comments for explanation
         {
             if (id.HasValue)
             {

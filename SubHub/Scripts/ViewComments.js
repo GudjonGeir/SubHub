@@ -1,8 +1,14 @@
-﻿$(document).ready(function () {
+﻿//When the page loads we get the value of a hidden
+//id inside the html document which contains the id
+//for the subtitle so we can load the comments
+//for the corresponding id
+$(document).ready(function () {
     var theId = $("#subtitleId").val();
     getAllComments(theId);
 });
 
+//If a user wants to delete his comment he needs to confirm it
+//and if he does we send a ajax request and load all the comments again
 function DeleteComment(tala) {
     if (confirm("Ertu viss um að þú viljir eyða athugasemd ?") == true) {
         var theId = $("#subtitleId").val();
@@ -13,6 +19,9 @@ function DeleteComment(tala) {
 
 }
 
+//The requirements for posting a comment is that the comment box isnt
+//empty and the user must be logged in, if he isnt we show a nice error message
+//indicating him that he needs to logged in or that the comment box cannot be empty
 function AddComment() {
     var user = $("#user").val();
     var thecomment = $("#CommentText").val();
@@ -34,6 +43,11 @@ function AddComment() {
     }
 }
 
+//Sends a ajax request to get all the comments
+// for the corresponding subtitleid, if everything
+//goes as planned, the request returns a model which we push
+//into a template and if the current user has any comments
+//in the model he gets a link to delete the comment he made
 function getAllComments(theId) {
     var user = $("#user").val();
     $.ajax(

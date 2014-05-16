@@ -17,11 +17,6 @@ namespace SubHub.Repositories
             return m_db.Requests;
         }
 
-        public void RemoveRequest(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void SetCompleted(int id)
         {
             var s = (from l in m_db.Requests
