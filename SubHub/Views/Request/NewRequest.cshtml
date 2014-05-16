@@ -6,7 +6,6 @@
 
 <h2>Ný Beiðni</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -28,8 +27,7 @@
             <div class="col-md-10">
                 @Html.DropDownListFor( model => model.LanguageId, Model.SubtitleLanguages)
             </div>
-        </div>
-        
+        </div>        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
