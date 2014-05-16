@@ -12,7 +12,6 @@ namespace SubHub.Repositories
     {
         IQueryable<Request> GetRequests();
         IQueryable<RequestRating> GetRequestRatings();
-        void RemoveRequest(int? id);
         void SetCompleted(int id);
         int UpdateRating(int id, int value);
         void RemoveUserFromRating(int id, string userId);

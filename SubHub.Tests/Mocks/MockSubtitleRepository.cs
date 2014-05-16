@@ -49,20 +49,10 @@ namespace SubHub.Tests.Mocks
 
         public void UpVote(int? id, ApplicationUser user)
         {
-            //var model = (from m in m_subtitles
-            //             where m.Id == id
-            //             select m).SingleOrDefault();
-            //model.SubtitleRating.Count += 1;
-            //model.SubtitleRating.Users.Add(user);
         }
 
         public void DownVote(int? id, ApplicationUser user)
         {
-            //var model = (from m in m_subtitles
-            //             where m.Id == id
-            //             select m).SingleOrDefault();
-            //model.SubtitleRating.Count -= 1;
-            //model.SubtitleRating.Users.Add(user);
 
         }
 
