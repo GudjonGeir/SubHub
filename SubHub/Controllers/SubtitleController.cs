@@ -147,11 +147,11 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                var media = m_repo.GetMedias().Where(s => s.Id == id.Value).SingleOrDefault();
-                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value, MediaName = media.Name };
-                var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();
+                var media = m_repo.GetMedias().Where(s => s.Id == id.Value).SingleOrDefault();                      // Get the media the new subtitle belongs to
+                SubtitleViewModel model = new SubtitleViewModel { MediaId = id.Value, MediaName = media.Name };     // Create view model with correct data
+                var subtitleLanguages = m_repo.GetSubtitleLanguages().ToList();                                     // Get all available languages
 
-                model.SubtitleLanguages = new List<SelectListItem>();
+                model.SubtitleLanguages = new List<SelectListItem>();                                               // add languages to list of SelectListItem
                 foreach (var m in subtitleLanguages)
                 {
                     model.SubtitleLanguages.Add(new SelectListItem { Value = m.Id.ToString(), Text = m.Language });
@@ -167,26 +167,26 @@ namespace SubHub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NewSubtitle(SubtitleViewModel model)
         {
-            var validSubtitleType = new string[]
+            var validSubtitleType = new string[]                                            // Array of valid filetypes
             {
                 "text/plain",
                 "application/octet-stream"
             };
 
-            if (model.SrtUpload == null || model.SrtUpload.ContentLength == 0)
+            if (model.SrtUpload == null || model.SrtUpload.ContentLength == 0)              // Validation to make sure that a file has been selected for upload
             {
                 ModelState.AddModelError("SrtUpload", "This field is required");
             }
-            else if (!validSubtitleType.Contains(model.SrtUpload.ContentType))
+            else if (!validSubtitleType.Contains(model.SrtUpload.ContentType))              // Validation for valid filetypes
             {
                 ModelState.AddModelError("SrtUpload", "Please choose a valid .srt file");
             }
 
             if (ModelState.IsValid)
             {
-                string userId = User.Identity.GetUserId();
+                string userId = User.Identity.GetUserId();                                  
                 List<ApplicationUser> users = new List<ApplicationUser>();;
-                var subtitle = new Subtitle
+                var subtitle = new Subtitle                                                 // Create a new instance of a subtitle with correct data
                 {
                     Name = model.Name,
                     LanguageId = model.LanguageId, 
@@ -198,57 +198,57 @@ namespace SubHub.Controllers
                     SubtitleUpvote = new SubtitleUpvote(), 
                     SubtitleDownvote = new SubtitleDownvote()
                 };
-                int subtId = m_repo.AddSubtitle(subtitle);
+                int subtId = m_repo.AddSubtitle(subtitle);                                  // Add the subtitle to db and get the id
 
-                m_repo.AddUserToSubtitle(subtId, userId);
+                m_repo.AddUserToSubtitle(subtId, userId);                                   // Add the logged in user to list of contributors
 
                 if (model.SrtUpload != null || model.SrtUpload.ContentLength > 0)
                 {
-                    StreamReader reader = new StreamReader(model.SrtUpload.InputStream);
-                    List<SubtitleLine> lines = new List<SubtitleLine>();
-                    while (!reader.EndOfStream)
+                    StreamReader reader = new StreamReader(model.SrtUpload.InputStream);    // Access the HttpPostedFileBase StreamReader
+                    List<SubtitleLine> lines = new List<SubtitleLine>();                    // Create a list to contain the lines until they are saved to db
+                    while (!reader.EndOfStream)                                             // Loops until it hits the end of the stream
                     {
-                        SubtitleLine sl = new SubtitleLine();
+                        SubtitleLine sl = new SubtitleLine();                               // Create new line
 
-                        string tmpString = reader.ReadLine();
-                        if (String.IsNullOrEmpty(tmpString))
+                        string tmpString = reader.ReadLine();                               // Read the first line and make sure it isn't empty
+                        if (String.IsNullOrEmpty(tmpString))                                // Skip this loop if it is
                         {
                             continue;
                         }
                         //LineNumber:
-                        int tmpInt;
+                        int tmpInt;                                                         // Get the line number
                         int.TryParse(tmpString, out tmpInt);
                         sl.LineNumber = tmpInt;
 
                         //Time:
-                        tmpString = reader.ReadLine();
+                        tmpString = reader.ReadLine();                                      // Get the time of the subtitle line
                         sl.Time = tmpString;
                         //LineOne:
 
-                        tmpString = reader.ReadLine();
+                        tmpString = reader.ReadLine();                                      // Get the first display text
                         sl.LineOne = tmpString;
 
                         //LineTwo:
-                        tmpString = reader.ReadLine();
+                        tmpString = reader.ReadLine();                                      // Get the second display text
                         sl.LineTwo = tmpString;
 
-                        sl.SubtitleId = subtId;
-                        lines.Add(sl);
+                        sl.SubtitleId = subtId;                                             // Relate the line to the new subtitle
+                        lines.Add(sl);                                                      // Add the new line to the list
 
-                        if (String.IsNullOrEmpty(tmpString))
-                        {
+                        if (String.IsNullOrEmpty(tmpString))                                // Check if the second line was empty,
+                        {                                                                   // if it was the next line would be the line number
                             continue;
                         }
 
-                        reader.ReadLine();
+                        reader.ReadLine();                                                  // Read the empty line between lines
 
 
                     }
-                    m_repo.AddSubtitleLine(lines);
+                    m_repo.AddSubtitleLine(lines);                                          // Send the list to db
 
                 }
 
-                return RedirectToAction("ViewSubtitle", new { mediaID = subtitle.MediaId, languageId = subtitle.LanguageId });
+                return RedirectToAction("ViewSubtitle", new { mediaID = subtitle.MediaId, languageId = subtitle.LanguageId }); // Go to the newly created subtitle
             }
             return View(model);
         }
@@ -258,18 +258,18 @@ namespace SubHub.Controllers
         {
             if (subtitleId.HasValue)
             {
-                var model = (from s in m_repo.GetSubtitleLines()
-                             where s.SubtitleId == subtitleId
+                var model = (from s in m_repo.GetSubtitleLines()                            // Get the subtitle lines for the corresponding
+                             where s.SubtitleId == subtitleId                               // subtitleId and order it by the line number
                              orderby s.LineNumber
                              select s).ToList();
-                if (!model.Any())
+                if (!model.Any())                                                           // If the list is empty there must be something wrong
                 {
                     return View("Error");
                 }
                 else
                 {
-                    var media = (from m in m_repo.GetMedias()
-                                 join l in m_repo.GetSubtitles() on m.Id equals l.MediaId
+                    var media = (from m in m_repo.GetMedias()                               // Get the media that the subtitle belongs to to
+                                 join l in m_repo.GetSubtitles() on m.Id equals l.MediaId   // display the name with a viewbag
                                  where l.Id == subtitleId.Value
                                  select m).SingleOrDefault();
                     ViewBag.Title = media.Name;
@@ -285,7 +285,7 @@ namespace SubHub.Controllers
         {
             if (ModelState.IsValid)
             {
-                SubtitleLine result = new SubtitleLine()
+                SubtitleLine result = new SubtitleLine()                                    
                 {
                     SubtitleId = s.SubtitleId,
                     LineNumber = s.LineNumber,
@@ -294,11 +294,11 @@ namespace SubHub.Controllers
                     LineTwo = s.LineTwo,
                     Time = s.Time
                 };
-                m_repo.UpdateSubtitleLine(result);
+                m_repo.UpdateSubtitleLine(result);                                              // Send the edited line to db
 
-                m_repo.AddUserToSubtitle(result.SubtitleId, User.Identity.GetUserId());
+                m_repo.AddUserToSubtitle(result.SubtitleId, User.Identity.GetUserId());         // Add the user to list of contributors
 
-                return RedirectToAction("EditSubtitleLines", new { subtitleId = s.SubtitleId });
+                return RedirectToAction("EditSubtitleLines", new { subtitleId = s.SubtitleId });// Return to edit page with updated data
             }
             return View("Error");
         }
@@ -307,25 +307,25 @@ namespace SubHub.Controllers
         {
             if (id.HasValue)
             {
-                StringBuilder fileString = new StringBuilder();
-                var subtitleLines = from s in m_repo.GetSubtitleLines()
+                StringBuilder fileString = new StringBuilder();                                 // StringBuilder to prepare the data for download
+                var subtitleLines = from s in m_repo.GetSubtitleLines()                         // Get all the lines and order them by number
                                     where s.SubtitleId == id.Value
                                     orderby s.LineNumber
                                     select s;
-                var media = (from s in m_repo.GetSubtitles()
+                var media = (from s in m_repo.GetSubtitles()                                    // Get the media to use the media name for filename
                                join m in m_repo.GetMedias() on s.MediaId equals m.Id
                                where s.Id == id.Value
                                select m).SingleOrDefault();
                 string subtitleName = media.Name;
-                m_repo.DownloadCounterUpOne(media.Id);
+                m_repo.DownloadCounterUpOne(media.Id);                                          // Add to the download counter
                                
 
-                foreach(var line in subtitleLines)
+                foreach(var line in subtitleLines)                                              // Add each line to the StringBuilder
                 {
                     fileString.Append(line.LineNumber).Append(Environment.NewLine);
                     fileString.Append(line.Time).Append(Environment.NewLine);
                     fileString.Append(line.LineOne).Append(Environment.NewLine);
-                    if (!String.IsNullOrEmpty(line.LineTwo))
+                    if (!String.IsNullOrEmpty(line.LineTwo))                                    // Prevent unnecessary empty line
                     {
                         fileString.Append(line.LineTwo).Append(Environment.NewLine);
                     }
